@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="logo-buho.png" type="image/png">
+<title>Publicaciones | Insight &amp; Forward Legal Solutions</title>
+<meta name="description" content="Publicaciones, análisis y reflexiones editoriales de Insight & Forward Legal Solutions.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://insightandforward.com/publicaciones.html">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--gold:#a9741e;--bg:#000b0f;--bg-section:#000f15;--cream:#f5e4c4;--muted:#f5e4c4;--border:rgba(169,116,30,0.18);--serif:'Cormorant Garamond',Georgia,serif;--sans:"Avenir","Avenir Next","Helvetica Neue",Arial,sans-serif}
+body{font-family:var(--sans);background:#f3ead8;color:#001923;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:0 56px;height:76px;background:rgba(0,11,15,0.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.nav-logo img{height:36px;width:auto}.nav-links{display:flex;list-style:none}.nav-links>li>a{color:rgba(245,228,196,0.6);text-decoration:none;font-size:14px;padding:7px 20px;border-radius:20px;transition:all .3s;display:block}.nav-links>li>a:hover,.nav-links>li>a.active{background:rgba(169,116,30,.12);color:var(--gold)}
+.has-dropdown{position:relative}.dropdown{display:none;position:absolute;top:100%;left:0;background:rgba(0,11,15,.98);backdrop-filter:blur(16px);border:1px solid var(--border);border-radius:8px;min-width:220px;padding:8px 0;z-index:200}.dropdown::before{content:'';position:absolute;top:-10px;left:0;right:0;height:10px}.has-dropdown:hover .dropdown{display:block}.dropdown li{list-style:none}.dropdown li a{display:block;padding:12px 20px;color:rgba(245,228,196,.7);text-decoration:none;font-size:13px;transition:all .2s;white-space:nowrap}.dropdown li a:hover{color:var(--gold);background:rgba(169,116,30,.08)}
+.nav-lang{display:flex;align-items:center;gap:4px}.lang-btn{background:none;border:1.5px solid transparent;color:rgba(245,228,196,.45);font-family:var(--sans);font-size:11px;letter-spacing:1px;padding:5px 12px;cursor:pointer;border-radius:20px;transition:all .3s}.lang-btn.active{border-color:var(--gold);color:var(--gold);background:rgba(169,116,30,.08)}.lang-sep{color:rgba(245,228,196,.2)}
+.firm-bar{height:76px;margin-top:76px;background:#000f15;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:center}.firm-bar span{font-family:var(--serif);font-size:17px;color:rgba(245,228,196,.5);letter-spacing:1px}
+footer{background:#000b0f;padding:32px 56px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border)}.ft-logo{font-family:var(--serif);font-size:15px;color:rgba(245,228,196,.4);display:flex;align-items:center;gap:10px}.ft-logo img{height:24px;opacity:.5}.ft-mid{font-size:11px;color:rgba(245,228,196,.28);text-align:center;letter-spacing:1px}.ft-right{font-size:11px;color:rgba(245,228,196,.28);text-align:right;line-height:1.7}
+@media(max-width:900px){nav{padding:0 20px}.nav-links{display:none}footer{flex-direction:column;gap:10px;text-align:center}.ft-right{text-align:center}}
+</style>
+<link rel="stylesheet" href="shared.css?v=audit-81">
+<style>
+body{
+  background:
+    radial-gradient(ellipse at 52% 0%,rgba(255,255,255,0.52),transparent 36%),
+    linear-gradient(180deg,#f8f0df 0%,#f1e7d1 55%,#eadfc8 100%);
+  color:#001923;
+}
+.pub-page{
+  --editorial-blue:#001923;
+  --paper:#f8f0df;
+  --ink:#001923;
+  --ink-soft:rgba(0,25,35,0.66);
+  --rule:rgba(0,25,35,0.15);
+  --rule-soft:rgba(0,25,35,0.09);
+  --rule-gold:rgba(169,116,30,0.34);
+  --blog-serif:Georgia,"Times New Roman",Times,serif;
+  --blog-mono:"SF Mono","Roboto Mono","Avenir Next",Menlo,Consolas,monospace;
+  max-width:1180px;
+  margin:0 auto;
+  padding:96px 60px 124px;
+}
+.pub-hero{
+  min-height:420px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  border-bottom:1px solid var(--rule);
+}
+.pub-kicker{
+  color:rgba(169,116,30,0.7);
+  font-family:var(--blog-mono);
+  font-size:10px;
+  letter-spacing:2.4px;
+  margin-bottom:44px;
+  text-transform:uppercase;
+}
+.pub-title{
+  color:var(--editorial-blue);
+  font-family:var(--blog-serif);
+  font-size:clamp(70px,10vw,132px);
+  font-weight:400;
+  letter-spacing:-0.032em;
+  line-height:.88;
+  margin:0;
+}
+.pub-subtitle{
+  max-width:720px;
+  color:var(--ink-soft);
+  font-family:"Cormorant Garamond",Georgia,serif;
+  font-size:clamp(24px,3vw,36px);
+  font-weight:300;
+  line-height:1.28;
+  letter-spacing:.018em;
+  margin:52px 0 0 auto;
+}
+.pub-rule{
+  width:100%;
+  height:1px;
+  background:linear-gradient(90deg,var(--rule),var(--rule-gold),transparent);
+  margin-top:58px;
+}
+.pub-magazine{
+  padding-top:82px;
+}
+.magazine-heading{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:24px;
+  align-items:end;
+  border-bottom:1px solid var(--rule);
+  padding-bottom:22px;
+}
+.magazine-heading h2{
+  color:var(--ink);
+  font-family:var(--blog-serif);
+  font-size:clamp(34px,4vw,52px);
+  font-weight:400;
+  letter-spacing:-.012em;
+  line-height:1;
+}
+.magazine-heading span{
+  color:rgba(0,25,35,0.46);
+  font-family:var(--blog-mono);
+  font-size:10px;
+  letter-spacing:2.2px;
+  text-transform:uppercase;
+}
+.publication-feature{
+  display:grid;
+  grid-template-columns:minmax(140px,.58fr) minmax(0,2.4fr);
+  gap:56px;
+  padding:68px 0 72px;
+  border-bottom:1px solid var(--rule);
+}
+.entry-meta{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  color:rgba(0,25,35,0.5);
+  font-family:var(--blog-mono);
+  font-size:10px;
+  letter-spacing:1.8px;
+  text-transform:uppercase;
+}
+.entry-platform{
+  color:rgba(169,116,30,0.74);
+}
+.publication-feature .entry-title{
+  color:var(--ink);
+  font-family:var(--blog-serif);
+  font-size:clamp(48px,7vw,82px);
+  font-weight:400;
+  letter-spacing:-.028em;
+  line-height:.94;
+  margin-bottom:30px;
+}
+.publication-feature .entry-excerpt{
+  max-width:720px;
+  color:var(--ink-soft);
+  font-size:17px;
+  line-height:1.82;
+}
+.entry-action{
+  display:inline-block;
+  margin-top:34px;
+  color:rgba(0,25,35,0.58);
+  font-family:var(--blog-mono);
+  font-size:10px;
+  letter-spacing:1.7px;
+  text-decoration:none;
+  text-transform:uppercase;
+  white-space:nowrap;
+  transition:color .45s ease;
+}
+.entry-action:hover{
+  color:rgba(169,116,30,0.86);
+}
+.publication-pair{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:44px;
+  padding:58px 0 62px;
+  border-bottom:1px solid var(--rule);
+}
+.publication-compact{
+  border-top:1px solid var(--rule-soft);
+  padding-top:24px;
+}
+.publication-compact .entry-title{
+  color:var(--ink);
+  font-family:var(--blog-serif);
+  font-size:clamp(30px,3.3vw,42px);
+  font-weight:400;
+  letter-spacing:-.018em;
+  line-height:1.04;
+  margin:28px 0 18px;
+}
+.publication-compact .entry-excerpt,
+.publication-wide .entry-excerpt,
+.publication-brief .entry-excerpt{
+  color:var(--ink-soft);
+  font-size:15px;
+  line-height:1.86;
+}
+.pub-quote{
+  max-width:790px;
+  margin:76px auto;
+  color:rgba(0,25,35,0.82);
+  font-family:var(--blog-serif);
+  font-size:clamp(34px,4.8vw,60px);
+  font-weight:400;
+  letter-spacing:-.022em;
+  line-height:1.02;
+  text-align:center;
+}
+.pub-quote .pub-quote-line{
+  display:block;
+  width:80px;
+  height:1px;
+  margin:34px auto 0;
+  background:rgba(169,116,30,0.44);
+}
+.publication-wide{
+  display:grid;
+  grid-template-columns:minmax(180px,.85fr) minmax(0,1.8fr);
+  gap:56px;
+  padding:52px 0 58px;
+  border-top:1px solid var(--rule);
+  border-bottom:1px solid var(--rule);
+}
+.publication-wide .entry-title{
+  color:var(--ink);
+  font-family:var(--blog-serif);
+  font-size:clamp(36px,4.6vw,58px);
+  font-weight:400;
+  letter-spacing:-.022em;
+  line-height:1;
+  margin-bottom:22px;
+}
+.publication-brief{
+  max-width:640px;
+  margin:70px 0 0 auto;
+  padding-top:28px;
+  border-top:1px solid var(--rule-soft);
+}
+.publication-brief .entry-title{
+  color:var(--ink);
+  font-family:var(--blog-serif);
+  font-size:clamp(28px,3.4vw,42px);
+  font-weight:400;
+  letter-spacing:-.016em;
+  line-height:1.05;
+  margin:26px 0 16px;
+}
+.pub-note{
+  max-width:650px;
+  color:rgba(0,25,35,0.52);
+  font-size:13px;
+  line-height:1.85;
+  margin:74px 0 0 auto;
+}
+.pub-empty{
+  max-width:620px;
+  margin:78px auto 0;
+  padding-top:28px;
+  border-top:1px solid var(--rule-soft);
+  color:rgba(0,25,35,0.52);
+  font-family:var(--blog-serif);
+  font-size:clamp(24px,3vw,34px);
+  font-weight:400;
+  line-height:1.18;
+  text-align:center;
+}
+.nav-extra > a.active{color:var(--gold) !important}
+@media(max-width:900px){
+  .pub-page{padding:62px 24px 88px}
+  .pub-hero{min-height:360px}
+  .pub-subtitle{margin:38px 0 0}
+  .magazine-heading,
+  .publication-feature,
+  .publication-pair,
+  .publication-wide{grid-template-columns:1fr}
+  .publication-feature{gap:28px;padding:52px 0}
+  .publication-pair{gap:38px}
+  .entry-action{justify-self:start}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="logo-buho.png" alt="Insight & Forward">
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" data-es="Inicio" data-en="Home">Inicio</a></li>
+    <li class="has-dropdown"><a href="index.html#nosotros" data-es="Nosotros" data-en="About">Nosotros</a>
+      <ul class="dropdown">
+        <li><a href="index.html#nosotros" data-es="Quiénes Somos" data-en="Who We Are">Quiénes Somos</a></li>
+        <li><a href="index.html#equipo" data-es="Nuestro Equipo" data-en="Our Team">Nuestro Equipo</a></li>
+      </ul>
+    </li>
+    <li class="has-dropdown"><a href="index.html#servicios" data-es="Servicios" data-en="Services">Servicios</a>
+      <ul class="dropdown">
+        <li><a href="consultoria.html" data-es="Consultoría" data-en="Consulting">Consultoría</a></li>
+        <li><a href="representacion-legal.html" data-es="Representación Legal" data-en="Legal Representation">Representación Legal</a></li>
+        <li><a href="tramites.html" data-es="Trámites" data-en="Filings &amp; Procedures">Trámites</a></li>
+        <li><a href="capacitacion.html" data-es="Capacitación" data-en="Training">Capacitación</a></li>
+      </ul>
+    </li>
+    <li class="has-dropdown"><a href="index.html#areas" data-es="Enfoques" data-en="Expertise">Enfoques</a>
+      <ul class="dropdown">
+        <li><a href="comercio-exterior.html" data-es="Operaciones de Comercio Exterior, Riesgo y Cumplimiento" data-en="Cross-Border Operations, Risk &amp; Compliance">Operaciones de Comercio Exterior, Riesgo y Cumplimiento</a></li>
+        <li><a href="migratorio.html" data-es="Movilidad Internacional y Permanencia en México" data-en="International Mobility &amp; Residence in Mexico">Movilidad Internacional y Permanencia en México</a></li>
+        <li><a href="civil.html" data-es="Estructuras Contractuales, Patrimoniales y Familiares" data-en="Contracts, Estates &amp; Family Matters">Estructuras Contractuales, Patrimoniales y Familiares</a></li>
+      </ul>
+    </li>
+    <li><a href="index.html#contacto" data-es="Contacto" data-en="Contact">Contacto</a></li>
+  </ul>
+  <div class="nav-extra">
+    <a class="active" href="blog.html" data-es="Blog" data-en="Blog">Blog</a>
+  </div>
+  <div class="nav-lang">
+    <button class="lang-btn active" onclick="setLang('es')">ES</button>
+    <span class="lang-sep">/</span>
+    <button class="lang-btn" onclick="setLang('en')">EN</button>
+  </div>
+</nav>
+
+<div class="firm-bar">
+  <div class="firm-wordmark" aria-label="Insight & Forward · Legal Solutions">
+    <span>Insight</span><span class="firm-amp">&amp;</span><span>Forward</span><span class="firm-dot">·</span><span>Legal Solutions</span>
+  </div>
+</div>
+
+<main class="pub-page">
+  <section class="pub-hero">
+    <div class="pub-kicker" data-es="Ecosistema editorial" data-en="Editorial Ecosystem">Ecosistema editorial</div>
+    <h1 class="pub-title" data-es="Publicaciones" data-en="Publications">Publicaciones</h1>
+    <p class="pub-subtitle" data-es="Ideas, análisis y publicaciones donde la firma piensa en voz alta sobre regulación, estrategia legal y entorno institucional." data-en="Ideas, analysis, and publications where the firm thinks aloud about regulation, legal strategy, and the institutional environment.">Ideas, análisis y publicaciones donde la firma piensa en voz alta sobre regulación, estrategia legal y entorno institucional.</p>
+    <div class="pub-rule" aria-hidden="true"></div>
+  </section>
+
+  <section class="pub-magazine" aria-labelledby="archivo-publicaciones">
+    <div class="magazine-heading">
+      <h2 id="archivo-publicaciones" data-es="Pensamiento en circulación" data-en="Thought in Circulation">Pensamiento en circulación</h2>
+      <span data-es="Selección editorial" data-en="Editorial Selection">Selección editorial</span>
+    </div>
+
+    <div id="publicaciones-feed" aria-live="polite"></div>
+  </section>
+</main>
+
+<footer>
+  <div class="ft-logo"><img src="logo.jpg" alt="Insight & Forward"> Insight &amp; Forward · Legal Solutions</div>
+  <div class="ft-mid" data-es="México · Cobertura nacional · Atención a clientes internacionales" data-en="Mexico · Nationwide · International Client Services">México · Cobertura nacional · Atención a clientes internacionales</div>
+  <div class="ft-right">insightf.legals@gmail.com<br>+52 (56) 1407 0141</div>
+</footer>
+
+<script>
+const publicationsFeed = document.getElementById('publicaciones-feed');
+let loadedPublications = [];
+
+const escapeHtml = value => String(value || '').replace(/[&<>"']/g, character => ({
+  '&': '&amp;',
+  '<': '&lt;',
+  '>': '&gt;',
+  '"': '&quot;',
+  "'": '&#39;'
+})[character]);
+
+const formatPublicationDate = value => {
+  const date = new Date(`${value}T00:00:00`);
+  if (Number.isNaN(date.getTime())) return value || '';
+  return new Intl.DateTimeFormat(document.documentElement.lang === 'en' ? 'en-US' : 'es-MX', {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric'
+  }).format(date);
+};
+
+const cleanPublication = publication => ({
+  fecha: publication.fecha || '',
+  autor: publication.autor || '',
+  plataforma: publication.plataforma || '',
+  categoria: publication.categoria || '',
+  titulo: publication.titulo || '',
+  extracto: publication.extracto || '',
+  url: publication.url || ''
+});
+
+const entryMeta = publication => `
+  <div class="entry-meta">
+    <span>${escapeHtml(formatPublicationDate(publication.fecha))}</span>
+    <span class="entry-platform">${escapeHtml(publication.plataforma || publication.categoria)}</span>
+    <span>${escapeHtml(publication.autor)}</span>
+  </div>
+`;
+
+const entryLink = publication => publication.url
+  ? `<a class="entry-action" href="${escapeHtml(publication.url)}" target="_blank" rel="noopener noreferrer" data-es="Abrir publicación →" data-en="Open Publication →">${document.documentElement.lang === 'en' ? 'Open Publication →' : 'Abrir publicación →'}</a>`
+  : '';
+
+const featureEntry = publication => `
+  <article class="publication-feature">
+    ${entryMeta(publication)}
+    <div>
+      <h3 class="entry-title">${escapeHtml(publication.titulo)}</h3>
+      <p class="entry-excerpt">${escapeHtml(publication.extracto)}</p>
+      ${entryLink(publication)}
+    </div>
+  </article>
+`;
+
+const compactEntry = publication => `
+  <article class="publication-compact">
+    ${entryMeta(publication)}
+    <h3 class="entry-title">${escapeHtml(publication.titulo)}</h3>
+    <p class="entry-excerpt">${escapeHtml(publication.extracto)}</p>
+    ${entryLink(publication)}
+  </article>
+`;
+
+const wideEntry = publication => `
+  <article class="publication-wide">
+    ${entryMeta(publication)}
+    <div>
+      <h3 class="entry-title">${escapeHtml(publication.titulo)}</h3>
+      <p class="entry-excerpt">${escapeHtml(publication.extracto)}</p>
+      ${entryLink(publication)}
+    </div>
+  </article>
+`;
+
+const renderPublications = publications => {
+  if (!publicationsFeed) return;
+
+  const items = publications
+    .map(cleanPublication)
+    .filter(publication => publication.titulo && publication.extracto)
+    .sort((a, b) => new Date(`${b.fecha}T00:00:00`) - new Date(`${a.fecha}T00:00:00`))
+    .slice(0, 6);
+
+  if (!items.length) {
+    publicationsFeed.innerHTML = `<p class="pub-empty">${document.documentElement.lang === 'en' ? 'No publications are available yet.' : 'Todavía no hay publicaciones disponibles.'}</p>`;
+    return;
+  }
+
+  const html = [];
+  if (items[0]) html.push(featureEntry(items[0]));
+  if (items.length > 1) html.push(`<div class="publication-pair">${items.slice(1, 3).map(compactEntry).join('')}</div>`);
+  if (items[3]) html.push(wideEntry(items[3]));
+  if (items.length > 4) html.push(`<div class="publication-pair">${items.slice(4, 6).map(compactEntry).join('')}</div>`);
+
+  publicationsFeed.innerHTML = html.join('');
+};
+
+const loadPublications = () => fetch('data/publicaciones.json', { cache: 'no-store' })
+  .then(response => {
+    if (!response.ok) throw new Error('No se pudo cargar publicaciones.json');
+    return response.json();
+  })
+  .then(data => {
+    loadedPublications = Array.isArray(data) ? data : [];
+    renderPublications(loadedPublications);
+  })
+  .catch(() => {
+    if (window.location.protocol === 'file:') {
+      window.location.href = 'http://localhost:8000/publicaciones.html';
+      return;
+    }
+    if (publicationsFeed) {
+      publicationsFeed.innerHTML = `<p class="pub-empty">${document.documentElement.lang === 'en' ? 'Publications are not available at the moment.' : 'Las publicaciones no están disponibles por el momento.'}</p>`;
+    }
+  });
+
+loadPublications();
+
+let lang='es';
+function setLang(l){
+  lang=l==='en'?'en':'es';
+  document.documentElement.lang=lang;
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent.trim().toLowerCase()===lang));
+  document.querySelectorAll('[data-es]').forEach(el=>{const v=el.getAttribute('data-'+lang);if(v)el.innerHTML=v;});
+  document.querySelectorAll('[data-placeholder-es]').forEach(el=>{const v=el.getAttribute('data-placeholder-'+lang);if(v)el.setAttribute('placeholder',v);});
+  document.querySelectorAll('a[href]').forEach(a=>{const h=a.getAttribute('href');if(!h||h.startsWith('#')||/^(mailto:|tel:|https?:|javascript:)/i.test(h))return;const u=new URL(h,location.href);if(u.origin!==location.origin||!u.pathname.endsWith('.html'))return;if(lang==='en')u.searchParams.set('lang','en');else u.searchParams.delete('lang');a.href=u.href;});
+  if (loadedPublications.length) renderPublications(loadedPublications);
+}
+</script>
+<script src="shared.js?v=audit-21"></script>
+</body>
+</html>

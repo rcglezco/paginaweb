@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="logo-buho.png" type="image/png">
+<title>Pulso Legal | Insight &amp; Forward Legal Solutions</title>
+<meta name="description" content="Pulso Legal de Insight & Forward: observatorio regulatorio y seguimiento editorial de actualizaciones oficiales relevantes.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://insightandforward.com/pulso-legal.html">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--gold:#a9741e;--bg:#000b0f;--bg-section:#000f15;--cream:#f5e4c4;--muted:#f5e4c4;--border:rgba(169,116,30,0.18);--serif:'Cormorant Garamond',Georgia,serif;--sans:"Avenir","Avenir Next","Helvetica Neue",Arial,sans-serif}
+body{font-family:var(--sans);background:#f2ead8;color:#001823;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:0 56px;height:76px;background:rgba(0,11,15,0.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.nav-logo img{height:36px;width:auto}.nav-links{display:flex;list-style:none}.nav-links>li>a{color:rgba(245,228,196,0.6);text-decoration:none;font-size:14px;padding:7px 20px;border-radius:20px;transition:all .3s;display:block}.nav-links>li>a:hover,.nav-links>li>a.active{background:rgba(169,116,30,.12);color:var(--gold)}
+.has-dropdown{position:relative}.dropdown{display:none;position:absolute;top:100%;left:0;background:rgba(0,11,15,.98);backdrop-filter:blur(16px);border:1px solid var(--border);border-radius:8px;min-width:220px;padding:8px 0;z-index:200}.dropdown::before{content:'';position:absolute;top:-10px;left:0;right:0;height:10px}.has-dropdown:hover .dropdown{display:block}.dropdown li{list-style:none}.dropdown li a{display:block;padding:12px 20px;color:rgba(245,228,196,.7);text-decoration:none;font-size:13px;transition:all .2s;white-space:nowrap}.dropdown li a:hover{color:var(--gold);background:rgba(169,116,30,.08)}
+.nav-lang{display:flex;align-items:center;gap:4px}.lang-btn{background:none;border:1.5px solid transparent;color:rgba(245,228,196,.45);font-family:var(--sans);font-size:11px;letter-spacing:1px;padding:5px 12px;cursor:pointer;border-radius:20px;transition:all .3s}.lang-btn.active{border-color:var(--gold);color:var(--gold);background:rgba(169,116,30,.08)}.lang-sep{color:rgba(245,228,196,.2)}
+.firm-bar{height:76px;margin-top:76px;background:#000f15;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:center}.firm-bar span{font-family:var(--serif);font-size:17px;color:rgba(245,228,196,.5);letter-spacing:1px}
+footer{background:#000b0f;padding:32px 56px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border)}.ft-logo{font-family:var(--serif);font-size:15px;color:rgba(245,228,196,.4);display:flex;align-items:center;gap:10px}.ft-logo img{height:24px;opacity:.5}.ft-mid{font-size:11px;color:rgba(245,228,196,.28);text-align:center;letter-spacing:1px}.ft-right{font-size:11px;color:rgba(245,228,196,.28);text-align:right;line-height:1.7}
+@media(max-width:900px){nav{padding:0 20px}.nav-links{display:none}footer{flex-direction:column;gap:10px;text-align:center}.ft-right{text-align:center}}
+</style>
+<link rel="stylesheet" href="shared.css?v=audit-81">
+<style>
+body{
+  background:
+    radial-gradient(ellipse at 48% 0%,rgba(255,255,255,0.48),transparent 34%),
+    linear-gradient(180deg,#f6efdf 0%,#efe5d0 52%,#e9ddc7 100%);
+  color:#001923;
+}
+.pulse-page{
+  --editorial-blue:#001923;
+  --paper:#f6efdf;
+  --paper-deep:#eadfc8;
+  --ink:#001923;
+  --ink-soft:rgba(0,25,35,0.68);
+  --rule:rgba(0,25,35,0.16);
+  --rule-gold:rgba(169,116,30,0.38);
+  --blog-serif:Georgia,"Times New Roman",Times,serif;
+  --blog-mono:"SF Mono","Roboto Mono","Avenir Next",Menlo,Consolas,monospace;
+  max-width:1180px;
+  margin:0 auto;
+  padding:92px 60px 118px;
+}
+.pulse-hero{
+  min-height:430px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  border-bottom:1px solid var(--rule);
+}
+.pulse-kicker{
+  color:rgba(169,116,30,0.72);
+  font-family:var(--blog-mono);
+  font-size:10px;
+  letter-spacing:2.4px;
+  margin-bottom:44px;
+  text-transform:uppercase;
+}
+.pulse-title{
+  color:var(--editorial-blue);
+  font-family:var(--blog-serif);
+  font-size:clamp(72px,11vw,138px);
+  font-weight:400;
+  letter-spacing:-0.025em;
+  line-height:.88;
+  margin:0;
+}
+.pulse-subtitle{
+  max-width:660px;
+  color:var(--ink-soft);
+  font-family:"Cormorant Garamond",Georgia,serif;
+  font-size:clamp(24px,3vw,36px);
+  font-weight:300;
+  line-height:1.28;
+  letter-spacing:.018em;
+  margin:52px 0 0 auto;
+}
+.pulse-rule{
+  width:100%;
+  height:1px;
+  background:linear-gradient(90deg,var(--rule),var(--rule-gold),transparent);
+  margin-top:58px;
+}
+.pulse-archive{
+  padding-top:76px;
+}
+.archive-heading{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:24px;
+  align-items:end;
+  border-bottom:1px solid var(--rule);
+  padding-bottom:22px;
+}
+.archive-heading h2{
+  color:var(--ink);
+  font-family:var(--blog-serif);
+  font-size:clamp(34px,4vw,52px);
+  font-weight:400;
+  letter-spacing:-.01em;
+  line-height:1;
+}
+.archive-heading span{
+  color:rgba(0,25,35,0.46);
+  font-family:var(--blog-mono);
+  font-size:10px;
+  letter-spacing:2.2px;
+  text-transform:uppercase;
+}
+.pulse-entry{
+  display:grid;
+  grid-template-columns:minmax(132px,.72fr) minmax(0,2.6fr) auto;
+  gap:38px;
+  padding:42px 0 46px;
+  border-bottom:1px solid var(--rule);
+}
+.entry-meta{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  color:rgba(0,25,35,0.52);
+  font-family:var(--blog-mono);
+  font-size:10px;
+  letter-spacing:1.8px;
+  text-transform:uppercase;
+}
+.entry-agency{
+  color:rgba(169,116,30,0.76);
+}
+.entry-title{
+  color:var(--ink);
+  font-family:var(--blog-serif);
+  font-size:clamp(27px,3.5vw,42px);
+  font-weight:400;
+  letter-spacing:-.012em;
+  line-height:1.08;
+  margin-bottom:18px;
+}
+.entry-reading{
+  max-width:670px;
+  color:var(--ink-soft);
+  font-size:15px;
+  line-height:1.86;
+}
+.entry-link{
+  align-self:end;
+  color:rgba(0,25,35,0.58);
+  font-family:var(--blog-mono);
+  font-size:10px;
+  letter-spacing:1.7px;
+  text-decoration:none;
+  text-transform:uppercase;
+  white-space:nowrap;
+  transition:color .45s ease;
+}
+.entry-link:hover{
+  color:rgba(169,116,30,0.86);
+}
+.pulse-empty{
+  border-bottom:1px solid var(--rule);
+  color:rgba(0,25,35,0.54);
+  font-size:15px;
+  line-height:1.85;
+  padding:44px 0 48px;
+}
+.pulse-note{
+  max-width:620px;
+  color:rgba(0,25,35,0.52);
+  font-size:13px;
+  line-height:1.85;
+  margin:70px 0 0 auto;
+}
+.nav-extra > a.active{
+  color:var(--gold) !important;
+}
+@media(max-width:900px){
+  .pulse-page{padding:62px 24px 86px}
+  .pulse-hero{min-height:360px}
+  .pulse-subtitle{margin:38px 0 0}
+  .archive-heading{grid-template-columns:1fr}
+  .pulse-entry{grid-template-columns:1fr;gap:22px}
+  .entry-link{justify-self:start}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="logo-buho.png" alt="Insight & Forward">
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" data-es="Inicio" data-en="Home">Inicio</a></li>
+    <li class="has-dropdown"><a href="index.html#nosotros" data-es="Nosotros" data-en="About">Nosotros</a>
+      <ul class="dropdown">
+        <li><a href="index.html#nosotros" data-es="Quiénes Somos" data-en="Who We Are">Quiénes Somos</a></li>
+        <li><a href="index.html#equipo" data-es="Nuestro Equipo" data-en="Our Team">Nuestro Equipo</a></li>
+      </ul>
+    </li>
+    <li class="has-dropdown"><a href="index.html#servicios" data-es="Servicios" data-en="Services">Servicios</a>
+      <ul class="dropdown">
+        <li><a href="consultoria.html" data-es="Consultoría" data-en="Consulting">Consultoría</a></li>
+        <li><a href="representacion-legal.html" data-es="Representación Legal" data-en="Legal Representation">Representación Legal</a></li>
+        <li><a href="tramites.html" data-es="Trámites" data-en="Filings &amp; Procedures">Trámites</a></li>
+        <li><a href="capacitacion.html" data-es="Capacitación" data-en="Training">Capacitación</a></li>
+      </ul>
+    </li>
+    <li class="has-dropdown"><a href="index.html#areas" data-es="Enfoques" data-en="Expertise">Enfoques</a>
+      <ul class="dropdown">
+        <li><a href="comercio-exterior.html" data-es="Operaciones de Comercio Exterior, Riesgo y Cumplimiento" data-en="Cross-Border Operations, Risk &amp; Compliance">Operaciones de Comercio Exterior, Riesgo y Cumplimiento</a></li>
+        <li><a href="migratorio.html" data-es="Movilidad Internacional y Permanencia en México" data-en="International Mobility &amp; Residence in Mexico">Movilidad Internacional y Permanencia en México</a></li>
+        <li><a href="civil.html" data-es="Estructuras Contractuales, Patrimoniales y Familiares" data-en="Contracts, Estates &amp; Family Matters">Estructuras Contractuales, Patrimoniales y Familiares</a></li>
+      </ul>
+    </li>
+    <li><a href="index.html#contacto" data-es="Contacto" data-en="Contact">Contacto</a></li>
+  </ul>
+  <div class="nav-extra">
+    <a class="active" href="blog.html" data-es="Blog" data-en="Blog">Blog</a>
+  </div>
+  <div class="nav-lang">
+    <button class="lang-btn active" onclick="setLang('es')">ES</button>
+    <span class="lang-sep">/</span>
+    <button class="lang-btn" onclick="setLang('en')">EN</button>
+  </div>
+</nav>
+
+<div class="firm-bar">
+  <div class="firm-wordmark" aria-label="Insight & Forward · Legal Solutions">
+    <span>Insight</span><span class="firm-amp">&amp;</span><span>Forward</span><span class="firm-dot">·</span><span>Legal Solutions</span>
+  </div>
+</div>
+
+<main class="pulse-page">
+  <section class="pulse-hero">
+    <div class="pulse-kicker" data-es="Publicación regulatoria" data-en="Regulatory Publication">Publicación regulatoria</div>
+    <h1 class="pulse-title" data-es="Pulso Legal" data-en="The Regulatory Letter">Pulso Legal</h1>
+    <p class="pulse-subtitle" data-es="Observatorio regulatorio y seguimiento de actualizaciones oficiales relevantes." data-en="Regulatory intelligence and curated updates from official sources.">Observatorio regulatorio y seguimiento de actualizaciones oficiales relevantes.</p>
+    <div class="pulse-rule" aria-hidden="true"></div>
+  </section>
+
+  <section class="pulse-archive" aria-labelledby="archivo-pulso">
+    <div class="archive-heading">
+      <h2 id="archivo-pulso" data-es="Registro editorial" data-en="Editorial Record">Registro editorial</h2>
+      <span data-es="Actualización automática" data-en="Automatic Update">Actualización automática</span>
+    </div>
+
+    <div id="pulse-entries" aria-live="polite"></div>
+
+    <p class="pulse-note" data-es="Este espacio se actualiza a partir de fuentes oficiales. Cada nota conserva vínculo a su publicación de origen." data-en="This space is updated from official sources. Each note preserves a link to its original publication.">Este espacio se actualiza a partir de fuentes oficiales. Cada nota conserva vínculo a su publicación de origen.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="ft-logo"><img src="logo.jpg" alt="Insight & Forward"> Insight &amp; Forward · Legal Solutions</div>
+  <div class="ft-mid" data-es="México · Cobertura nacional · Atención a clientes internacionales" data-en="Mexico · Nationwide · International Client Services">México · Cobertura nacional · Atención a clientes internacionales</div>
+  <div class="ft-right">insightf.legals@gmail.com<br>+52 (56) 1407 0141</div>
+</footer>
+
+<script>
+let lang='es';
+function setLang(l){
+  lang=l==='en'?'en':'es';
+  document.documentElement.lang=lang;
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent.trim().toLowerCase()===lang));
+  document.querySelectorAll('[data-es]').forEach(el=>{const v=el.getAttribute('data-'+lang);if(v)el.innerHTML=v;});
+  document.querySelectorAll('[data-placeholder-es]').forEach(el=>{const v=el.getAttribute('data-placeholder-'+lang);if(v)el.setAttribute('placeholder',v);});
+  document.querySelectorAll('a[href]').forEach(a=>{const h=a.getAttribute('href');if(!h||h.startsWith('#')||/^(mailto:|tel:|https?:|javascript:)/i.test(h))return;const u=new URL(h,location.href);if(u.origin!==location.origin||!u.pathname.endsWith('.html'))return;if(lang==='en')u.searchParams.set('lang','en');else u.searchParams.delete('lang');a.href=u.href;});
+}
+</script>
+<script src="shared.js?v=audit-21"></script>
+<script>
+(async function loadPulsoLegal(){
+  const container = document.getElementById('pulse-entries');
+  if (!container) return;
+
+  const language = document.documentElement.lang === 'en' ? 'en' : 'es';
+  const emptyText = language === 'en'
+    ? 'No relevant official updates are available for the moment.'
+    : 'Por el momento no hay actualizaciones oficiales relevantes disponibles.';
+  const linkText = language === 'en' ? 'View Official Source' : 'Ver publicación oficial';
+
+  const escapeHtml = value => String(value || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+
+  const formatDate = value => {
+    if (!value) return language === 'en' ? 'Official update' : 'Actualización oficial';
+    const [year, month, day] = value.split('-').map(Number);
+    if (!year || !month || !day) return value;
+    return new Intl.DateTimeFormat(language === 'en' ? 'en-US' : 'es-MX', {
+      year: 'numeric',
+      month: 'short',
+      day: '2-digit'
+    }).format(new Date(Date.UTC(year, month - 1, day)));
+  };
+
+  const renderEmpty = () => {
+    container.innerHTML = `<div class="pulse-empty">${escapeHtml(emptyText)}</div>`;
+  };
+
+  try {
+    const response = await fetch('data/pulso-legal.json', { cache: 'no-store' });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const entries = await response.json();
+    if (!Array.isArray(entries) || !entries.length) {
+      renderEmpty();
+      return;
+    }
+
+    container.innerHTML = entries.slice(0, 12).map(entry => `
+      <article class="pulse-entry">
+        <div class="entry-meta">
+          <span>${escapeHtml(formatDate(entry.fecha))}</span>
+          <span class="entry-agency">${escapeHtml(entry.dependencia || entry.fuente || 'DOF')}</span>
+        </div>
+        <div>
+          <h3 class="entry-title">${escapeHtml(entry.titulo)}</h3>
+          <p class="entry-reading">${escapeHtml(entry.lectura || entry.categoria || '')}</p>
+        </div>
+        <a class="entry-link" href="${escapeHtml(entry.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(linkText)}</a>
+      </article>
+    `).join('');
+  } catch (error) {
+    renderEmpty();
+  }
+})();
+</script>
+</body>
+</html>
