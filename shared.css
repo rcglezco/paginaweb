@@ -1173,17 +1173,29 @@ a[x-apple-data-detectors] {
   }
 
   .team-card {
-    flex: 0 0 78%;
+    flex: 0 0 100%;
+    min-width: 0;
   }
 
   .team-avatar {
     width: 100% !important;
-    height: 260px !important;
+    height: min(370px, 62vh) !important;
+  }
+
+  .team-avatar img.team-photo,
+  .team-avatar img.photo-color {
+    object-position: center 18% !important;
   }
 
   .team-carousel {
     width: 100%;
-    padding: 0 48px;
+    padding: 0 34px 8px;
+  }
+
+  .team-carousel::before {
+    box-shadow:
+      inset 34px 0 0 var(--bg-about),
+      inset -34px 0 0 var(--bg-about);
   }
 
   .team-wrap {
@@ -1202,6 +1214,28 @@ a[x-apple-data-detectors] {
 
   .team-hover-info {
     opacity: 1 !important;
+    padding: 18px 10px 18px !important;
+  }
+
+  .team-hover-role {
+    font-size: 15px !important;
+    letter-spacing: 1.2px !important;
+    line-height: 1.18 !important;
+    overflow-wrap: anywhere;
+    white-space: normal !important;
+  }
+
+  .team-name {
+    display: block;
+    font-size: 19px !important;
+    line-height: 1.25 !important;
+    padding: 0 8px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    overflow: visible;
+    white-space: normal;
+    word-break: normal;
   }
 
   .wa-float {

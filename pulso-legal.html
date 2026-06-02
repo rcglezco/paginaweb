@@ -21,7 +21,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 footer{background:#000b0f;padding:32px 56px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border)}.ft-logo{font-family:var(--serif);font-size:15px;color:rgba(245,228,196,.4);display:flex;align-items:center;gap:10px}.ft-logo img{height:24px;opacity:.5}.ft-mid{font-size:11px;color:rgba(245,228,196,.28);text-align:center;letter-spacing:1px}.ft-right{font-size:11px;color:rgba(245,228,196,.28);text-align:right;line-height:1.7}
 @media(max-width:900px){nav{padding:0 20px}.nav-links{display:none}footer{flex-direction:column;gap:10px;text-align:center}.ft-right{text-align:center}}
 </style>
-<link rel="stylesheet" href="shared.css?v=mobile-82">
+<link rel="stylesheet" href="shared.css?v=mobile-83">
 <style>
 body{
   background:
@@ -268,7 +268,7 @@ function setLang(l){
   document.querySelectorAll('a[href]').forEach(a=>{const h=a.getAttribute('href');if(!h||h.startsWith('#')||/^(mailto:|tel:|https?:|javascript:)/i.test(h))return;const u=new URL(h,location.href);if(u.origin!==location.origin||!u.pathname.endsWith('.html'))return;if(lang==='en')u.searchParams.set('lang','en');else u.searchParams.delete('lang');a.href=u.href;});
 }
 </script>
-<script src="shared.js?v=mobile-82"></script>
+<script src="shared.js?v=mobile-83"></script>
 <script>
 (async function loadPulsoLegal(){
   const container = document.getElementById('pulse-entries');

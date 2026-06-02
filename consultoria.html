@@ -78,7 +78,7 @@ footer{background:#000b0f;padding:32px 56px;display:flex;justify-content:space-b
 .ft-right{font-size:11px;color:rgba(245,228,196,0.28);text-align:right;line-height:1.7}
 @media(max-width:900px){nav{padding:0 20px}.nav-links{display:none}.firm-bar{padding:14px 24px}.page-content{padding:40px 24px 44px}.services-grid{grid-template-columns:1fr}.cta-section{padding:32px 24px}.page-indicator{display:none}footer{flex-direction:column;gap:10px;text-align:center}.ft-right{text-align:center}}
 </style>
-<link rel="stylesheet" href="shared.css?v=mobile-82">
+<link rel="stylesheet" href="shared.css?v=mobile-83">
 </head>
 <body>
 <nav>
@@ -186,6 +186,6 @@ function setLang(l){
   document.querySelectorAll('a[href]').forEach(a=>{const h=a.getAttribute('href');if(!h||h.startsWith('#')||/^(mailto:|tel:|https?:|javascript:)/i.test(h))return;const u=new URL(h,location.href);if(u.origin!==location.origin||!u.pathname.endsWith('.html'))return;if(lang==='en')u.searchParams.set('lang','en');else u.searchParams.delete('lang');a.href=u.href;});
 }
 </script>
-<script src="shared.js?v=mobile-82"></script>
+<script src="shared.js?v=mobile-83"></script>
 </body>
 </html>
