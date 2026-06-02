@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://insightandforward.com/sitemap.xml
+Sitemap: https://www.insightandforward.com/sitemap.xml
