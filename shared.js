@@ -24,6 +24,78 @@ document.addEventListener('click', event => {
 document.addEventListener('keydown', event => {
   if (event.key === 'Escape') {
     document.querySelectorAll('.has-dropdown.open').forEach(item => item.classList.remove('open'));
+    document.querySelectorAll('nav.mobile-menu-open').forEach(nav => {
+      nav.classList.remove('mobile-menu-open');
+      const toggle = nav.querySelector('.mobile-menu-toggle');
+      if (toggle) toggle.setAttribute('aria-expanded', 'false');
+    });
+    document.body.classList.remove('mobile-menu-lock');
+  }
+});
+
+const siteNav = document.querySelector('nav');
+
+if (siteNav) {
+  const navLinksList = siteNav.querySelector('.nav-links');
+  const blogLink = siteNav.querySelector('.nav-extra > a');
+
+  if (navLinksList && blogLink && !navLinksList.querySelector('.mobile-blog-item')) {
+    const blogItem = document.createElement('li');
+    blogItem.className = 'mobile-blog-item';
+    blogItem.appendChild(blogLink.cloneNode(true));
+    navLinksList.appendChild(blogItem);
+  }
+
+  if (!siteNav.querySelector('.mobile-menu-toggle')) {
+    const toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.className = 'mobile-menu-toggle';
+    toggle.setAttribute('aria-label', 'Abrir menú');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.innerHTML = '<span></span><span></span><span></span>';
+
+    const languageSwitch = siteNav.querySelector('.nav-lang');
+    if (languageSwitch) {
+      siteNav.insertBefore(toggle, languageSwitch);
+    } else {
+      siteNav.appendChild(toggle);
+    }
+  }
+}
+
+document.addEventListener('click', event => {
+  const toggle = event.target.closest('.mobile-menu-toggle');
+  const compactNav = window.matchMedia('(max-width: 900px)').matches;
+  const nav = toggle?.closest('nav') || event.target.closest('nav.mobile-menu-open');
+
+  if (toggle) {
+    event.preventDefault();
+    const isOpen = nav.classList.toggle('mobile-menu-open');
+    document.body.classList.toggle('mobile-menu-lock', isOpen);
+    toggle.setAttribute('aria-expanded', String(isOpen));
+    if (!isOpen) {
+      nav.querySelectorAll('.has-dropdown.open').forEach(item => item.classList.remove('open'));
+    }
+    return;
+  }
+
+  if (!compactNav || !siteNav?.classList.contains('mobile-menu-open')) return;
+
+  if (!event.target.closest('nav')) {
+    siteNav.classList.remove('mobile-menu-open');
+    document.body.classList.remove('mobile-menu-lock');
+    siteNav.querySelector('.mobile-menu-toggle')?.setAttribute('aria-expanded', 'false');
+    siteNav.querySelectorAll('.has-dropdown.open').forEach(item => item.classList.remove('open'));
+    return;
+  }
+
+  const clickedLink = event.target.closest('a[href]');
+  const isDropdownTrigger = clickedLink?.parentElement?.classList.contains('has-dropdown');
+  if (clickedLink && !isDropdownTrigger) {
+    siteNav.classList.remove('mobile-menu-open');
+    document.body.classList.remove('mobile-menu-lock');
+    siteNav.querySelector('.mobile-menu-toggle')?.setAttribute('aria-expanded', 'false');
+    siteNav.querySelectorAll('.has-dropdown.open').forEach(item => item.classList.remove('open'));
   }
 });
 
@@ -167,7 +239,7 @@ document.addEventListener('click', event => {
     message || 'Mensaje no escrito.'
   ].join('\n'));
 
-  window.location.href = `mailto:insightf.legals@gmail.com?subject=${subject}&body=${body}`;
+  window.location.href = `mailto:contacto@insightandforward.com?subject=${subject}&body=${body}`;
 });
 
 const navLinks = document.querySelectorAll('.nav-links > li > a');
