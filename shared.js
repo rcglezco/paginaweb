@@ -344,6 +344,39 @@ if (teamTrack && teamPrevButton && teamNextButton) {
     teamTrack.appendChild(clone);
   });
 
+  const touchTeamQuery = window.matchMedia('(hover: none), (pointer: coarse)');
+
+  const clearTeamTouchState = () => {
+    teamTrack.querySelectorAll('.team-card.is-touch-active').forEach(card => {
+      card.classList.remove('is-touch-active');
+    });
+  };
+
+  teamTrack.addEventListener('click', event => {
+    if (!touchTeamQuery.matches) return;
+
+    const target = event.target instanceof Element ? event.target : null;
+    const card = target ? target.closest('.team-card') : null;
+    if (!card || !teamTrack.contains(card)) return;
+    event.preventDefault();
+
+    const wasActive = card.classList.contains('is-touch-active');
+    clearTeamTouchState();
+
+    if (!wasActive) {
+      card.classList.add('is-touch-active');
+    }
+  });
+
+  document.addEventListener('click', event => {
+    if (!touchTeamQuery.matches) return;
+
+    const target = event.target instanceof Element ? event.target : null;
+    if (target && target.closest('.team-card')) return;
+
+    clearTeamTouchState();
+  });
+
   const getTeamMetrics = () => {
     const firstCard = teamTrack.querySelector('.team-card');
     if (!firstCard) return { step: 320, visibleCount: 1 };
@@ -367,6 +400,7 @@ if (teamTrack && teamPrevButton && teamNextButton) {
 
   const moveTeam = direction => {
     if (isAnimating) return;
+    clearTeamTouchState();
     isAnimating = true;
     currentIndex += direction;
     applyTeamPosition(true);
@@ -387,6 +421,13 @@ if (teamTrack && teamPrevButton && teamNextButton) {
 
   teamPrevButton.addEventListener('click', () => moveTeam(-1));
   teamNextButton.addEventListener('click', () => moveTeam(1));
-  window.addEventListener('resize', () => applyTeamPosition(false));
+  window.addEventListener('resize', () => {
+    clearTeamTouchState();
+    applyTeamPosition(false);
+  });
+  window.addEventListener('orientationchange', () => {
+    clearTeamTouchState();
+    applyTeamPosition(false);
+  });
   applyTeamPosition(false);
 }
