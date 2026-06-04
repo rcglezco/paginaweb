@@ -289,42 +289,59 @@ select {
 }
 
 .team-hover-role {
-  color: #d89a32 !important;
+  color: rgba(190, 133, 54, 0.92) !important;
+  display: inline-block;
   font-family: var(--sans) !important;
-  font-size: 17px !important;
+  font-size: 19px !important;
   font-style: normal;
   font-weight: 500 !important;
-  letter-spacing: 1.6px !important;
+  letter-spacing: 1.45px !important;
   text-transform: uppercase !important;
   position: relative;
+  clip-path: inset(0 100% 0 0);
   text-shadow:
-    -1px 0 0 rgba(0, 0, 0, 0.9),
-    1px 0 0 rgba(0, 0, 0, 0.9),
-    0 -1px 0 rgba(0, 0, 0, 0.86),
-    0 1px 1px rgba(0, 0, 0, 0.96),
-    0 2px 3px rgba(0, 0, 0, 0.82) !important;
+    -1px 0 0 rgba(0, 0, 0, 0.88),
+    1px 0 0 rgba(0, 0, 0, 0.88),
+    0 -1px 0 rgba(0, 0, 0, 0.82),
+    0 1px 1px rgba(0, 0, 0, 0.92),
+    0 2px 3px rgba(0, 0, 0, 0.72) !important;
 }
 
 @media (hover: hover) and (pointer: fine) {
   .team-card:hover .team-hover-info {
     opacity: 1 !important;
+    transform: translateY(-50%) !important;
+  }
+
+  .team-card:hover .team-hover-role {
+    animation: teamRoleReveal 0.72s steps(20, end) forwards;
   }
 }
 
 .team-hover-role::before {
   content: none !important;
 }
+@keyframes teamRoleReveal {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
 
 .team-hover-info {
   position: absolute !important;
-  inset: auto 0 0 !important;
+  inset: 50% 0 auto !important;
   z-index: 4 !important;
   background: transparent !important;
-  padding: 18px 12px 16px !important;
+  padding: 0 12px !important;
   text-align: center !important;
   opacity: 0;
-  transition: opacity 0.38s ease;
-  padding-top: 18px !important;
+  transform: translateY(-42%);
+  transition: opacity 0.42s ease, transform 0.42s ease;
+  pointer-events: none;
 }
 
 .hero-overlay {
@@ -1230,7 +1247,7 @@ a[x-apple-data-detectors] {
     display: none !important;
     opacity: 0 !important;
     visibility: hidden !important;
-    font-size: 15px !important;
+    font-size: 16px !important;
     letter-spacing: 1.2px !important;
     line-height: 1.18 !important;
     overflow-wrap: anywhere;
@@ -1268,11 +1285,18 @@ a[x-apple-data-detectors] {
     visibility: visible !important;
   }
 
-  .team-card.is-touch-active .team-hover-info,
-  .team-card.is-touch-active .team-hover-role {
+  .team-card.is-touch-active .team-hover-info {
     display: block !important;
     opacity: 1 !important;
     visibility: visible !important;
+    transform: translateY(-50%) !important;
+  }
+
+  .team-card.is-touch-active .team-hover-role {
+    display: inline-block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    animation: teamRoleReveal 0.72s steps(20, end) forwards;
   }
 
   .team-name {
