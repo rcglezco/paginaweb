@@ -4,6 +4,13 @@ const FEED_URL = 'https://diariooficial.gob.mx/sumario.xml';
 const OUTPUT_PATH = new URL('../data/pulso-legal.json', import.meta.url);
 const MAX_ITEMS = 24;
 
+const AUTHORIZED_AGENCIES = [
+  'SECRETARIA DE HACIENDA Y CREDITO PUBLICO',
+  'AGENCIA NACIONAL DE ADUANAS DE MEXICO',
+  'SECRETARIA DE ECONOMIA',
+  'SECRETARIA DE GOBERNACION',
+  'INSTITUTO NACIONAL DE MIGRACION'
+];
 const AUTHORIZED_CATEGORIES = [
   'Migratorio',
   'Comercio Exterior',
@@ -320,6 +327,15 @@ function isIntrinsicToCategory(entry, category) {
 
 function isRelevant(entry) {
   const category = classify(entry);
+  
+const agency = (entry.dependencia || '').toUpperCase();
+
+if (
+  !AUTHORIZED_AGENCIES.includes(agency)
+) {
+  return false;
+}
+  
   return Boolean(category && isDirectLegalChange(entry) && isIntrinsicToCategory(entry, category));
 }
 
