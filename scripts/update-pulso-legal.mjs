@@ -324,12 +324,18 @@ function isIntrinsicToCategory(entry, category) {
 
   return true;
 }
-
 function isRelevant(entry) {
   const category = classify(entry);
+  const agency = normalizeText(cleanAgency(entry.title)).toUpperCase();
+
   if (!AUTHORIZED_CATEGORIES.includes(category)) {
-  return false;
-}
+    return false;
+  }
+
+  if (!AUTHORIZED_AGENCIES.includes(agency)) {
+    return false;
+  }
+
   return Boolean(category && isDirectLegalChange(entry) && isIntrinsicToCategory(entry, category));
 }
 
