@@ -7,10 +7,7 @@ const MAX_ITEMS = 24;
 const AUTHORIZED_CATEGORIES = [
   'Migratorio',
   'Comercio Exterior',
-  'Aduanas',
-  'Contratos',
-  'Divorcios',
-  'Sucesiones'
+  'Aduanas'
 ];
 
 const categoryRules = [
