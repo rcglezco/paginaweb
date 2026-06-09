@@ -327,7 +327,9 @@ function isIntrinsicToCategory(entry, category) {
 
 function isRelevant(entry) {
   const category = classify(entry);
-  
+  if (!AUTHORIZED_CATEGORIES.includes(category)) {
+  return false;
+}
   return Boolean(category && isDirectLegalChange(entry) && isIntrinsicToCategory(entry, category));
 }
 
