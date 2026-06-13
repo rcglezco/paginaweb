@@ -1,6 +1,5 @@
-import { readFile, writeFile } from 'node:fs/promises';
+import { writeFile } from 'node:fs/promises';
 
-const FEED_URL = 'https://diariooficial.gob.mx/sumario.xml';
 const DOF_DATE_URL = 'https://diariooficial.gob.mx/index.php';
 const OUTPUT_PATH = new URL('../data/pulso-legal.json', import.meta.url);
 const MAX_ITEMS = 24;
@@ -8,13 +7,6 @@ const FEED_DAYS = 21;
 const SHOULD_WRITE_OUTPUT = process.env.PULSO_LEGAL_DRY_RUN !== '1';
 const SHOULD_PRINT_ITEMS = process.env.PULSO_LEGAL_PRINT_ITEMS === '1';
 
-const AUTHORIZED_AGENCIES = [
-  'SECRETARIA DE HACIENDA Y CREDITO PUBLICO',
-  'AGENCIA NACIONAL DE ADUANAS DE MEXICO',
-  'SECRETARIA DE ECONOMIA',
-  'SECRETARIA DE GOBERNACION',
-  'INSTITUTO NACIONAL DE MIGRACION'
-];
 const AUTHORIZED_CATEGORIES = [
   'Migratorio',
   'Comercio Exterior',
@@ -109,13 +101,6 @@ const publicSectorAdministrativePatterns = [
   /\bcomision nacional bancaria y de valores\b/,
   /\bcuotas anual(es)? y mensual(es)?\b/,
   /\bservicios de inspeccion y vigilancia\b/
-];
-
-const protectedAgencyPatterns = [
-  /\bservicio de administracion tributaria\b|\bsat\b/,
-  /\bsecretaria de hacienda y credito publico\b|\bshcp\b/,
-  /\bsecretaria de economia\b/,
-  /\bsecretaria de gobernacion\b|\bgobernacion\b/
 ];
 
 const consultationNoticePattern = /\bconsulta publica\b|\bproyecto de norma oficial mexicana\b|\bproy-nom\b/;
@@ -406,13 +391,8 @@ function isIntrinsicToCategory(entry, category) {
 }
 function isRelevant(entry) {
   const category = classify(entry);
-  const agency = normalizeText(cleanAgency(entry.title)).toUpperCase();
 
   if (!AUTHORIZED_CATEGORIES.includes(category)) {
-    return false;
-  }
-
-  if (!AUTHORIZED_AGENCIES.includes(agency)) {
     return false;
   }
 
@@ -476,16 +456,6 @@ function editorialReading(entry, category) {
   }
 
   return '';
-}
-
-async function readExisting() {
-  try {
-    const raw = await readFile(OUTPUT_PATH, 'utf8');
-    const parsed = JSON.parse(raw);
-    return Array.isArray(parsed) ? parsed : [];
-  } catch {
-    return [];
-  }
 }
 
 function sortByDateDesc(items) {

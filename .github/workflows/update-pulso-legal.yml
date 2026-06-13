@@ -3,6 +3,7 @@ name: Update Pulso Legal
 on:
   schedule:
     - cron: '35 13 * * 1-5'
+    - cron: '35 22 * * 1-5'
   workflow_dispatch:
 
 permissions:
