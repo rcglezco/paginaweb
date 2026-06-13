@@ -1,8 +1,12 @@
 import { readFile, writeFile } from 'node:fs/promises';
 
 const FEED_URL = 'https://diariooficial.gob.mx/sumario.xml';
+const DOF_DATE_URL = 'https://diariooficial.gob.mx/index.php';
 const OUTPUT_PATH = new URL('../data/pulso-legal.json', import.meta.url);
 const MAX_ITEMS = 24;
+const FEED_DAYS = 21;
+const SHOULD_WRITE_OUTPUT = process.env.PULSO_LEGAL_DRY_RUN !== '1';
+const SHOULD_PRINT_ITEMS = process.env.PULSO_LEGAL_PRINT_ITEMS === '1';
 
 const AUTHORIZED_AGENCIES = [
   'SECRETARIA DE HACIENDA Y CREDITO PUBLICO',
@@ -22,38 +26,20 @@ const categoryRules = [
     category: 'Migratorio',
     patterns: [
       { rx: /\binstituto nacional de migracion\b|\binm\b/, weight: 4 },
-      { rx: /\bmigracion\b|\bmigratorio\b|\bvisa(s)?\b|\bcondicion(es)? de estancia\b|\bresidencia\b|\bresidente\b|\brefugiado\b|\basilo\b|\bnaturalizacion\b|\bpermiso(s)? de trabajo\b/, weight: 3 }
+      { rx: /\bmigracion\b|\bmigratorio\b|\bvisa(s)?\b|\bcondicion(es)? de estancia\b|\bresidencia\b|\bresidencia temporal\b|\bresidencia permanente\b|\bresidente\b|\brefugiado\b|\basilo\b|\bnaturalizacion\b|\bpermiso(s)? de trabajo\b/, weight: 3 }
     ]
   },
   {
     category: 'Aduanas',
     patterns: [
-      { rx: /\bagencia nacional de aduanas\b|\banam\b|\breglas generales de comercio exterior\b/, weight: 5 },
-      { rx: /\baduana(s)?\b|\baduanero\b|\baduanera\b|\bdespacho aduanero\b|\bpedimento(s)?\b|\brecinto(s)? fiscalizado(s)?\b|\bprevalidacion\b|\boea\b|\boperador economico autorizado\b|\bpadron de importadores\b|\bpadron de exportadores\b|\bagente aduanal\b|\bagencia aduanal\b/, weight: 4 }
+      { rx: /\bagencia nacional de aduanas\b|\banam\b|\brgce\b|\breglas generales de comercio exterior\b/, weight: 5 },
+      { rx: /\baduana(s)?\b|\baduanero\b|\baduanera\b|\bdespacho aduanero\b|\bpedimento(s)?\b|\brecinto(s)? fiscalizado(s)?\b|\bprevalidacion\b|\boea\b|\boperador economico autorizado\b|\bpama\b|\bvalor en aduana\b|\bpadron de importadores\b|\bpadron de exportadores\b|\bcertificacion(es)? aduanera(s)?\b|\bfacilitacion comercial\b|\bagente aduanal\b|\bagencia aduanal\b/, weight: 4 }
     ]
   },
   {
     category: 'Comercio Exterior',
     patterns: [
-      { rx: /\bcomercio exterior\b|\bimportacion(es)?\b|\bexportacion(es)?\b|\barancel(es|aria|arias)?\b|\bcuota compensatoria\b|\bantidumping\b|\bimmex\b|\bprosec\b|\bprogramas de fomento\b|\bregulaciones y restricciones no arancelarias\b|\bpermisos previos\b|\bavisos automaticos\b|\bcupos\b|\bfraccion(es)? arancelaria(s)?\b/, weight: 3 }
-    ]
-  },
-  {
-    category: 'Contratos',
-    patterns: [
-      { rx: /\bcodigo civil\b|\bcontrato(s)? civil(es)?\b|\bcontrato(s)? mercantil(es)?\b|\bobligacion(es)? contractual(es)?\b|\bobligaciones civiles\b|\barrendamiento(s)?\b|\bcompraventa(s)?\b|\bcontrato(s)? de prestacion de servicios\b|\bmandato(s)?\b|\bpoder(es)?\b|\bprotocolizacion\b|\bformalizacion de actos\b|\brelaciones entre particulares\b/, weight: 3 }
-    ]
-  },
-  {
-    category: 'Divorcios',
-    patterns: [
-      { rx: /\bdivorcio(s)?\b|\bmatrimonio\b|\bconyuge(s)?\b|\bregimen patrimonial\b|\bpension alimenticia\b|\bguarda y custodia\b/, weight: 4 }
-    ]
-  },
-  {
-    category: 'Sucesiones',
-    patterns: [
-      { rx: /\bsucesion(es)?\b|\bherencia\b|\btestamento(s)?\b|\bintestado\b|\balbacea\b|\blegado(s)?\b/, weight: 4 }
+      { rx: /\bcomercio exterior\b|\bimportacion(es)?\b|\bexportacion(es)?\b|\btigie\b|\bregla octava\b|\barancel(es|aria|arias)?\b|\bcuota(s)? compensatoria(s)?\b|\bantidumping\b|\bimmex\b|\bprosec\b|\bprogramas de fomento\b|\brrna\b|\bregulaciones y restricciones no arancelarias\b|\brestricciones no arancelarias\b|\bpermisos previos\b|\bavisos automaticos\b|\bcupos\b|\bfraccion(es)? arancelaria(s)?\b/, weight: 3 }
     ]
   }
 ];
@@ -64,37 +50,39 @@ const legalChangePatterns = [
   /\breglas generales\b|\brequisito(s)?\b|\btramite(s)?\b|\bautorizacion(es)?\b|\brestriccion(es)?\b|\bobligacion(es)?\b|\bderecho(s)?\b|\bprocedimiento(s)?\b/
 ];
 
+const administrativeOnlyPatterns = [
+  /\bconvenio(s)?\b.*\b(fasp|fofisp|fondo de aportaciones para la seguridad publica|fondo para el fortalecimiento de las instituciones de seguridad publica)\b/,
+  /\breglamento interior\b/,
+  /\bmanual(es)? de organizacion\b/,
+  /\bnombramiento(s)?\b|\bdesignacion(es)?\b/,
+  /\bconsul(es)? honorario(s)?\b|\bviceconsul(es)? honorario(s)?\b|\bautorizacion definitiva\b/,
+  /\bsimplificacion y mejora administrativa\b/,
+  /\bsuspension de plazos y terminos\b/,
+  /\bprograma(s)? interno(s)?\b/,
+  /\bpresupuesto\b|\bcuenta publica\b/,
+  /\blicitacion(es)?\b|\badquisiciones\b|\bobras publicas\b|\bobra publica\b/,
+  /\bseguridad publica\b|\bsistema nacional de seguridad publica\b/
+];
+
 const substantiveCategoryPatterns = {
   Migratorio: [
     /\binstituto nacional de migracion\b|\binm\b/,
-    /\bmigracion\b|\bmigratorio\b|\bvisa(s)?\b|\bcondicion(es)? de estancia\b|\bresidencia\b|\bresidente\b|\brefugiado\b|\basilo\b|\bnaturalizacion\b|\bpermiso(s)? de trabajo\b|\bextranjero(s)?\b|\bestancia\b/
+    /\bmigracion\b|\bmigratorio\b|\bvisa(s)?\b|\bcondicion(es)? de estancia\b|\bresidencia\b|\bresidencia temporal\b|\bresidencia permanente\b|\bresidente\b|\brefugiado\b|\basilo\b|\bnaturalizacion\b|\bpermiso(s)? de trabajo\b|\bextranjero(s)?\b|\bestancia\b/
   ],
   'Comercio Exterior': [
-    /\bcomercio exterior\b|\bimportacion(es)?\b|\bexportacion(es)?\b|\barancel(es|aria|arias)?\b|\bfraccion(es)? arancelaria(s)?\b/,
-    /\bcuota compensatoria\b|\bantidumping\b|\bimmex\b|\bprosec\b|\bprogramas de fomento\b|\bregulaciones y restricciones no arancelarias\b|\bpermisos previos\b|\bavisos automaticos\b|\bcupos\b|\bmercancia(s)?\b/
+    /\bcomercio exterior\b|\bimportacion(es)?\b|\bexportacion(es)?\b|\btigie\b|\bregla octava\b|\barancel(es|aria|arias)?\b|\bfraccion(es)? arancelaria(s)?\b/,
+    /\bcuota(s)? compensatoria(s)?\b|\bantidumping\b|\bimmex\b|\bprosec\b|\bprogramas de fomento\b|\brrna\b|\bregulaciones y restricciones no arancelarias\b|\brestricciones no arancelarias\b|\bpermisos previos\b|\bavisos automaticos\b|\bcupos\b|\bmercancia(s)?\b/
   ],
   Aduanas: [
-    /\bagencia nacional de aduanas\b|\banam\b|\breglas generales de comercio exterior\b/,
-    /\baduana(s)?\b|\baduanero\b|\baduanera\b|\bdespacho aduanero\b|\bpedimento(s)?\b|\brecinto(s)? fiscalizado(s)?\b|\bprevalidacion\b|\boea\b|\boperador economico autorizado\b|\bpadron de importadores\b|\bpadron de exportadores\b|\bagente aduanal\b|\bagencia aduanal\b/
-  ],
-  Contratos: [
-    /\bcodigo civil\b|\bcontrato(s)? civil(es)?\b|\bcontrato(s)? mercantil(es)?\b|\bobligacion(es)? contractual(es)?\b|\bobligaciones civiles\b|\barrendamiento(s)?\b|\bcompraventa(s)?\b|\bcontrato(s)? de prestacion de servicios\b|\bmandato(s)?\b|\bpoder(es)?\b|\bprotocolizacion\b|\bformalizacion de actos\b|\brelaciones entre particulares\b/
-  ],
-  Divorcios: [
-    /\bdivorcio(s)?\b|\bmatrimonio\b|\bconyuge(s)?\b|\bregimen patrimonial\b|\bpension alimenticia\b|\bguarda y custodia\b|\bconvivencia familiar\b/
-  ],
-  Sucesiones: [
-    /\bsucesion(es)?\b|\bsucesorio(s)?\b|\btestamento(s)?\b|\bherencia(s)?\b|\bintestado\b|\badjudicacion hereditaria\b|\balbacea\b|\bpatrimonio familiar\b/
+    /\bagencia nacional de aduanas\b|\banam\b|\brgce\b|\breglas generales de comercio exterior\b/,
+    /\baduana(s)?\b|\baduanero\b|\baduanera\b|\bdespacho aduanero\b|\bpedimento(s)?\b|\brecinto(s)? fiscalizado(s)?\b|\bprevalidacion\b|\boea\b|\boperador economico autorizado\b|\bpama\b|\bvalor en aduana\b|\bpadron de importadores\b|\bpadron de exportadores\b|\bcertificacion(es)? aduanera(s)?\b|\bfacilitacion comercial\b|\bagente aduanal\b|\bagencia aduanal\b/
   ]
 };
 
 const strictDirectPracticeHookPatterns = [
-  /\bcomercio exterior\b|\bimportacion(es)?\b|\bexportacion(es)?\b|\barancel(es|aria|arias)?\b|\bfraccion(es)? arancelaria(s)?\b|\bcuota(s)? compensatoria(s)?\b|\bantidumping\b|\bimmex\b|\bprosec\b|\bprogramas de fomento\b|\bregulaciones y restricciones no arancelarias\b|\bpermisos previos\b|\bavisos automaticos\b|\bcupos\b|\bmercancia(s)?\b/,
-  /\bagencia nacional de aduanas\b|\banam\b|\baduana(s)?\b|\baduanero\b|\baduanera\b|\bdespacho aduanero\b|\bpedimento(s)?\b|\brecinto(s)? fiscalizado(s)?\b|\bprevalidacion\b|\boea\b|\boperador economico autorizado\b|\bpadron(es)? de importadores\b|\bpadron(es)? de exportadores\b|\bagente aduanal\b|\bagencia aduanal\b/,
-  /\binstituto nacional de migracion\b|\binm\b|\bmigracion\b|\bmigratorio\b|\bvisa(s)?\b|\bcondicion(es)? de estancia\b|\bresidencia\b|\bresidente\b|\brefugiado\b|\basilo\b|\bnaturalizacion\b|\bpermiso(s)? de trabajo\b|\bextranjero(s)?\b|\bestancia\b/,
-  /\bcodigo civil\b|\bcodigo de comercio\b|\bcontrato(s)? civil(es)?\b|\bcontrato(s)? mercantil(es)?\b|\bobligacion(es)? contractual(es)?\b|\bobligaciones civiles\b|\barrendamiento(s)?\b|\bcompraventa(s)?\b|\bmandato(s)?\b|\bpoder(es)?\b|\bprotocolizacion\b|\bformalizacion de actos\b|\brelaciones entre particulares\b/,
-  /\bdivorcio(s)?\b|\bmatrimonio\b|\bconyuge(s)?\b|\bregimen patrimonial\b|\bpension alimenticia\b|\bguarda y custodia\b|\bconvivencia familiar\b/,
-  /\bsucesion(es)?\b|\bsucesorio(s)?\b|\btestamento(s)?\b|\bherencia(s)?\b|\bintestado\b|\badjudicacion hereditaria\b|\balbacea\b|\bpatrimonio familiar\b/
+  /\bcomercio exterior\b|\bimportacion(es)?\b|\bexportacion(es)?\b|\btigie\b|\bregla octava\b|\barancel(es|aria|arias)?\b|\bfraccion(es)? arancelaria(s)?\b|\bcuota(s)? compensatoria(s)?\b|\bantidumping\b|\bimmex\b|\bprosec\b|\bprogramas de fomento\b|\brrna\b|\bregulaciones y restricciones no arancelarias\b|\brestricciones no arancelarias\b|\bpermisos previos\b|\bavisos automaticos\b|\bcupos\b|\bmercancia(s)?\b/,
+  /\bagencia nacional de aduanas\b|\banam\b|\brgce\b|\breglas generales de comercio exterior\b|\baduana(s)?\b|\baduanero\b|\baduanera\b|\bdespacho aduanero\b|\bpedimento(s)?\b|\brecinto(s)? fiscalizado(s)?\b|\bprevalidacion\b|\boea\b|\boperador economico autorizado\b|\bpama\b|\bvalor en aduana\b|\bpadron(es)? de importadores\b|\bpadron(es)? de exportadores\b|\bcertificacion(es)? aduanera(s)?\b|\bfacilitacion comercial\b|\bagente aduanal\b|\bagencia aduanal\b/,
+  /\binstituto nacional de migracion\b|\binm\b|\bmigracion\b|\bmigratorio\b|\bvisa(s)?\b|\bcondicion(es)? de estancia\b|\bresidencia\b|\bresidencia temporal\b|\bresidencia permanente\b|\bresidente\b|\brefugiado\b|\basilo\b|\bnaturalizacion\b|\bpermiso(s)? de trabajo\b|\bextranjero(s)?\b|\bestancia\b/
 ];
 
 const publicHealthNoticePatterns = [
@@ -121,6 +109,13 @@ const publicSectorAdministrativePatterns = [
   /\bcomision nacional bancaria y de valores\b/,
   /\bcuotas anual(es)? y mensual(es)?\b/,
   /\bservicios de inspeccion y vigilancia\b/
+];
+
+const protectedAgencyPatterns = [
+  /\bservicio de administracion tributaria\b|\bsat\b/,
+  /\bsecretaria de hacienda y credito publico\b|\bshcp\b/,
+  /\bsecretaria de economia\b/,
+  /\bsecretaria de gobernacion\b|\bgobernacion\b/
 ];
 
 const consultationNoticePattern = /\bconsulta publica\b|\bproyecto de norma oficial mexicana\b|\bproy-nom\b/;
@@ -184,11 +179,50 @@ function getTag(block, tag) {
   return decodeEntities(match?.[1] || '').replace(/\s+/g, ' ').trim();
 }
 
-function parseDateFromUrl(url) {
+function parseDateFromUrl(url, fallbackDate = new Date().toISOString().slice(0, 10)) {
   const match = url.match(/[?&]fecha=(\d{2})\/(\d{2})\/(\d{4})/);
-  if (!match) return new Date().toISOString().slice(0, 10);
+  if (!match) return fallbackDate;
   const [, day, month, year] = match;
   return `${year}-${month}-${day}`;
+}
+
+function stripHtml(value = '') {
+  return decodeEntities(value)
+    .replace(/<!--[\s\S]*?-->/g, ' ')
+    .replace(/<[^>]*>/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function formatDofDate(date) {
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const year = date.getFullYear();
+  return {
+    day,
+    month,
+    year: String(year),
+    iso: `${year}-${month}-${day}`,
+    dof: `${day}/${month}/${year}`
+  };
+}
+
+function getRecentDofDates(days = FEED_DAYS) {
+  return Array.from({ length: days }, (_, index) => {
+    const date = new Date();
+    date.setHours(12, 0, 0, 0);
+    date.setDate(date.getDate() - index);
+    return formatDofDate(date);
+  });
+}
+
+function dofUrlForDate(date) {
+  const params = new URLSearchParams({
+    year: date.year,
+    month: date.month,
+    day: date.day
+  });
+  return `${DOF_DATE_URL}?${params.toString()}`;
 }
 
 function cleanAgency(title) {
@@ -198,6 +232,48 @@ function cleanAgency(title) {
     .replace(/^ORGANISMOS DESCENTRALIZADOS\s+/i, '')
     .replace(/\s+/g, ' ')
     .trim();
+}
+
+function parseDailyDofItems(html, feedDate) {
+  const items = [];
+  let currentPower = '';
+  let currentAgency = '';
+  const rowPattern = /<tr\b[\s\S]*?<\/tr>/gi;
+  const linkPattern = /href="\/?nota_detalle\.php\?codigo=(\d+)&amp;fecha=(\d{2}\/\d{2}\/\d{4})"[^>]*>([\s\S]*?)<\/a>/i;
+
+  for (const rowMatch of html.matchAll(rowPattern)) {
+    const row = rowMatch[0];
+
+    if (/txt_blanco2/.test(row)) {
+      currentPower = stripHtml(row);
+      continue;
+    }
+
+    if (/subtitle_azul/.test(row)) {
+      currentAgency = stripHtml(row);
+      continue;
+    }
+
+    const linkMatch = row.match(linkPattern);
+    if (!linkMatch) {
+      continue;
+    }
+
+    const [, codigo, fecha, descriptionHtml] = linkMatch;
+    const description = stripHtml(descriptionHtml);
+    if (!description) {
+      continue;
+    }
+
+    items.push({
+      title: `${currentPower} ${currentAgency}`.trim(),
+      link: `https://diariooficial.gob.mx/nota_detalle.php?codigo=${codigo}&fecha=${fecha}`,
+      description,
+      feedDate: feedDate.iso
+    });
+  }
+
+  return items;
 }
 
 function classify(entry) {
@@ -286,6 +362,10 @@ function isPublicSectorAdministrativeNotice(text) {
   return hasAnyPattern(text, publicSectorAdministrativePatterns);
 }
 
+function isAdministrativeOnlyNotice(text) {
+  return hasAnyPattern(text, administrativeOnlyPatterns);
+}
+
 function isPublicHealthNoticeWithoutTradeHook(text, category) {
   if (!['Comercio Exterior', 'Aduanas'].includes(category)) {
     return false;
@@ -310,11 +390,11 @@ function isIntrinsicToCategory(entry, category) {
     return false;
   }
 
-  if (isPublicHealthNoticeWithoutDirectPracticeHook(text)) {
+  if (isAdministrativeOnlyNotice(text)) {
     return false;
   }
 
-  if (category === 'Contratos' && isPublicSectorAdministrativeNotice(text)) {
+  if (isPublicHealthNoticeWithoutDirectPracticeHook(text)) {
     return false;
   }
 
@@ -417,33 +497,33 @@ function sortByDateDesc(items) {
 }
 
 async function main() {
-  const response = await fetch(FEED_URL, {
-    headers: {
-      'user-agent': 'Insight & Forward Pulso Legal / GitHub Pages updater'
-    }
-  });
+  const feedItems = [];
 
-  if (!response.ok) {
-    throw new Error(`No se pudo consultar el DOF: ${response.status}`);
+  for (const feedDate of getRecentDofDates()) {
+    const response = await fetch(dofUrlForDate(feedDate), {
+      headers: {
+        'user-agent': 'Insight & Forward Pulso Legal / GitHub Pages updater'
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error(`No se pudo consultar el DOF para ${feedDate.dof}: ${response.status}`);
+    }
+
+    const html = new TextDecoder('iso-8859-1').decode(await response.arrayBuffer());
+    feedItems.push(...parseDailyDofItems(html, feedDate));
   }
 
-  const xml = new TextDecoder('iso-8859-1').decode(await response.arrayBuffer());
-  const feedItems = [...xml.matchAll(/<item>[\s\S]*?<\/item>/g)]
-    .map(match => match[0])
-    .map(block => ({
-      title: getTag(block, 'title'),
-      link: getTag(block, 'link'),
-      description: getTag(block, 'description')
-    }))
-    .filter(item => item.link && item.description)
-    .filter(isRelevant)
+  const relevantFeedItems = feedItems.filter(isRelevant);
+
+  const newItems = relevantFeedItems
     .map(item => {
       const categoria = classify(item);
       const dependencia = cleanAgency(item.title);
       const lectura = editorialReading(item, categoria);
       if (!lectura || hasProhibitedLanguage(lectura)) return null;
       return {
-        fecha: parseDateFromUrl(item.link),
+        fecha: parseDateFromUrl(item.link, item.feedDate),
         dependencia,
         fuente: 'DOF',
         categoria,
@@ -454,17 +534,24 @@ async function main() {
     })
     .filter(Boolean);
 
-  const existing = (await readExisting()).filter(isStoredItemValid);
   const byUrl = new Map();
 
-  [...existing, ...feedItems].forEach(item => {
+  newItems.forEach(item => {
     if (!item?.url) return;
     byUrl.set(item.url, item);
   });
 
   const merged = sortByDateDesc([...byUrl.values()]).slice(0, MAX_ITEMS);
-  await writeFile(OUTPUT_PATH, `${JSON.stringify(merged, null, 2)}\n`, 'utf8');
-  console.log(`Pulso Legal actualizado: ${feedItems.length} nuevas o vigentes, ${merged.length} totales.`);
+  if (SHOULD_WRITE_OUTPUT) {
+    await writeFile(OUTPUT_PATH, `${JSON.stringify(merged, null, 2)}\n`, 'utf8');
+  }
+  console.log(`Pulso Legal: total recibido ${feedItems.length}, total conservado ${newItems.length}, total descartado ${feedItems.length - newItems.length}.`);
+  console.log(`Pulso Legal actualizado: ${newItems.length} nuevas o vigentes, ${merged.length} totales.`);
+  if (SHOULD_PRINT_ITEMS) {
+    newItems.forEach(item => {
+      console.log([item.fecha, item.dependencia, item.categoria, item.titulo].join(' | '));
+    });
+  }
 }
 
 main().catch(error => {
