@@ -11,7 +11,32 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .has-dropdown{position:relative}.dropdown{display:none;position:absolute;top:100%;left:0;background:rgba(0,11,15,.98);backdrop-filter:blur(16px);border:1px solid rgba(169,116,30,0.18);border-radius:8px;min-width:220px;padding:8px 0;z-index:200}.dropdown::before{content:'';position:absolute;top:-10px;left:0;right:0;height:10px}.has-dropdown:hover .dropdown{display:block}.dropdown li{list-style:none}.dropdown li a{display:block;padding:12px 20px;color:rgba(245,228,196,.7);text-decoration:none;font-size:13px;transition:all .2s;white-space:nowrap}.dropdown li a:hover{color:#a9741e;background:rgba(169,116,30,.08)}
 .nav-extra{display:flex;align-items:center}.nav-extra>a{color:#a9741e;text-decoration:none;font-size:14px;padding:7px 20px;border-radius:20px;background:rgba(169,116,30,.12)}
 .nav-lang{display:flex;align-items:center;gap:4px}.lang-btn{background:none;border:1.5px solid transparent;color:rgba(245,228,196,.45);font-family:var(--sans,"Avenir","Avenir Next","Helvetica Neue",Arial,sans-serif);font-size:11px;letter-spacing:1px;padding:5px 12px;cursor:pointer;border-radius:20px;transition:all .3s}.lang-btn.active{border-color:#a9741e;color:#a9741e;background:rgba(169,116,30,.08)}.lang-sep{color:rgba(245,228,196,.2)}
-.firm-bar{height:76px;margin-top:76px;background:#000f15;border-bottom:1px solid rgba(169,116,30,0.18);display:flex;align-items:center;justify-content:center}.firm-bar span{font-family:'Cormorant Garamond',Georgia,serif;font-size:17px;color:rgba(245,228,196,.5);letter-spacing:1px}
+.firm-bar{
+  padding:18px 60px;
+  border-bottom:1px solid rgba(169,116,30,0.18);
+  text-align:center;
+  margin-top:76px;
+  background:#000b0f;
+  display:block;
+  min-height:0;
+}
+.firm-bar span{
+  font-family:'Cormorant Garamond',Georgia,serif !important;
+  font-size:17px !important;
+  font-weight:300;
+  color:rgba(245,228,196,0.6) !important;
+  letter-spacing:2px;
+}
+.firm-wordmark{
+  display:block;
+  font-family:'Cormorant Garamond',Georgia,serif !important;
+  font-size:17px !important;
+  font-weight:300;
+  letter-spacing:2px;
+  line-height:1.35;
+  opacity:1;
+  white-space:normal;
+}
 .article-page{
   --ink:#001923;
   --ink-soft:rgba(0,25,35,0.66);
@@ -21,7 +46,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
   --blog-mono:"SF Mono","Roboto Mono","Avenir Next",Menlo,Consolas,monospace;
   max-width:1040px;
   margin:0 auto;
-  padding:38px 56px 108px;
+  padding:30px 56px 108px;
 }
 .article-back{
   display:inline-block;
@@ -34,14 +59,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
   margin-bottom:24px;
 }
 .article-back:hover{color:rgba(169,116,30,0.86)}
-.article-kicker{
-  color:rgba(169,116,30,0.74);
-  font-family:var(--blog-mono);
-  font-size:10px;
-  letter-spacing:2.4px;
-  text-transform:uppercase;
-  margin-bottom:14px;
-}
 .seo-only{
   position:absolute;
   width:1px;
@@ -63,8 +80,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
   letter-spacing:1.8px;
   text-transform:uppercase;
   border-bottom:1px solid var(--rule);
-  padding:0 0 20px;
-  margin:0 0 42px;
+  padding:0 0 16px;
+  margin:0 0 30px;
 }
 .article-author{
   color:rgba(0,25,35,0.58);
@@ -72,6 +89,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .article-content{
   max-width:760px;
   margin-left:auto;
+}
+.article-intro{
+  color:rgba(169,116,30,0.9) !important;
+  font-family:"Cormorant Garamond",Georgia,serif;
+  font-size:clamp(27px,3.2vw,39px) !important;
+  font-weight:300;
+  letter-spacing:.01em;
+  line-height:1.28 !important;
+  margin-bottom:38px;
 }
 .article-content p,
 .article-content li{
@@ -112,10 +138,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 }
 .linkedin-source a:hover{text-decoration:underline}
 @media(max-width:900px){
-  nav{padding:0 20px}.nav-links{display:none}.firm-bar{height:64px}
-  .article-page{padding:30px 24px 86px}
+  nav{padding:0 20px}.nav-links{display:none}.firm-bar{padding:14px 24px}
+  .article-page{padding:24px 24px 86px}
   .article-back{margin-bottom:22px}
   .article-content,.linkedin-source{margin-left:0}
-  .article-meta{margin:0 0 34px}
+  .article-meta{margin:0 0 28px}
+  .article-intro{font-size:24px !important;margin-bottom:30px}
   .article-content p,.article-content li{font-size:16px}
 }
