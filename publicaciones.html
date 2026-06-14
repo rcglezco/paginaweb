@@ -380,7 +380,8 @@ const cleanPublication = publication => ({
   categoria: publication.categoria || '',
   titulo: publication.titulo || '',
   extracto: publication.extracto || '',
-  url: publication.url || ''
+  url: publication.url || '',
+  linkedinUrl: publication.linkedinUrl || ''
 });
 
 const entryMeta = publication => `
@@ -392,7 +393,7 @@ const entryMeta = publication => `
 `;
 
 const entryLink = publication => publication.url
-  ? `<a class="entry-action" href="${escapeHtml(publication.url)}" target="_blank" rel="noopener noreferrer" data-es="Abrir publicación →" data-en="Open Publication →">${document.documentElement.lang === 'en' ? 'Open Publication →' : 'Abrir publicación →'}</a>`
+  ? `<a class="entry-action" href="${escapeHtml(publication.url)}" data-es="Leer artículo →" data-en="Read Article →">${document.documentElement.lang === 'en' ? 'Read Article →' : 'Leer artículo →'}</a>`
   : '';
 
 const featureEntry = publication => `
@@ -431,7 +432,7 @@ const renderPublications = publications => {
 
   const items = publications
     .map(cleanPublication)
-    .filter(publication => publication.titulo && publication.extracto)
+    .filter(publication => publication.titulo && publication.extracto && publication.url && !/^https?:\/\/(www\.)?linkedin\.com/i.test(publication.url))
     .sort((a, b) => new Date(`${b.fecha}T00:00:00`) - new Date(`${a.fecha}T00:00:00`))
     .slice(0, 6);
 
