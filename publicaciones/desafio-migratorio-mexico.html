@@ -37,18 +37,57 @@
 </head>
 <body>
 <nav>
-  <a href="../index.html" class="nav-logo"><img src="../logo-buho.png" alt="Insight & Forward"></a>
-  <ul class="nav-links"><li><a href="../index.html">Inicio</a></li><li><a href="../index.html#nosotros">Nosotros</a></li><li><a href="../index.html#servicios">Servicios</a></li><li><a href="../index.html#areas">Enfoques</a></li><li><a href="../index.html#contacto">Contacto</a></li></ul>
-  <div class="nav-extra"><a class="active" href="../blog.html">Blog</a></div>
-  <div class="nav-lang"><button class="lang-btn active" onclick="setLang('es')">ES</button><span class="lang-sep">/</span><button class="lang-btn" onclick="setLang('en')">EN</button></div>
+  <a href="../index.html" class="nav-logo">
+    <img src="../logo-buho.png" alt="Insight & Forward">
+  </a>
+  <ul class="nav-links">
+    <li><a href="../index.html" data-es="Inicio" data-en="Home">Inicio</a></li>
+    <li class="has-dropdown"><a href="../index.html#nosotros" data-es="Nosotros" data-en="About">Nosotros</a>
+      <ul class="dropdown">
+        <li><a href="../index.html#nosotros" data-es="Quiénes Somos" data-en="Who We Are">Quiénes Somos</a></li>
+        <li><a href="../index.html#equipo" data-es="Nuestro Equipo" data-en="Our Team">Nuestro Equipo</a></li>
+      </ul>
+    </li>
+    <li class="has-dropdown"><a href="../index.html#servicios" data-es="Servicios" data-en="Services">Servicios</a>
+      <ul class="dropdown">
+        <li><a href="../consultoria.html" data-es="Consultoría" data-en="Consulting">Consultoría</a></li>
+        <li><a href="../representacion-legal.html" data-es="Representación Legal" data-en="Legal Representation">Representación Legal</a></li>
+        <li><a href="../tramites.html" data-es="Trámites" data-en="Filings &amp; Procedures">Trámites</a></li>
+        <li><a href="../capacitacion.html" data-es="Capacitación" data-en="Training">Capacitación</a></li>
+      </ul>
+    </li>
+    <li class="has-dropdown"><a href="../index.html#areas" data-es="Enfoques" data-en="Expertise">Enfoques</a>
+      <ul class="dropdown">
+        <li><a href="../comercio-exterior.html" data-es="Operaciones de Comercio Exterior, Riesgo y Cumplimiento" data-en="Cross-Border Operations, Risk &amp; Compliance">Operaciones de Comercio Exterior, Riesgo y Cumplimiento</a></li>
+        <li><a href="../migratorio.html" data-es="Movilidad Internacional y Permanencia en México" data-en="International Mobility &amp; Residence in Mexico">Movilidad Internacional y Permanencia en México</a></li>
+        <li><a href="../civil.html" data-es="Estructuras Contractuales, Patrimoniales y Familiares" data-en="Contracts, Estates &amp; Family Matters">Estructuras Contractuales, Patrimoniales y Familiares</a></li>
+      </ul>
+    </li>
+    <li><a href="../index.html#contacto" data-es="Contacto" data-en="Contact">Contacto</a></li>
+  </ul>
+  <div class="nav-extra">
+    <a class="active" href="../blog.html" data-es="Blog" data-en="Blog">Blog</a>
+  </div>
+  <div class="nav-lang">
+    <button class="lang-btn active" onclick="setLang('es')">ES</button>
+    <span class="lang-sep">/</span>
+    <button class="lang-btn" onclick="setLang('en')">EN</button>
+  </div>
 </nav>
+
+<div class="firm-bar">
+  <div class="firm-wordmark" aria-label="Insight & Forward · Legal Solutions">
+    <span>Insight</span><span class="firm-amp">&amp;</span><span>Forward</span><span class="firm-dot">·</span><span>Legal Solutions</span>
+  </div>
+</div>
 <main class="article-page">
-  <a class="article-back" href="../publicaciones.html">← Publicaciones</a>
+  <a class="article-back" href="../publicaciones.html" data-es="← Volver a Publicaciones" data-en="← Back to Publications">← Volver a Publicaciones</a>
   <article>
     <div class="article-kicker">Migración</div>
-    <h1 class="article-title">México y el desafío migratorio que ya está presente</h1>
-    <p class="article-deck">La migración no puede reducirse a formularios. Es una realidad jurídica, institucional y operativa que afecta a personas, empresas, familias y autoridades.</p>
-    <div class="article-meta"><span>28 May 2026</span><span>Roberto Corrales · Insight & Forward</span><span>Insight & Forward</span></div>
+    <h1 class="article-title seo-only">México y el desafío migratorio que ya está presente</h1>
+    <div class="article-meta">
+      <span class="article-author" data-profile-target="roberto-carlos-gonzalez-corrales">Roberto Carlos González Corrales</span>
+    </div>
     <div class="article-content">
       <p>México ya no es solo un país de tránsito migratorio. Es también país de destino, retorno, inversión, relocalización, movilidad laboral, reunificación familiar y permanencia de largo plazo. Esa realidad exige una lectura más amplia que la del trámite aislado.</p>
       <p>La migración se vive en expedientes, entrevistas, citas, documentos, plazos y criterios administrativos. Pero también se vive en decisiones empresariales, proyectos familiares, contratación de talento extranjero y continuidad de operaciones.</p>
