@@ -137,11 +137,53 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
   text-decoration:none;
 }
 .linkedin-source a:hover{text-decoration:underline}
+.article-conversation{
+  max-width:760px;
+  margin:34px 0 0 auto;
+  padding:30px 0 0;
+  border-top:1px solid rgba(0,25,35,0.15);
+}
+.article-conversation h2{
+  color:var(--ink);
+  font-family:var(--blog-mono);
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:2.4px;
+  margin:0 0 14px;
+  text-transform:uppercase;
+}
+.article-conversation p{
+  color:rgba(0,25,35,0.66);
+  font-size:16px;
+  line-height:1.78;
+  margin:0 0 22px;
+}
+.article-conversation a{
+  align-items:center;
+  background:#001923;
+  color:#fff7e6;
+  display:inline-flex;
+  font-family:var(--blog-mono);
+  font-size:11px;
+  font-weight:600;
+  gap:18px;
+  letter-spacing:1.7px;
+  min-height:38px;
+  padding:0 20px;
+  text-decoration:none;
+  text-transform:uppercase;
+  transition:background .25s ease,color .25s ease,transform .25s ease;
+}
+.article-conversation a:hover{
+  background:#a9741e;
+  color:#001923;
+  transform:translateY(-1px);
+}
 @media(max-width:900px){
   nav{padding:0 20px}.nav-links{display:none}.firm-bar{padding:14px 24px}
   .article-page{padding:24px 24px 86px}
   .article-back{margin-bottom:22px}
-  .article-content,.linkedin-source{margin-left:0}
+  .article-content,.linkedin-source,.article-conversation{margin-left:0}
   .article-meta{margin:0 0 28px}
   .article-intro{font-size:24px !important;margin-bottom:30px}
   .article-content p,.article-content li{font-size:16px}
