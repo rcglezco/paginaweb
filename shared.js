@@ -242,6 +242,85 @@ document.addEventListener('click', event => {
   window.location.href = `mailto:contacto@insightandforward.com?subject=${subject}&body=${body}`;
 });
 
+function setupRelatedServicesFallback() {
+  const article = document.querySelector('.article-page article');
+  if (!article || article.querySelector('.related-services')) return;
+
+  const content = article.querySelector('.article-content');
+  if (!content) return;
+
+  const title = article.querySelector('h1')?.textContent?.trim() || document.title.replace(/\s*\|.*$/, '');
+  const text = `${title} ${content.textContent || ''}`.toLowerCase();
+  const services = [
+    {
+      label: 'Comercio Exterior y Aduanas',
+      url: '../comercio-exterior.html',
+      keywords: ['aduana', 'aduanero', 'comercio exterior', 'importación', 'importacion', 'exportación', 'exportacion', 'incoterm', 'tmec', 't-mec', 'origen', 'pedimento', 'arancel', 'mercancía', 'mercancia', 'immex', 'valor en aduana', 'rgce'],
+      description: `Puede apoyar la revisión operativa y documental de los temas aduaneros o de comercio exterior abordados en "${title}".`
+    },
+    {
+      label: 'Movilidad Internacional y Migración',
+      url: '../migratorio.html',
+      keywords: ['migración', 'migracion', 'migratorio', 'movilidad internacional', 'estancia', 'residencia', 'permanencia', 'extranjero', 'visitante', 'visa', 'voluntario', 'personal extranjero'],
+      description: `Puede ser relevante cuando el análisis de "${title}" involucra ingreso, estancia, permanencia o movilidad de personas extranjeras en México.`
+    },
+    {
+      label: 'Contratos, Patrimonio y Familia',
+      url: '../civil.html',
+      keywords: ['contrato', 'contractual', 'patrimonio', 'familia', 'familiar', 'sucesión', 'sucesion', 'donación', 'donacion', 'fideicomiso', 'sociedad familiar', 'reunificación familiar', 'reunificacion familiar'],
+      description: `Puede ayudar cuando el tema tratado en "${title}" requiere ordenar relaciones contractuales, familiares o patrimoniales con soporte jurídico.`
+    }
+  ];
+
+  const scoreService = service => service.keywords.reduce((score, keyword) => {
+    return text.includes(keyword) ? score + 1 : score;
+  }, 0);
+
+  const selected = services
+    .map(service => ({ ...service, score: scoreService(service) }))
+    .filter(service => service.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 3);
+
+  if (!selected.length) return;
+
+  const section = document.createElement('section');
+  section.className = 'related-services';
+  section.setAttribute('aria-labelledby', 'servicios-relacionados');
+
+  const heading = document.createElement('h2');
+  heading.id = 'servicios-relacionados';
+  heading.textContent = 'Servicios relacionados';
+  section.appendChild(heading);
+
+  const grid = document.createElement('div');
+  grid.className = 'related-services-grid';
+  selected.forEach(service => {
+    const item = document.createElement('div');
+    item.className = 'related-service';
+
+    const link = document.createElement('a');
+    link.href = service.url;
+    link.textContent = service.label;
+
+    const description = document.createElement('p');
+    description.textContent = service.description;
+
+    item.append(link, description);
+    grid.appendChild(item);
+  });
+  section.appendChild(grid);
+
+  const insertionPoint = article.querySelector('.linkedin-source') || article.querySelector('.article-conversation');
+  if (insertionPoint) {
+    article.insertBefore(section, insertionPoint);
+  } else {
+    article.appendChild(section);
+  }
+}
+
+setupRelatedServicesFallback();
+
 const navLinks = document.querySelectorAll('.nav-links > li > a');
 
 if (navLinks.length) {
