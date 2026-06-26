@@ -437,6 +437,7 @@ if (teamTrack && teamPrevButton && teamNextButton) {
     const target = event.target instanceof Element ? event.target : null;
     const card = target ? target.closest('.team-card') : null;
     if (!card || !teamTrack.contains(card)) return;
+    if (target.closest('a[href]')) return;
     event.preventDefault();
 
     const wasActive = card.classList.contains('is-touch-active');
