@@ -189,6 +189,11 @@ select {
   max-width: none !important;
 }
 
+a.team-card {
+  color: inherit;
+  text-decoration: none;
+}
+
 .team-avatar {
   position: relative;
   overflow: hidden;
