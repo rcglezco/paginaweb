@@ -1,5 +1,23 @@
 [
   {
+    "fecha": "2026-07-08",
+    "dependencia": "SECRETARIA DE ECONOMIA",
+    "fuente": "DOF",
+    "categoria": "Comercio Exterior",
+    "titulo": "Resolución final del procedimiento administrativo de investigación antidumping sobre las importaciones de cartoncillo originarias de la República Popular China, independientemente del país de procedencia",
+    "lectura": "El examen de vigencia abre la revisión de una cuota compensatoria aplicable a importaciones específicas; quienes operen la mercancía señalada deben revisar origen, fracción arancelaria y exposición comercial antes de cerrar operaciones.",
+    "url": "https://diariooficial.gob.mx/nota_detalle.php?codigo=5793022&fecha=08/07/2026"
+  },
+  {
+    "fecha": "2026-07-08",
+    "dependencia": "SECRETARIA DE ECONOMIA",
+    "fuente": "DOF",
+    "categoria": "Comercio Exterior",
+    "titulo": "Resolución final del procedimiento administrativo de investigación antidumping sobre las importaciones de láminas de policarbonato originarias de la República Popular China, independientemente del país de procedencia",
+    "lectura": "El examen de vigencia abre la revisión de una cuota compensatoria aplicable a importaciones específicas; quienes operen la mercancía señalada deben revisar origen, fracción arancelaria y exposición comercial antes de cerrar operaciones.",
+    "url": "https://diariooficial.gob.mx/nota_detalle.php?codigo=5793023&fecha=08/07/2026"
+  },
+  {
     "fecha": "2026-07-07",
     "dependencia": "SECRETARIA DE ECONOMIA",
     "fuente": "DOF",
@@ -16,14 +34,5 @@
     "titulo": "Resolución final del procedimiento administrativo de examen de vigencia de las cuotas compensatorias impuestas a las importaciones de tubería de acero al carbono con costura longitudinal recta originarias de los Estados Unidos de América, independientemente del país de procedencia",
     "lectura": "El examen de vigencia abre la revisión de una cuota compensatoria aplicable a importaciones específicas; quienes operen la mercancía señalada deben revisar origen, fracción arancelaria y exposición comercial antes de cerrar operaciones.",
     "url": "https://diariooficial.gob.mx/nota_detalle.php?codigo=5791664&fecha=25/06/2026"
-  },
-  {
-    "fecha": "2026-06-23",
-    "dependencia": "SECRETARIA DE ECONOMIA",
-    "fuente": "DOF",
-    "categoria": "Comercio Exterior",
-    "titulo": "da a conocer el cupo para importar arroz paddy bajo el arancel-cupo que se indica",
-    "lectura": "La publicación modifica condiciones aplicables a operaciones de importación o exportación; quienes operen mercancías alcanzadas deben revisar requisitos, fracciones arancelarias y documentación antes de ejecutar la operación.",
-    "url": "https://diariooficial.gob.mx/nota_detalle.php?codigo=5792791&fecha=23/06/2026"
   }
 ]
