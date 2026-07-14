@@ -116,6 +116,11 @@ select {
   line-height: 1.62 !important;
 }
 
+#nosotros .about-lead,
+#nosotros .about-p {
+  text-align: left !important;
+}
+
 .closing {
   font-size: 18px !important;
   line-height: 1.75 !important;
