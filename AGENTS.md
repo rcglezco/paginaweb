@@ -127,6 +127,32 @@ Al trabajar con publicaciones:
 - Actualizar `data/publicaciones.json` si se agrega, renombra o modifica una publicación indexada.
 - Mantener coherencia visual con `publicaciones/articulo.css`.
 
+### Publicaciones Bilingües Futuras
+
+A partir de este criterio, toda nueva publicación incorporada al sitio debe prepararse y publicarse en dos versiones como parte del mismo proceso editorial e implementación:
+
+- Una versión original en español.
+- Una versión profesional localizada al inglés.
+
+La versión en inglés debe publicarse como una página independiente equivalente dentro de la arquitectura bilingüe del sitio, vinculada funcionalmente a su versión en español. No debe tratarse como una traducción visible dentro de la misma página en español.
+
+La versión en inglés no debe ser una traducción literal frase por frase. Debe leerse como un texto redactado originalmente en inglés para empresarios, inversionistas, importadores, exportadores, profesionales de compliance, asesores legales y tomadores de decisiones de habla inglesa, especialmente de Estados Unidos, Canadá y otros mercados internacionales.
+
+Al redactar la versión en inglés:
+
+- Utilizar terminología natural de international trade, customs, tax, compliance, immigration y regulatory matters.
+- Mantener íntegro el contenido jurídico y técnico de la publicación original.
+- No simplificar conceptos legales.
+- No eliminar referencias normativas.
+- No agregar opiniones nuevas.
+- Mantener la misma estructura editorial, jerarquía visual, formato de lectura y experiencia de usuario existentes.
+- Asegurar que el contexto jurídico y territorial mexicano quede claramente identificado desde el título, introducción y primeros párrafos cuando sea relevante.
+- No asumir que el lector conoce el sistema legal mexicano.
+- Utilizar de forma natural expresiones como `Mexico’s customs framework`, `Mexican tax rules`, `Mexico’s Tax Administration Service (SAT)`, `Mexican customs authority (ANAM)`, `imports into Mexico`, `operations in Mexico` y `Mexican regulatory requirements` cuando correspondan.
+- Optimizar naturalmente para búsquedas internacionales relacionadas con México, comercio exterior, aduanas, fiscalidad, cumplimiento regulatorio, migración y negocios en México, sin sacrificar calidad editorial ni fluidez.
+
+Este criterio debe aplicarse automáticamente a todas las publicaciones futuras, sin requerir una instrucción adicional en cada solicitud.
+
 Al trabajar con Pulso Legal:
 
 - Mantener datos en `data/pulso-legal.json` cuando corresponda.
