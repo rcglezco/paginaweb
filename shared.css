@@ -1556,6 +1556,50 @@ a[x-apple-data-detectors] {
   }
 }
 
+/* Footer: keep the middle message on the page axis, independently of side widths. */
+footer {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  column-gap: 32px;
+}
+
+.ft-logo,
+.ft-mid,
+.ft-right {
+  font-size: 15px !important;
+  line-height: 1.7;
+}
+
+.ft-logo {
+  justify-self: start;
+}
+
+.ft-mid {
+  justify-self: center;
+  white-space: nowrap;
+}
+
+.ft-right {
+  justify-self: end;
+}
+
+@media (max-width: 900px) {
+  footer {
+    display: flex !important;
+  }
+
+  .ft-logo,
+  .ft-mid,
+  .ft-right {
+    justify-self: auto;
+    max-width: 100%;
+  }
+
+  .ft-mid {
+    white-space: normal;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
