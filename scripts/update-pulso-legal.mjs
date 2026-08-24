@@ -1,4 +1,4 @@
-import { writeFile } from 'node:fs/promises';
+import { readFile, writeFile } from 'node:fs/promises';
 
 const DOF_DATE_URL = 'https://diariooficial.gob.mx/index.php';
 const OUTPUT_PATH = new URL('../data/pulso-legal.json', import.meta.url);
@@ -466,6 +466,16 @@ function sortByDateDesc(items) {
   });
 }
 
+async function readStoredItems() {
+  try {
+    const raw = await readFile(OUTPUT_PATH, 'utf8');
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed.filter(isStoredItemValid) : [];
+  } catch {
+    return [];
+  }
+}
+
 async function main() {
   const feedItems = [];
 
@@ -504,7 +514,13 @@ async function main() {
     })
     .filter(Boolean);
 
+  const storedItems = await readStoredItems();
   const byUrl = new Map();
+
+  storedItems.forEach(item => {
+    if (!item?.url) return;
+    byUrl.set(item.url, item);
+  });
 
   newItems.forEach(item => {
     if (!item?.url) return;
