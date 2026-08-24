@@ -42,9 +42,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 footer{background:#000b0f;padding:32px 56px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border)}.ft-logo{font-family:var(--serif);font-size:15px;color:rgba(245,228,196,.4);display:flex;align-items:center;gap:10px}.ft-logo img{height:24px;opacity:.5}.ft-mid{font-size:11px;color:rgba(245,228,196,.28);text-align:center;letter-spacing:1px}.ft-right{font-size:11px;color:rgba(245,228,196,.28);text-align:right;line-height:1.7}
 @media(max-width:900px){nav{padding:0 20px}.nav-links{display:none}.page-content{padding:54px 24px 76px}.page-indicator{display:none}.page-title{font-size:48px}footer{flex-direction:column;gap:10px;text-align:center}.ft-right{text-align:center}}
 </style>
-<link rel="preload" as="style" href="shared.css?v=mobile-83">
-<link rel="stylesheet" href="shared.css?v=mobile-83" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="shared.css?v=mobile-83"></noscript>
+<link rel="preload" as="style" href="shared.css?v=a11y-88">
+<link rel="stylesheet" href="shared.css?v=a11y-88" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="shared.css?v=a11y-88"></noscript>
 <style>
 .blog-page{
   --blog-serif: Georgia, "Times New Roman", Times, serif;
@@ -309,8 +309,8 @@ footer{background:#000b0f;padding:32px 56px;display:flex;justify-content:space-b
 </head>
 <body>
 <nav>
-  <a href="index.html" class="nav-logo">
-    <img src="logo-buho.png" alt="Insight & Forward" width="287" height="416" decoding="async">
+  <a href="index.html" class="nav-logo" aria-label="Ir al inicio de Insight & Forward">
+    <img src="logo-buho.png" alt="" aria-hidden="true" width="287" height="416" decoding="async">
   </a>
   <ul class="nav-links">
     <li><a href="index.html" data-es="Inicio" data-en="Home">Inicio</a></li>
@@ -341,9 +341,9 @@ footer{background:#000b0f;padding:32px 56px;display:flex;justify-content:space-b
     <a class="active" href="blog.html" data-es="Blog" data-en="Blog">Blog</a>
   </div>
   <div class="nav-lang">
-    <button class="lang-btn active" onclick="setLang('es')">ES</button>
+    <button class="lang-btn active" onclick="setLang('es')" aria-pressed="true" aria-label="Idioma activo: ES">ES</button>
     <span class="lang-sep">/</span>
-    <button class="lang-btn" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" onclick="setLang('en')" aria-pressed="false" aria-label="Cambiar idioma a EN">EN</button>
   </div>
 </nav>
 
@@ -392,7 +392,7 @@ footer{background:#000b0f;padding:32px 56px;display:flex;justify-content:space-b
 </main>
 
 <footer>
-  <div class="ft-logo"><img loading="lazy" src="logo.jpg" alt="Insight & Forward" width="612" height="408" decoding="async"> Insight &amp; Forward · Legal Solutions</div>
+  <div class="ft-logo"><img loading="lazy" src="logo.jpg" alt="" aria-hidden="true" width="612" height="408" decoding="async"> Insight &amp; Forward · Legal Solutions</div>
   <div class="ft-mid" data-es="México · Cobertura nacional · Atención a clientes internacionales" data-en="Mexico · Nationwide · International Client Services">México · Cobertura nacional · Atención a clientes internacionales</div>
   <div class="ft-right">contacto@insightandforward.com<br>+52 (56) 1407 0141</div>
 </footer>
@@ -408,6 +408,6 @@ function setLang(l){
   document.querySelectorAll('a[href]').forEach(a=>{const h=a.getAttribute('href');if(!h||h.startsWith('#')||/^(mailto:|tel:|https?:|javascript:)/i.test(h))return;const u=new URL(h,location.href);if(u.origin!==location.origin||!u.pathname.endsWith('.html'))return;if(lang==='en')u.searchParams.set('lang','en');else u.searchParams.delete('lang');a.href=u.href;});
 }
 </script>
-<script src="shared.js?v=mobile-83" defer></script>
+<script src="shared.js?v=lcp-reflow-91" defer></script>
 </body>
 </html>

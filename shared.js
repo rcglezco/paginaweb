@@ -106,74 +106,37 @@ function updateLocalizedPlaceholders(language) {
   });
 }
 
+function updateLanguageButtonState(language) {
+  document.querySelectorAll('.lang-btn').forEach(button => {
+    const isActive = button.textContent.trim().toLowerCase() === language;
+    button.classList.toggle('active', isActive);
+    button.setAttribute('aria-pressed', String(isActive));
+    button.setAttribute('aria-label', isActive ? `Idioma activo: ${button.textContent.trim()}` : `Cambiar idioma a ${button.textContent.trim()}`);
+  });
+}
+
 function normalizeLanguage(language) {
   return language === 'en' ? 'en' : 'es';
 }
 
 const SITE_ORIGIN = 'https://www.insightandforward.com';
 const LANGUAGE_STORAGE_KEY = 'ifls-language';
-const SEO_BY_PATH = {
-  '/': {
-    es: ['Insight & Forward Legal Solutions | Abogados en México', 'Firma legal boutique en México: consultoría, representación, trámites y capacitación en comercio exterior, migración, contratos, sucesiones y familia.'],
-    en: ['Insight & Forward Legal Solutions | Lawyers in Mexico', 'Boutique law firm in Mexico providing consulting, representation, legal procedures and training in foreign trade, immigration, contracts, estates and family law.']
-  },
-  '/blog.html': {
-    es: ['Blog | Insight & Forward Legal Solutions', 'Análisis, criterio y seguimiento regulatorio de Insight & Forward Legal Solutions. Pulso Legal y publicaciones especializadas.'],
-    en: ['Blog | Insight & Forward Legal Solutions', 'Analysis, professional insight and regulatory monitoring from Insight & Forward Legal Solutions, including Legal Pulse and specialized publications.']
-  },
-  '/capacitacion.html': {
-    es: ['Capacitación Empresarial y Regulatoria | Insight & Forward', 'Programas de capacitación empresarial y regulatoria en México para fortalecer cumplimiento, productividad, comercio exterior y gestión de riesgos.'],
-    en: ['Business and Regulatory Training in Mexico | Insight & Forward', 'Business and regulatory training programs in Mexico designed to strengthen compliance, productivity, foreign trade operations and risk management.']
-  },
-  '/civil.html': {
-    es: ['Contratos, Sucesiones y Familia | Insight & Forward', 'Asesoría en contratos, sucesiones, patrimonio familiar, divorcios, pensión alimenticia y asuntos civiles o familiares con enfoque estratégico y discreto.'],
-    en: ['Contracts, Estates and Family Law in Mexico | Insight & Forward', 'Legal counsel in Mexico for contracts, estates, family assets, divorce, child support and civil or family matters, with a strategic and discreet approach.']
-  },
-  '/comercio-exterior.html': {
-    es: ['Comercio Exterior, Aduanas y Cumplimiento | Insight & Forward', 'Asesoría en comercio exterior, aduanas y cumplimiento regulatorio en México: importaciones, clasificación arancelaria, OEA, permisos y auditorías.'],
-    en: ['Foreign Trade, Customs and Compliance in Mexico | Insight & Forward', 'Advice on foreign trade, customs and regulatory compliance in Mexico, including imports, tariff classification, AEO, permits and audits.']
-  },
-  '/consultoria.html': {
-    es: ['Consultoría Legal Estratégica | Insight & Forward', 'Consultoría legal preventiva y estratégica para proteger intereses, evaluar riesgos y tomar decisiones informadas en México.'],
-    en: ['Strategic Legal Consulting in Mexico | Insight & Forward', 'Preventive and strategic legal consulting to protect interests, assess risk and support informed decision-making in Mexico.']
-  },
-  '/migratorio.html': {
-    es: ['Asesoría Migratoria en México | Insight & Forward', 'Asesoría migratoria en México para personas, familias y empresas: visas, residencia temporal o permanente, permisos de trabajo y regularización.'],
-    en: ['Immigration Legal Services in Mexico | Insight & Forward', 'Immigration counsel in Mexico for individuals, families and companies, including visas, temporary or permanent residence, work permits and regularization.']
-  },
-  '/publicaciones.html': {
-    es: ['Publicaciones legales y de comercio exterior | Insight & Forward', 'Revista editorial de Insight & Forward con artículos, análisis y criterio profesional sobre regulación, comercio exterior, aduanas, migración y estrategia legal.'],
-    en: ['Legal and Foreign Trade Publications | Insight & Forward', 'Insight & Forward editorial journal featuring professional analysis of regulation, foreign trade, customs, immigration and legal strategy in Mexico.']
-  },
-  '/pulso-legal.html': {
-    es: ['Pulso Legal: seguimiento regulatorio en México | Insight & Forward', 'Pulso Legal de Insight & Forward: seguimiento editorial de actualizaciones oficiales relevantes para comercio exterior, cumplimiento y operación empresarial.'],
-    en: ['Legal Pulse: Regulatory Monitoring in Mexico | Insight & Forward', 'Insight & Forward Legal Pulse: editorial monitoring of official updates relevant to foreign trade, compliance and business operations in Mexico.']
-  },
-  '/representacion-legal.html': {
-    es: ['Representación Legal | Insight & Forward', 'Representación legal judicial y administrativa para defender intereses ante autoridades y procedimientos en México.'],
-    en: ['Legal Representation in Mexico | Insight & Forward', 'Judicial and administrative legal representation to protect clients’ interests before authorities and in proceedings in Mexico.']
-  },
-  '/tramites.html': {
-    es: ['Gestión de Trámites Legales | Insight & Forward', 'Gestión clara y segura de trámites ante autoridades mediante poder notarial o carta poder, según la naturaleza del caso.'],
-    en: ['Legal Procedures and Filings in Mexico | Insight & Forward', 'Clear and reliable management of procedures before Mexican authorities under a notarized power of attorney or authorization letter, as appropriate.']
-  },
-  '/alejandra-ornelas.html': {
-    es: ['Alejandra Ornelas | Comercio Exterior, Aduanas y Cumplimiento Normativo | Insight & Forward', 'Conoce la trayectoria profesional de Alejandra Ornelas, especialista en comercio exterior, aduanas, auditoría, cumplimiento normativo y procedimientos administrativos en Insight & Forward.'],
-    en: ['Alejandra Ornelas | Foreign Trade, Customs and Compliance | Insight & Forward', 'Learn about Alejandra Ornelas, a specialist in foreign trade, customs, audits, regulatory compliance and administrative proceedings at Insight & Forward.']
-  },
-  '/hector-garza.html': {
-    es: ['Héctor Garza | Compliance, Gestión de Riesgos y Comercio Exterior | Insight & Forward', 'Conoce la trayectoria profesional de Héctor Garza, especialista en comercio exterior, administración aduanera, cumplimiento normativo, auditorías, gestión de riesgos y fortalecimiento institucional.'],
-    en: ['Héctor Garza | Compliance, Risk Management and Foreign Trade | Insight & Forward', 'Learn about Héctor Garza, a specialist in foreign trade, customs administration, compliance, audits, risk management and institutional strengthening.']
-  },
-  '/marcela-herrera.html': {
-    es: ['Marcela Herrera | Comercio Exterior, Cumplimiento y Controles Internos | Insight & Forward', 'Conoce la trayectoria profesional de Marcela Herrera, especialista en comercio exterior, cumplimiento normativo, controles internos, fiscalización y mejora de procesos.'],
-    en: ['Marcela Herrera | Foreign Trade, Compliance and Internal Controls | Insight & Forward', 'Learn about Marcela Herrera, a specialist in foreign trade, regulatory compliance, internal controls, audits and process improvement.']
-  },
-  '/roberto-corrales.html': {
-    es: ['Roberto Corrales | Comercio Exterior, Aduanas y Migración | Insight & Forward', 'Conoce la trayectoria profesional de Roberto Corrales, especialista en comercio exterior, aduanas, migración y cooperación internacional en Insight & Forward.'],
-    en: ['Roberto Corrales | Foreign Trade, Customs and Immigration | Insight & Forward', 'Learn about Roberto Corrales, a specialist in foreign trade, customs, immigration and international cooperation at Insight & Forward.']
-  }
+let seoMetadataPromise = null;
+const ORIGINAL_METADATA = {
+  title: document.title,
+  description: document.querySelector('meta[name="description"]')?.getAttribute('content') || '',
+  ogTitle: document.querySelector('meta[property="og:title"]')?.getAttribute('content') || '',
+  ogDescription: document.querySelector('meta[property="og:description"]')?.getAttribute('content') || '',
+  twitterTitle: document.querySelector('meta[name="twitter:title"]')?.getAttribute('content') || '',
+  twitterDescription: document.querySelector('meta[name="twitter:description"]')?.getAttribute('content') || ''
 };
+
+function getSeoMetadata() {
+  if (!seoMetadataPromise) {
+    seoMetadataPromise = import('./seo-metadata.js?v=lcp-reflow-91').then(module => module.default || {}).catch(() => ({}));
+  }
+  return seoMetadataPromise;
+}
 
 function getRoutePath() {
   return window.location.pathname === '/index.html' ? '/' : window.location.pathname;
@@ -273,21 +236,10 @@ function setAlternateLanguageLink(hreflang, href) {
 
 function updateLanguageMetadata(language) {
   const route = getRoutePath();
-  const metadata = SEO_BY_PATH[route]?.[language];
   const defaultUrl = `${SITE_ORIGIN}${route}`;
   const spanishUrl = defaultUrl;
   const englishUrl = `${defaultUrl}?lang=en`;
   const canonicalUrl = currentLanguageSource === 'url' && language === 'en' ? englishUrl : spanishUrl;
-
-  if (metadata) {
-    const [title, description] = metadata;
-    document.title = title;
-    setMetaContent('meta[name="description"]', description);
-    setMetaContent('meta[property="og:title"]', title);
-    setMetaContent('meta[property="og:description"]', description);
-    setMetaContent('meta[name="twitter:title"]', title);
-    setMetaContent('meta[name="twitter:description"]', description);
-  }
 
   const canonical = document.querySelector('link[rel="canonical"]');
   if (canonical) canonical.href = canonicalUrl;
@@ -295,6 +247,29 @@ function updateLanguageMetadata(language) {
   setAlternateLanguageLink('es', spanishUrl);
   setAlternateLanguageLink('en', englishUrl);
   setAlternateLanguageLink('x-default', defaultUrl);
+
+  if (language === 'es') {
+    document.title = ORIGINAL_METADATA.title;
+    setMetaContent('meta[name="description"]', ORIGINAL_METADATA.description);
+    setMetaContent('meta[property="og:title"]', ORIGINAL_METADATA.ogTitle);
+    setMetaContent('meta[property="og:description"]', ORIGINAL_METADATA.ogDescription);
+    setMetaContent('meta[name="twitter:title"]', ORIGINAL_METADATA.twitterTitle);
+    setMetaContent('meta[name="twitter:description"]', ORIGINAL_METADATA.twitterDescription);
+    return;
+  }
+
+  getSeoMetadata().then(metadataByPath => {
+    const metadata = metadataByPath[route]?.[language];
+    if (!metadata) return;
+
+    const [title, description] = metadata;
+    document.title = title;
+    setMetaContent('meta[name="description"]', description);
+    setMetaContent('meta[property="og:title"]', title);
+    setMetaContent('meta[property="og:description"]', description);
+    setMetaContent('meta[name="twitter:title"]', title);
+    setMetaContent('meta[name="twitter:description"]', description);
+  });
 }
 
 function updateLanguageLinks(language) {
@@ -310,9 +285,7 @@ window.setLang = (language, options = {}) => {
   if (options.source) currentLanguageSource = options.source;
   if (options.persist) saveLanguage(language);
   document.documentElement.lang = language;
-  document.querySelectorAll('.lang-btn').forEach(button => {
-    button.classList.toggle('active', button.textContent.trim().toLowerCase() === language);
-  });
+  updateLanguageButtonState(language);
   document.querySelectorAll('[data-es]').forEach(element => {
     const value = element.getAttribute(`data-${language}`);
     if (value) element.innerHTML = value;
@@ -476,15 +449,16 @@ if (navLinks.length) {
     });
   };
 
-  updateActiveNav();
   let navFrame = null;
-  window.addEventListener('scroll', () => {
+  const scheduleActiveNav = () => {
     if (navFrame !== null) return;
     navFrame = window.requestAnimationFrame(() => {
       navFrame = null;
       updateActiveNav();
     });
-  }, { passive: true });
+  };
+
+  window.addEventListener('scroll', scheduleActiveNav, { passive: true });
 }
 
 const revealItems = document.querySelectorAll('.reveal');
@@ -539,7 +513,6 @@ if ((contactSection || pageFooter) && whatsappButton) {
     whatsappButton.classList.toggle('contact-safe', overlapsContent);
   };
 
-  updateWhatsappPosition();
   let whatsappFrame = null;
   const scheduleWhatsappPosition = () => {
     if (whatsappFrame !== null) return;
@@ -550,127 +523,4 @@ if ((contactSection || pageFooter) && whatsappButton) {
   };
   window.addEventListener('scroll', scheduleWhatsappPosition, { passive: true });
   window.addEventListener('resize', scheduleWhatsappPosition);
-}
-
-const teamTrack = document.querySelector('.team-wrap');
-const teamPrevButton = document.querySelector('.team-carousel-prev');
-const teamNextButton = document.querySelector('.team-carousel-next');
-
-if (teamTrack && teamPrevButton && teamNextButton) {
-  const originalCards = [...teamTrack.querySelectorAll('.team-card')];
-  const originalCount = originalCards.length;
-  let currentIndex = originalCount;
-  let isAnimating = false;
-
-  [...originalCards].reverse().forEach(card => {
-    const clone = card.cloneNode(true);
-    clone.classList.add('team-card-clone');
-    clone.setAttribute('aria-hidden', 'true');
-    clone.querySelectorAll('[id]').forEach(element => element.removeAttribute('id'));
-    teamTrack.insertBefore(clone, teamTrack.firstChild);
-  });
-
-  originalCards.forEach(card => {
-    const clone = card.cloneNode(true);
-    clone.classList.add('team-card-clone');
-    clone.setAttribute('aria-hidden', 'true');
-    clone.querySelectorAll('[id]').forEach(element => element.removeAttribute('id'));
-    teamTrack.appendChild(clone);
-  });
-
-  const touchTeamQuery = window.matchMedia('(hover: none), (pointer: coarse)');
-
-  const clearTeamTouchState = () => {
-    teamTrack.querySelectorAll('.team-card.is-touch-active').forEach(card => {
-      card.classList.remove('is-touch-active');
-    });
-  };
-
-  teamTrack.addEventListener('click', event => {
-    if (!touchTeamQuery.matches) return;
-
-    const target = event.target instanceof Element ? event.target : null;
-    const card = target ? target.closest('.team-card') : null;
-    if (!card || !teamTrack.contains(card)) return;
-    if (target.closest('a[href]')) return;
-    event.preventDefault();
-
-    const wasActive = card.classList.contains('is-touch-active');
-    clearTeamTouchState();
-
-    if (!wasActive) {
-      card.classList.add('is-touch-active');
-    }
-  });
-
-  document.addEventListener('click', event => {
-    if (!touchTeamQuery.matches) return;
-
-    const target = event.target instanceof Element ? event.target : null;
-    if (target && target.closest('.team-card')) return;
-
-    clearTeamTouchState();
-  });
-
-  const getTeamMetrics = () => {
-    const firstCard = teamTrack.querySelector('.team-card');
-    if (!firstCard) return { step: 320, visibleCount: 1 };
-
-    const styles = window.getComputedStyle(teamTrack);
-    const gap = parseFloat(styles.columnGap || styles.gap || '0') || 0;
-    const step = firstCard.getBoundingClientRect().width + gap;
-    const visibleCount = Math.max(1, Math.round(teamTrack.parentElement.clientWidth / step));
-    return { step, visibleCount };
-  };
-
-  const applyTeamPosition = (animate = true) => {
-    const { step } = getTeamMetrics();
-    teamTrack.style.transition = animate ? '' : 'none';
-    teamTrack.style.transform = `translateX(${-currentIndex * step}px)`;
-    if (!animate) {
-      window.requestAnimationFrame(() => {
-        teamTrack.style.transition = '';
-      });
-    }
-  };
-
-  const moveTeam = direction => {
-    if (isAnimating) return;
-    clearTeamTouchState();
-    isAnimating = true;
-    currentIndex += direction;
-    applyTeamPosition(true);
-  };
-
-  teamTrack.addEventListener('transitionend', event => {
-    if (event.propertyName !== 'transform') return;
-
-    if (currentIndex >= originalCount * 2) {
-      currentIndex -= originalCount;
-      applyTeamPosition(false);
-    } else if (currentIndex < originalCount) {
-      currentIndex += originalCount;
-      applyTeamPosition(false);
-    }
-    isAnimating = false;
-  });
-
-  teamPrevButton.addEventListener('click', () => moveTeam(-1));
-  teamNextButton.addEventListener('click', () => moveTeam(1));
-  let teamFrame = null;
-  const scheduleTeamPosition = () => {
-    if (teamFrame !== null) return;
-    teamFrame = window.requestAnimationFrame(() => {
-      teamFrame = null;
-      clearTeamTouchState();
-      applyTeamPosition(false);
-    });
-  };
-  window.addEventListener('resize', scheduleTeamPosition);
-  window.addEventListener('orientationchange', scheduleTeamPosition);
-  window.addEventListener('load', () => {
-    clearTeamTouchState();
-    applyTeamPosition(false);
-  });
-  applyTeamPosition(false);
 }

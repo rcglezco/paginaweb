@@ -68,6 +68,7 @@
 :root{--gold:#a9741e;--gold-light:#b9852c;--bg:#000b0f;--bg-section:#000f15;--bg-about:#000f15;--bg-card:#000f15;--cream:#f5e4c4;--muted:#f5e4c4;--border:rgba(169,116,30,0.18);--serif:'Cormorant Garamond',Georgia,serif;--sans:"Avenir","Avenir Next","Helvetica Neue",Arial,sans-serif;}
 body{font-family:var(--sans);background:var(--bg);color:var(--cream);overflow-x:hidden;scroll-behavior:smooth}
 ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--gold);border-radius:2px}
+.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:0 56px;height:76px;background:rgba(0,11,15,0.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
 .nav-logo img{height:36px;width:auto}
 .nav-links{display:flex;list-style:none}
@@ -203,9 +204,9 @@ footer{background:#000b0f;padding:32px 56px;display:flex;justify-content:space-b
 }
 
 </style>
-<link rel="preload" as="style" href="shared.css?v=about-left-87">
-<link rel="stylesheet" href="shared.css?v=about-left-87" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="shared.css?v=about-left-87"></noscript>
+<link rel="preload" as="style" href="shared.css?v=a11y-88">
+<link rel="stylesheet" href="shared.css?v=a11y-88" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="shared.css?v=a11y-88"></noscript>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-V8PEWE7X1J"></script>
 <script>
@@ -218,8 +219,8 @@ footer{background:#000b0f;padding:32px 56px;display:flex;justify-content:space-b
 <body>
 
 <nav>
-  <a href="index.html" class="nav-logo">
-    <img src="logo-buho.png" alt="Insight & Forward" width="287" height="416" decoding="async">
+  <a href="index.html" class="nav-logo" aria-label="Ir al inicio de Insight & Forward">
+    <img src="assets/optimized/logo-buho-72.png" alt="" aria-hidden="true" width="49" height="72" decoding="async">
   </a>
   <ul class="nav-links">
     <li><a href="index.html" data-es="Inicio" data-en="Home">Inicio</a></li>
@@ -250,9 +251,9 @@ footer{background:#000b0f;padding:32px 56px;display:flex;justify-content:space-b
     <a href="blog.html" data-es="Blog" data-en="Blog">Blog</a>
   </div>
   <div class="nav-lang">
-    <button class="lang-btn active" onclick="setLang('es')">ES</button>
+    <button class="lang-btn active" onclick="setLang('es')" aria-pressed="true" aria-label="Idioma activo: ES">ES</button>
     <span class="lang-sep">/</span>
-    <button class="lang-btn" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" onclick="setLang('en')" aria-pressed="false" aria-label="Cambiar idioma a EN">EN</button>
   </div>
 </nav>
 
@@ -273,7 +274,7 @@ footer{background:#000b0f;padding:32px 56px;display:flex;justify-content:space-b
       <div class="hero-card">
         <picture>
           <source type="image/webp" srcset="assets/optimized/logo-firma-640.webp 640w, assets/optimized/logo-firma-960.webp 960w" sizes="min(430px, 86vw)">
-          <img class="hero-firma" src="logo-firma.png" alt="Insight & Forward Legal Solutions" width="2868" height="570" decoding="async">
+          <img class="hero-firma" src="logo-firma.png" alt="Insight & Forward Legal Solutions" width="2868" height="570" fetchpriority="high" decoding="async">
         </picture>
         <div class="hero-kicker" data-es="Firma Boutique" data-en="Boutique Counsel &amp; Consulting">Firma Boutique</div>
         <div class="hero-tagline" data-es="Más allá del cumplimiento." data-en="Beyond Compliance.">Más allá del cumplimiento.</div>
@@ -509,12 +510,12 @@ footer{background:#000b0f;padding:32px 56px;display:flex;justify-content:space-b
 </div>
 
 <footer>
-  <div class="ft-logo"><img loading="lazy" src="logo.jpg" alt="I&F" width="612" height="408" decoding="async"> Insight &amp; Forward · Legal Solutions</div>
+  <div class="ft-logo"><img loading="lazy" src="logo.jpg" alt="" aria-hidden="true" width="612" height="408" decoding="async"> Insight &amp; Forward · Legal Solutions</div>
   <div class="ft-mid" data-es="México · Cobertura nacional · Atención a clientes internacionales" data-en="Mexico · Nationwide · International Client Services">México · Cobertura nacional · Atención a clientes internacionales</div>
   <div class="ft-right">contacto@insightandforward.com<br>+52 (56) 1407 0141</div>
 </footer>
 
-<a href="https://wa.me/525614070141" class="wa-float" target="_blank" rel="noopener noreferrer"><svg class="wa-icon" viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path class="wa-bubble" d="M12.05 2.15a9.78 9.78 0 0 1 9.76 9.78 9.78 9.78 0 0 1-9.76 9.78h-.01a9.7 9.7 0 0 1-4.94-1.35l-.36-.21-3.67.96.98-3.57-.24-.38a9.73 9.73 0 0 1-1.5-5.23 9.78 9.78 0 0 1 9.74-9.78Z"/><path class="wa-phone-line" d="M8.16 7.33c-.22.24-.86.84-.86 2.05 0 1.2.88 2.37 1 2.53.12.17 1.73 2.65 4.21 3.71.59.26 1.05.41 1.4.52.59.19 1.13.16 1.55.1.47-.07 1.45-.59 1.66-1.16.2-.57.2-1.06.14-1.17-.06-.1-.23-.16-.47-.29-.25-.12-1.45-.71-1.68-.8-.22-.08-.39-.12-.55.13-.16.24-.64.79-.78.96-.14.16-.28.18-.53.06-.24-.13-1.04-.38-1.98-1.22-.73-.65-1.22-1.45-1.36-1.7-.15-.24-.02-.38.11-.5.11-.11.24-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.55-1.33-.76-1.83-.2-.48-.4-.41-.55-.42h-.47c-.16 0-.43.06-.65.3Z"/></svg></a>
+<a href="https://wa.me/525614070141" class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp"><svg class="wa-icon" viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path class="wa-bubble" d="M12.05 2.15a9.78 9.78 0 0 1 9.76 9.78 9.78 9.78 0 0 1-9.76 9.78h-.01a9.7 9.7 0 0 1-4.94-1.35l-.36-.21-3.67.96.98-3.57-.24-.38a9.73 9.73 0 0 1-1.5-5.23 9.78 9.78 0 0 1 9.74-9.78Z"/><path class="wa-phone-line" d="M8.16 7.33c-.22.24-.86.84-.86 2.05 0 1.2.88 2.37 1 2.53.12.17 1.73 2.65 4.21 3.71.59.26 1.05.41 1.4.52.59.19 1.13.16 1.55.1.47-.07 1.45-.59 1.66-1.16.2-.57.2-1.06.14-1.17-.06-.1-.23-.16-.47-.29-.25-.12-1.45-.71-1.68-.8-.22-.08-.39-.12-.55.13-.16.24-.64.79-.78.96-.14.16-.28.18-.53.06-.24-.13-1.04-.38-1.98-1.22-.73-.65-1.22-1.45-1.36-1.7-.15-.24-.02-.38.11-.5.11-.11.24-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.55-1.33-.76-1.83-.2-.48-.4-.41-.55-.42h-.47c-.16 0-.43.06-.65.3Z"/></svg></a>
 
 <script>
 let lang='es';
@@ -528,6 +529,7 @@ function setLang(l){
   document.querySelectorAll('a[href]').forEach(a=>{const h=a.getAttribute('href');if(!h||h.startsWith('#')||/^(mailto:|tel:|https?:|javascript:)/i.test(h))return;const u=new URL(h,location.href);if(u.origin!==location.origin||!u.pathname.endsWith('.html'))return;if(lang==='en')u.searchParams.set('lang','en');else u.searchParams.delete('lang');a.href=u.href;});
 }
 </script>
-<script src="shared.js?v=mobile-85" defer></script>
+<script src="shared.js?v=lcp-reflow-91" defer></script>
+<script src="team-carousel.js?v=lcp-reflow-91" defer></script>
 </body>
 </html>

@@ -38,9 +38,9 @@
   "mainEntityOfPage": "https://www.insightandforward.com/publicaciones/empresas-operaciones-mixtas-fifa-2026.html"
 }
 </script>
-<link rel="preload" as="style" href="../shared.css?v=mobile-83">
-<link rel="stylesheet" href="../shared.css?v=mobile-83" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="../shared.css?v=mobile-83"></noscript>
+<link rel="preload" as="style" href="../shared.css?v=a11y-88">
+<link rel="stylesheet" href="../shared.css?v=a11y-88" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="../shared.css?v=a11y-88"></noscript>
 <link rel="stylesheet" href="articulo.css">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-V8PEWE7X1J"></script>
@@ -53,8 +53,8 @@
 </head>
 <body>
 <nav>
-  <a href="../index.html" class="nav-logo">
-    <img src="../logo-buho.png" alt="Insight & Forward" width="287" height="416" decoding="async">
+  <a href="../index.html" class="nav-logo" aria-label="Ir al inicio de Insight & Forward">
+    <img src="../logo-buho.png" alt="" aria-hidden="true" width="287" height="416" decoding="async">
   </a>
   <ul class="nav-links">
     <li><a href="../index.html" data-es="Inicio" data-en="Home">Inicio</a></li>
@@ -85,9 +85,9 @@
     <a class="active" href="../blog.html" data-es="Blog" data-en="Blog">Blog</a>
   </div>
   <div class="nav-lang">
-    <button class="lang-btn active" onclick="setLang('es')">ES</button>
+    <button class="lang-btn active" onclick="setLang('es')" aria-pressed="true" aria-label="Idioma activo: ES">ES</button>
     <span class="lang-sep">/</span>
-    <button class="lang-btn" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" onclick="setLang('en')" aria-pressed="false" aria-label="Cambiar idioma a EN">EN</button>
   </div>
 </nav>
 
@@ -150,8 +150,8 @@
     </section>
   </article>
 </main>
-<script src="../shared.js?v=mobile-83" defer></script>
+<script src="../shared.js?v=lcp-reflow-91" defer></script>
 <script>let lang='es';function setLang(l){lang=l==='en'?'en':'es';document.documentElement.lang=lang;document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent.trim().toLowerCase()===lang));document.querySelectorAll('[data-es]').forEach(el=>{const v=el.getAttribute('data-'+lang);if(v)el.innerHTML=v;});}</script>
-<script src="publicaciones-i18n.js" defer></script>
+<script src="publicaciones-i18n.js?v=js-split-90" defer></script>
 </body>
 </html>

@@ -106,9 +106,9 @@ footer{background:var(--cream);padding:32px 56px;display:flex;justify-content:sp
 .ft-right{font-size:11px;color:var(--bg);text-align:right;line-height:1.7}
 @media(max-width:900px){nav{padding:0 20px}.nav-links{display:none}.firm-bar{padding:14px 24px}.profile-hero{padding:44px 24px 36px}.profile-content{padding:42px 24px 52px}.profile-meta{grid-template-columns:1fr;padding:0 24px 44px}footer{flex-direction:column;gap:10px;text-align:center}.ft-right{text-align:center}}
 </style>
-<link rel="preload" as="style" href="shared.css?v=team-hover-86">
-<link rel="stylesheet" href="shared.css?v=team-hover-86" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="shared.css?v=team-hover-86"></noscript>
+<link rel="preload" as="style" href="shared.css?v=a11y-88">
+<link rel="stylesheet" href="shared.css?v=a11y-88" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="shared.css?v=a11y-88"></noscript>
 <style>
 .profile-page,
 .profile-page body {
@@ -173,8 +173,8 @@ footer{background:var(--cream);padding:32px 56px;display:flex;justify-content:sp
 </head>
 <body class="profile-page">
 <nav>
-  <a href="index.html" class="nav-logo">
-    <img src="logo-buho.png" alt="Insight &amp; Forward" width="287" height="416" decoding="async">
+  <a href="index.html" class="nav-logo" aria-label="Ir al inicio de Insight & Forward">
+    <img src="logo-buho.png" alt="" aria-hidden="true" width="287" height="416" decoding="async">
   </a>
   <ul class="nav-links">
     <li><a href="index.html" data-es="Inicio" data-en="Home">Inicio</a></li>
@@ -205,9 +205,9 @@ footer{background:var(--cream);padding:32px 56px;display:flex;justify-content:sp
     <a href="blog.html" data-es="Blog" data-en="Blog">Blog</a>
   </div>
   <div class="nav-lang">
-    <button class="lang-btn active" onclick="setLang('es')">ES</button>
+    <button class="lang-btn active" onclick="setLang('es')" aria-pressed="true" aria-label="Idioma activo: ES">ES</button>
     <span class="lang-sep">/</span>
-    <button class="lang-btn" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" onclick="setLang('en')" aria-pressed="false" aria-label="Cambiar idioma a EN">EN</button>
   </div>
 </nav>
 
@@ -241,11 +241,11 @@ footer{background:var(--cream);padding:32px 56px;display:flex;justify-content:sp
 </main>
 
 <footer>
-  <div class="ft-logo"><img loading="lazy" src="logo.jpg" alt="Insight &amp; Forward" width="612" height="408" decoding="async"> Insight &amp; Forward · Legal Solutions</div>
+  <div class="ft-logo"><img loading="lazy" src="logo.jpg" alt="" aria-hidden="true" width="612" height="408" decoding="async"> Insight &amp; Forward · Legal Solutions</div>
   <div class="ft-mid" data-es="México · Cobertura nacional · Atención a clientes internacionales" data-en="Mexico · Nationwide · International Client Services">México · Cobertura nacional · Atención a clientes internacionales</div>
   <div class="ft-right">contacto@insightandforward.com<br>+52 (56) 1407 0141</div>
 </footer>
 
-<script src="shared.js?v=team-hover-86" defer></script>
+<script src="shared.js?v=lcp-reflow-91" defer></script>
 </body>
 </html>

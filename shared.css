@@ -16,8 +16,8 @@ svg {
   --bg-section: #000f15;
   --bg-about: #000f15;
   --bg-card: #000f15;
-  --cream: rgba(245, 228, 196, 0.76);
-  --muted: rgba(245, 228, 196, 0.66);
+  --cream: rgba(245, 228, 196, 0.86);
+  --muted: rgba(245, 228, 196, 0.78);
   --border: rgba(169, 116, 30, 0.2);
   --sans: "Avenir", "Avenir Next", "Helvetica Neue", Arial, sans-serif;
 }
@@ -32,6 +32,14 @@ input,
 textarea,
 select {
   font-family: var(--sans);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid rgba(245, 228, 196, 0.92);
+  outline-offset: 3px;
 }
 
 .sr-only {
@@ -414,7 +422,7 @@ a.team-card {
   border: 0 !important;
   border-radius: 0 !important;
   box-shadow: none !important;
-  color: rgba(245, 228, 196, 0.72) !important;
+  color: rgba(245, 228, 196, 0.84) !important;
 }
 
 .soc-link:hover {
@@ -430,7 +438,7 @@ a.team-card {
 
 .nav-extra > .has-dropdown > a,
 .nav-extra > a {
-  color: rgba(245, 228, 196, 0.72);
+  color: rgba(245, 228, 196, 0.82);
   text-decoration: none;
   font-size: 14px;
   padding: 7px 18px;
@@ -443,10 +451,36 @@ a.team-card {
 .nav-links > li > a,
 .nav-extra > .has-dropdown > a,
 .nav-extra > a {
+  color: rgba(245, 228, 196, 0.82) !important;
   font-size: 15px !important;
 }
 
+.lang-btn,
+.lang-sep,
+.hero-scroll span,
+.ft-mid,
+.ft-right,
+.page-indicator-label,
+.blog-meta,
+.area-sub,
+.svc-desc {
+  color: rgba(245, 228, 196, 0.78) !important;
+}
+
+.lang-btn.active,
+.nav-links > li > a:hover,
+.nav-links > li > a.active,
+.nav-extra > .has-dropdown > a:hover,
+.nav-extra > .has-dropdown > a.active,
+.nav-extra > a:hover,
+.nav-extra > a.active,
+.dropdown li a:hover,
+.has-dropdown:hover > a {
+  color: #c28a35 !important;
+}
+
 .dropdown li a {
+  color: rgba(245, 228, 196, 0.82) !important;
   font-size: 14px !important;
 }
 
@@ -553,7 +587,7 @@ a.team-card {
 }
 
 .firm-wordmark .firm-dot {
-  color: rgba(245, 228, 196, 0.62) !important;
+  color: rgba(245, 228, 196, 0.78) !important;
   margin: 0 0.12em;
 }
 
@@ -594,7 +628,7 @@ a.team-card {
 .blog-intro {
   max-width: 720px;
   margin: 0 auto;
-  color: rgba(245, 228, 196, 0.76);
+  color: rgba(245, 228, 196, 0.84);
   font-size: 18px;
   line-height: 1.7;
 }
@@ -611,7 +645,7 @@ a.team-card {
   background: transparent;
   border: 1px solid rgba(169, 116, 30, 0.28);
   border-radius: 999px;
-  color: rgba(245, 228, 196, 0.72);
+  color: rgba(245, 228, 196, 0.84);
   cursor: pointer;
   font-size: 12px;
   letter-spacing: 1.5px;
@@ -672,13 +706,13 @@ a.team-card {
 }
 
 .blog-card p {
-  color: rgba(245, 228, 196, 0.74);
+  color: rgba(245, 228, 196, 0.84);
   font-size: 15px;
   line-height: 1.7;
 }
 
 .blog-meta {
-  color: rgba(245, 228, 196, 0.42);
+  color: rgba(245, 228, 196, 0.72);
   font-size: 12px;
   letter-spacing: 1px;
   margin-top: 24px;
@@ -924,7 +958,7 @@ a[x-apple-data-detectors] {
   overflow: hidden;
 }
 
-.nav-logo img[src$="logo-buho.png"] {
+.nav-logo img[src*="logo-buho"] {
   height: 31px !important;
   width: auto !important;
   display: block;
@@ -953,7 +987,7 @@ a[x-apple-data-detectors] {
     height: 40px !important;
   }
 
-  .nav-logo img[src$="logo-buho.png"] {
+  .nav-logo img[src*="logo-buho"] {
     height: 27px !important;
   }
 
@@ -1114,7 +1148,7 @@ a[x-apple-data-detectors] {
     height: 36px !important;
   }
 
-  .nav-logo img[src$="logo-buho.png"] {
+  .nav-logo img[src*="logo-buho"] {
     height: 24px !important;
   }
 
