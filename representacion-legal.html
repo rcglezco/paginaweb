@@ -6,11 +6,17 @@
 <link rel="icon" href="logo-buho.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap"></noscript>
 <title>Representación Legal | Insight &amp; Forward</title>
 <meta name="description" content="Representación legal judicial y administrativa para defender intereses ante autoridades y procedimientos en México.">
 <meta name="robots" content="index, follow">
 <meta name="author" content="Insight & Forward Legal Solutions">
 <link rel="canonical" href="https://www.insightandforward.com/representacion-legal.html">
+<link rel="alternate" hreflang="es" href="https://www.insightandforward.com/representacion-legal.html">
+<link rel="alternate" hreflang="en" href="https://www.insightandforward.com/representacion-legal.html?lang=en">
+<link rel="alternate" hreflang="x-default" href="https://www.insightandforward.com/representacion-legal.html">
 <meta property="og:locale" content="es_MX">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Insight & Forward Legal Solutions">
@@ -58,7 +64,6 @@
 }
 </script>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--gold:#a9741e;--gold-light:#b9852c;--bg:#000b0f;--bg-section:#000f15;--bg-card:#000f15;--cream:#f5e4c4;--muted:#f5e4c4;--border:rgba(169,116,30,0.18);--serif:'Cormorant Garamond',Georgia,serif;--sans:"Avenir","Avenir Next","Helvetica Neue",Arial,sans-serif;}
 body{font-family:var(--sans);background:var(--bg);color:var(--cream);overflow-x:hidden}
@@ -119,7 +124,9 @@ footer{background:#000b0f;padding:32px 56px;display:flex;justify-content:space-b
 .ft-right{font-size:11px;color:rgba(245,228,196,0.28);text-align:right;line-height:1.7}
 @media(max-width:900px){nav{padding:0 20px}.nav-links{display:none}.firm-bar{padding:14px 24px}.hero-section{padding:40px 24px 60px}.hero-title{font-size:38px}.content-section{padding:60px 24px 44px}.content-inner{padding:0}.services-grid{grid-template-columns:1fr}.cta-section{padding:32px 24px}.page-indicator{display:none}footer{flex-direction:column;gap:10px;text-align:center}.ft-right{text-align:center}}
 </style>
-<link rel="stylesheet" href="shared.css?v=mobile-83">
+<link rel="preload" as="style" href="shared.css?v=mobile-83">
+<link rel="stylesheet" href="shared.css?v=mobile-83" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="shared.css?v=mobile-83"></noscript>
 <style>
 .content-section .content-inner .cta-title.content-cta.content-cta.content-cta{
   font-family:var(--serif) !important;
@@ -238,6 +245,6 @@ function setLang(l){
   document.querySelectorAll('a[href]').forEach(a=>{const h=a.getAttribute('href');if(!h||h.startsWith('#')||/^(mailto:|tel:|https?:|javascript:)/i.test(h))return;const u=new URL(h,location.href);if(u.origin!==location.origin||!u.pathname.endsWith('.html'))return;if(lang==='en')u.searchParams.set('lang','en');else u.searchParams.delete('lang');a.href=u.href;});
 }
 </script>
-<script src="shared.js?v=mobile-83"></script>
+<script src="shared.js?v=mobile-83" defer></script>
 </body>
 </html>

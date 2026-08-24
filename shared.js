@@ -277,7 +277,7 @@ function updateLanguageMetadata(language) {
   const defaultUrl = `${SITE_ORIGIN}${route}`;
   const spanishUrl = defaultUrl;
   const englishUrl = `${defaultUrl}?lang=en`;
-  const canonicalUrl = language === 'en' ? englishUrl : spanishUrl;
+  const canonicalUrl = currentLanguageSource === 'url' && language === 'en' ? englishUrl : spanishUrl;
 
   if (metadata) {
     const [title, description] = metadata;
@@ -477,7 +477,14 @@ if (navLinks.length) {
   };
 
   updateActiveNav();
-  window.addEventListener('scroll', updateActiveNav, { passive: true });
+  let navFrame = null;
+  window.addEventListener('scroll', () => {
+    if (navFrame !== null) return;
+    navFrame = window.requestAnimationFrame(() => {
+      navFrame = null;
+      updateActiveNav();
+    });
+  }, { passive: true });
 }
 
 const revealItems = document.querySelectorAll('.reveal');
@@ -533,8 +540,16 @@ if ((contactSection || pageFooter) && whatsappButton) {
   };
 
   updateWhatsappPosition();
-  window.addEventListener('scroll', updateWhatsappPosition, { passive: true });
-  window.addEventListener('resize', updateWhatsappPosition);
+  let whatsappFrame = null;
+  const scheduleWhatsappPosition = () => {
+    if (whatsappFrame !== null) return;
+    whatsappFrame = window.requestAnimationFrame(() => {
+      whatsappFrame = null;
+      updateWhatsappPosition();
+    });
+  };
+  window.addEventListener('scroll', scheduleWhatsappPosition, { passive: true });
+  window.addEventListener('resize', scheduleWhatsappPosition);
 }
 
 const teamTrack = document.querySelector('.team-wrap');
@@ -613,8 +628,9 @@ if (teamTrack && teamPrevButton && teamNextButton) {
     teamTrack.style.transition = animate ? '' : 'none';
     teamTrack.style.transform = `translateX(${-currentIndex * step}px)`;
     if (!animate) {
-      teamTrack.offsetHeight;
-      teamTrack.style.transition = '';
+      window.requestAnimationFrame(() => {
+        teamTrack.style.transition = '';
+      });
     }
   };
 
@@ -641,11 +657,18 @@ if (teamTrack && teamPrevButton && teamNextButton) {
 
   teamPrevButton.addEventListener('click', () => moveTeam(-1));
   teamNextButton.addEventListener('click', () => moveTeam(1));
-  window.addEventListener('resize', () => {
-    clearTeamTouchState();
-    applyTeamPosition(false);
-  });
-  window.addEventListener('orientationchange', () => {
+  let teamFrame = null;
+  const scheduleTeamPosition = () => {
+    if (teamFrame !== null) return;
+    teamFrame = window.requestAnimationFrame(() => {
+      teamFrame = null;
+      clearTeamTouchState();
+      applyTeamPosition(false);
+    });
+  };
+  window.addEventListener('resize', scheduleTeamPosition);
+  window.addEventListener('orientationchange', scheduleTeamPosition);
+  window.addEventListener('load', () => {
     clearTeamTouchState();
     applyTeamPosition(false);
   });

@@ -6,12 +6,18 @@
 <link rel="icon" href="logo-buho.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="image" href="assets/optimized/hero-forest-crop-b-900.webp" imagesrcset="assets/optimized/hero-forest-crop-b-900.webp 900w, assets/optimized/hero-forest-crop-b-1200.webp 1200w, assets/optimized/hero-forest-crop-b-1600.webp 1600w" imagesizes="100vw" type="image/webp" fetchpriority="high">
+<link rel="preload" as="image" href="assets/optimized/hero-forest-crop-b-900.avif" imagesrcset="assets/optimized/hero-forest-crop-b-900.avif 900w" imagesizes="100vw" type="image/avif" fetchpriority="high">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap"></noscript>
 <title>Insight &amp; Forward Legal Solutions | Abogados en México</title>
 <meta name="description" content="Firma legal boutique en México: consultoría, representación, trámites y capacitación en comercio exterior, migración, contratos, sucesiones y familia.">
 <meta name="robots" content="index, follow">
 <meta name="author" content="Insight & Forward Legal Solutions">
 <link rel="canonical" href="https://www.insightandforward.com/">
+<link rel="alternate" hreflang="es" href="https://www.insightandforward.com/">
+<link rel="alternate" hreflang="en" href="https://www.insightandforward.com/?lang=en">
+<link rel="alternate" hreflang="x-default" href="https://www.insightandforward.com/">
 <meta property="og:locale" content="es_MX">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Insight & Forward Legal Solutions">
@@ -58,7 +64,6 @@
 }
 </script>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--gold:#a9741e;--gold-light:#b9852c;--bg:#000b0f;--bg-section:#000f15;--bg-about:#000f15;--bg-card:#000f15;--cream:#f5e4c4;--muted:#f5e4c4;--border:rgba(169,116,30,0.18);--serif:'Cormorant Garamond',Georgia,serif;--sans:"Avenir","Avenir Next","Helvetica Neue",Arial,sans-serif;}
 body{font-family:var(--sans);background:var(--bg);color:var(--cream);overflow-x:hidden;scroll-behavior:smooth}
@@ -198,7 +203,9 @@ footer{background:#000b0f;padding:32px 56px;display:flex;justify-content:space-b
 }
 
 </style>
-<link rel="stylesheet" href="shared.css?v=about-left-87">
+<link rel="preload" as="style" href="shared.css?v=about-left-87">
+<link rel="stylesheet" href="shared.css?v=about-left-87" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="shared.css?v=about-left-87"></noscript>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-V8PEWE7X1J"></script>
 <script>
@@ -253,6 +260,9 @@ footer{background:#000b0f;padding:32px 56px;display:flex;justify-content:space-b
 <div id="inicio">
   <div class="hero">
     <picture>
+      <source media="(max-width: 700px)" type="image/avif" srcset="assets/optimized/hero-forest-crop-b-900.avif 900w" sizes="100vw">
+      <source type="image/avif" srcset="assets/optimized/hero-forest-crop-b-900.avif 900w, assets/optimized/hero-forest-crop-b-1200.avif 1200w, assets/optimized/hero-forest-crop-b-1600.avif 1600w" sizes="100vw">
+      <source media="(max-width: 700px)" type="image/webp" srcset="assets/optimized/hero-forest-crop-b-900.webp 900w" sizes="100vw">
       <source type="image/webp" srcset="assets/optimized/hero-forest-crop-b-900.webp 900w, assets/optimized/hero-forest-crop-b-1200.webp 1200w, assets/optimized/hero-forest-crop-b-1600.webp 1600w" sizes="100vw">
       <img class="hero-bg" src="hero-forest-crop-b.jpg" alt="" aria-hidden="true" width="1600" height="1350" fetchpriority="high" decoding="async">
     </picture>
@@ -518,6 +528,6 @@ function setLang(l){
   document.querySelectorAll('a[href]').forEach(a=>{const h=a.getAttribute('href');if(!h||h.startsWith('#')||/^(mailto:|tel:|https?:|javascript:)/i.test(h))return;const u=new URL(h,location.href);if(u.origin!==location.origin||!u.pathname.endsWith('.html'))return;if(lang==='en')u.searchParams.set('lang','en');else u.searchParams.delete('lang');a.href=u.href;});
 }
 </script>
-<script src="shared.js?v=mobile-85"></script>
+<script src="shared.js?v=mobile-85" defer></script>
 </body>
 </html>
