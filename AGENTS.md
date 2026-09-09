@@ -180,3 +180,13 @@ Cuando haya varias formas de resolver algo:
 4. Cuidar SEO y estructura semántica.
 5. Evitar dependencias nuevas.
 6. Preservar compatibilidad con GitHub Pages.
+
+## Comunicación, Alcance y Autorización
+
+- Dirigirse al usuario con términos técnicos precisos y explicar en lenguaje claro qué efecto concreto tendrá cada operación propuesta.
+- No usar expresiones ambiguas que puedan sugerir un alcance distinto del real, especialmente al describir operaciones de Git, publicación o actualización de datos.
+- Interpretar cada solicitud de forma literal y limitar cualquier acción exclusivamente a los archivos, componentes y resultados expresamente solicitados.
+- No realizar de forma unilateral cambios adicionales, optimizaciones, rediseños, auditorías, refactorizaciones, modificaciones de contenido ni tareas relacionadas que el usuario no haya pedido.
+- Si una acción necesaria puede modificar contenido, diseño, datos, historial de Git, publicación o cualquier elemento fuera del alcance expresamente autorizado, detenerse y solicitar autorización específica antes de ejecutarla.
+- Una autorización para corregir o restaurar un elemento no autoriza cambios en otros elementos.
+- Antes de ejecutar una operación que requiera aprobación, indicar con precisión qué se conservará, qué cambiará y qué no será alterado.
