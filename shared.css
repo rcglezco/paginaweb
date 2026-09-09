@@ -590,7 +590,7 @@ footer.site-footer {
   background: #001116;
   border-top: 1px solid rgba(169, 116, 30, 0.28);
   display: block;
-  padding: 38px 56px 30px;
+  padding: 24px 56px 20px;
 }
 
 .site-footer .ft-primary,
@@ -602,21 +602,21 @@ footer.site-footer {
 .site-footer .ft-primary {
   align-items: flex-start;
   gap: 32px;
-  padding-bottom: 28px;
+  padding-bottom: 16px;
   padding-right: 76px;
 }
 
 .site-footer .ft-logo {
   color: rgba(245, 228, 196, 0.9) !important;
   display: block;
-  font-size: 23px;
+  font-size: 18px;
   line-height: 1.25;
   max-width: 620px;
 }
 
 .site-footer .ft-utility { display: flex; gap: 24px; margin-right: 76px; padding-top: 5px; }
 .site-footer .ft-utility span { color: var(--gold); font-size: 11px; letter-spacing: 0.8px; white-space: nowrap; }
-.site-footer .ft-secondary { align-items: flex-end; border-top: 1px solid rgba(169, 116, 30, 0.17); gap: 32px; padding-top: 22px; }
+.site-footer .ft-secondary { align-items: flex-end; border-top: 1px solid rgba(169, 116, 30, 0.17); gap: 32px; padding-top: 14px; }
 .site-footer .ft-notice,
 .site-footer .ft-right { color: rgba(245, 228, 196, 0.46) !important; font-family: var(--sans); font-size: 11px; line-height: 1.6; }
 .site-footer .ft-notice { max-width: 720px; }
@@ -1504,7 +1504,7 @@ a[x-apple-data-detectors] {
     flex-direction: column !important;
     gap: 15px !important;
     justify-content: center !important;
-    padding: 30px 22px calc(34px + env(safe-area-inset-bottom)) !important;
+    padding: 22px 22px calc(26px + env(safe-area-inset-bottom)) !important;
     text-align: center !important;
   }
 
@@ -1539,12 +1539,12 @@ a[x-apple-data-detectors] {
     align-items: flex-start;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 14px;
   }
 
   .site-footer .ft-primary { padding-right: 0; }
 
-  .site-footer .ft-logo { font-size: 21px; justify-content: flex-start !important; text-align: left; }
+  .site-footer .ft-logo { font-size: 18px; justify-content: flex-start !important; text-align: left; }
   .site-footer .ft-utility { flex-wrap: wrap; gap: 12px 20px; margin-right: 0; padding-top: 0; }
   .site-footer .ft-notice,
   .site-footer .ft-right { max-width: none; text-align: left !important; white-space: normal; }
