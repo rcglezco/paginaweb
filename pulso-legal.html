@@ -124,7 +124,7 @@ body{
 }
 .archive-heading{
   display:grid;
-  grid-template-columns:1fr auto;
+  grid-template-columns:minmax(0,1fr) minmax(260px,360px);
   gap:24px;
   align-items:end;
   border-bottom:1px solid var(--rule);
@@ -145,43 +145,117 @@ body{
   letter-spacing:2.2px;
   text-transform:uppercase;
 }
-.pulse-entry{
-  display:grid;
-  grid-template-columns:minmax(132px,.72fr) minmax(0,2.6fr) auto;
-  gap:38px;
-  padding:42px 0 46px;
-  border-bottom:1px solid var(--rule);
+.archive-intro{
+  color:var(--ink-soft);
+  font-size:14px;
+  line-height:1.75;
 }
-.entry-meta{
-  display:flex;
-  flex-direction:column;
-  gap:16px;
-  color:rgba(0,25,35,0.52);
+.pulse-timeline{
+  position:relative;
+  display:grid;
+  gap:34px;
+  padding:54px 0 0 118px;
+}
+.pulse-timeline::before{
+  content:"";
+  position:absolute;
+  left:80px;
+  top:61px;
+  bottom:8px;
+  width:1px;
+  background:linear-gradient(180deg,var(--rule-gold),var(--rule));
+}
+.pulse-day{
+  position:relative;
+  display:grid;
+  gap:14px;
+}
+.pulse-date{
+  position:absolute;
+  left:-118px;
+  top:4px;
+  width:72px;
+  color:rgba(0,25,35,0.46);
   font-family:var(--blog-mono);
   font-size:10px;
   letter-spacing:1.8px;
+  line-height:1.65;
   text-transform:uppercase;
 }
-.entry-agency{
-  color:rgba(169,116,30,0.76);
+.pulse-date strong{
+  display:block;
+  color:var(--ink);
+  font-family:var(--blog-serif);
+  font-size:31px;
+  font-weight:400;
+  letter-spacing:-.01em;
+  line-height:.95;
+}
+.pulse-dot{
+  position:absolute;
+  left:-42px;
+  top:10px;
+  width:11px;
+  height:11px;
+  background:var(--gold);
+}
+.pulse-entry{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(150px,180px);
+  gap:30px;
+  padding:22px 0 26px;
+  border-bottom:1px solid var(--rule);
+}
+.pulse-entry.is-primary{
+  background:linear-gradient(90deg,rgba(255,252,244,0.62),rgba(255,252,244,0));
+  border-top:1px solid var(--rule);
+  margin-left:-24px;
+  padding:26px 24px 28px;
+}
+.entry-meta{
+  color:rgba(169,116,30,0.82);
+  font-family:var(--blog-mono);
+  font-size:10px;
+  letter-spacing:1.8px;
+  margin-bottom:13px;
+  text-transform:uppercase;
 }
 .entry-title{
   color:var(--ink);
   font-family:var(--blog-serif);
-  font-size:clamp(27px,3.5vw,42px);
+  font-size:clamp(24px,3.1vw,36px);
   font-weight:400;
   letter-spacing:-.012em;
   line-height:1.08;
-  margin-bottom:18px;
+  margin-bottom:13px;
+}
+.pulse-entry:not(.is-primary) .entry-title{
+  font-size:clamp(22px,2.4vw,28px);
 }
 .entry-reading{
   max-width:670px;
   color:var(--ink-soft);
   font-size:15px;
-  line-height:1.86;
+  line-height:1.76;
+}
+.entry-side{
+  display:grid;
+  align-content:space-between;
+  gap:20px;
+  justify-items:end;
+  text-align:right;
+}
+.entry-source{
+  color:rgba(0,25,35,0.52);
+  font-size:12px;
+  line-height:1.55;
+}
+.entry-source strong{
+  color:var(--ink);
+  display:block;
+  font-weight:400;
 }
 .entry-link{
-  align-self:end;
   color:rgba(0,25,35,0.58);
   font-family:var(--blog-mono);
   font-size:10px;
@@ -202,11 +276,33 @@ body{
   padding:44px 0 48px;
 }
 .pulse-note{
-  max-width:620px;
-  color:rgba(0,25,35,0.52);
-  font-size:13px;
-  line-height:1.85;
-  margin:70px 0 0 auto;
+  background:#001923;
+  color:#f6efdf;
+  display:grid;
+  grid-template-columns:260px minmax(0,1fr);
+  gap:34px;
+  margin:58px 0 0;
+  padding:26px 28px;
+}
+.pulse-note-kicker{
+  color:rgba(169,116,30,0.9);
+  font-family:var(--blog-mono);
+  font-size:10px;
+  letter-spacing:2px;
+  margin-bottom:12px;
+  text-transform:uppercase;
+}
+.pulse-note-title{
+  color:#f6efdf;
+  font-family:var(--blog-serif);
+  font-size:29px;
+  font-weight:400;
+  line-height:1.08;
+}
+.pulse-note-text{
+  color:rgba(246,239,223,0.72);
+  font-size:14px;
+  line-height:1.8;
 }
 .nav-extra > a.active{
   color:var(--gold) !important;
@@ -216,7 +312,13 @@ body{
   .pulse-hero{min-height:360px}
   .pulse-subtitle{margin:38px 0 0}
   .archive-heading{grid-template-columns:1fr}
-  .pulse-entry{grid-template-columns:1fr;gap:22px}
+  .pulse-timeline{padding-left:82px}
+  .pulse-timeline::before{left:57px}
+  .pulse-date{left:-82px;width:54px}
+  .pulse-dot{left:-30px}
+  .pulse-entry,.pulse-note{grid-template-columns:1fr;gap:22px}
+  .pulse-entry.is-primary{margin-left:0;padding:20px}
+  .entry-side{justify-items:start;text-align:left}
   .entry-link{justify-self:start}
 }
 </style>
@@ -286,12 +388,18 @@ body{
   <section class="pulse-archive" aria-labelledby="archivo-pulso">
     <div class="archive-heading">
       <h2 id="archivo-pulso" data-es="Registro editorial" data-en="Editorial Record">Registro editorial</h2>
-      <span data-es="Actualización automática" data-en="Automatic Update">Actualización automática</span>
+      <p class="archive-intro" data-es="Seguimiento curado de publicaciones oficiales con impacto práctico en comercio exterior, aduanas, migración y defensa fiscal." data-en="Curated monitoring of official publications with practical impact on foreign trade, customs, immigration and tax defense.">Seguimiento curado de publicaciones oficiales con impacto práctico en comercio exterior, aduanas, migración y defensa fiscal.</p>
     </div>
 
     <div id="pulse-entries" aria-live="polite"></div>
 
-    <p class="pulse-note" data-es="Este espacio se actualiza a partir de fuentes oficiales. Cada nota conserva vínculo a su publicación de origen." data-en="This space is updated from official sources. Each note preserves a link to its original publication.">Este espacio se actualiza a partir de fuentes oficiales. Cada nota conserva vínculo a su publicación de origen.</p>
+    <aside class="pulse-note">
+      <div>
+        <div class="pulse-note-kicker" data-es="Criterio de seguimiento" data-en="Monitoring Criteria">Criterio de seguimiento</div>
+        <h3 class="pulse-note-title" data-es="Menos volumen, más relevancia práctica." data-en="Less volume, more practical relevance.">Menos volumen, más relevancia práctica.</h3>
+      </div>
+      <p class="pulse-note-text" data-es="Este espacio se actualiza a partir de fuentes oficiales. Cada nota conserva vínculo a su publicación de origen y se presenta con una lectura breve sobre su posible impacto operativo." data-en="This space is updated from official sources. Each note preserves a link to its original publication and includes a brief reading of its potential operational impact.">Este espacio se actualiza a partir de fuentes oficiales. Cada nota conserva vínculo a su publicación de origen y se presenta con una lectura breve sobre su posible impacto operativo.</p>
+    </aside>
   </section>
 </main>
 
@@ -337,6 +445,42 @@ function setLang(l){
     }).format(new Date(Date.UTC(year, month - 1, day)));
   };
 
+  const formatDateParts = value => {
+    const [year, month, day] = String(value || '').split('-').map(Number);
+    if (!year || !month || !day) {
+      return { day: '', label: language === 'en' ? 'Official update' : 'Actualización oficial' };
+    }
+    const monthsEs = ['ENE','FEB','MAR','ABR','MAY','JUN','JUL','AGO','SEP','OCT','NOV','DIC'];
+    const monthsEn = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+    const months = language === 'en' ? monthsEn : monthsEs;
+    return {
+      day: String(day).padStart(2, '0'),
+      label: `${months[month - 1]} ${year}`
+    };
+  };
+
+  const sourceLine = entry => [entry.fuente, entry.categoria].filter(Boolean).join(' · ') || entry.categoria || entry.fuente || '';
+
+  const sideLabel = entry => {
+    const category = String(entry.categoria || '').toLowerCase();
+    if (category.includes('aduana')) return language === 'en' ? 'Customs operation' : 'Operación aduanera';
+    if (category.includes('comercio')) return language === 'en' ? 'Foreign trade' : 'Comercio exterior';
+    if (category.includes('migratorio')) return language === 'en' ? 'Immigration matters' : 'Materia migratoria';
+    if (category.includes('defensa')) return language === 'en' ? 'Deadlines and filings' : 'Plazos y promociones';
+    return language === 'en' ? 'Official update' : 'Actualización oficial';
+  };
+
+  const groupByDate = entries => entries.reduce((groups, entry) => {
+    const key = entry.fecha || '';
+    const last = groups[groups.length - 1];
+    if (last && last.fecha === key) {
+      last.items.push(entry);
+    } else {
+      groups.push({ fecha: key, items: [entry] });
+    }
+    return groups;
+  }, []);
+
   const renderEmpty = () => {
     container.innerHTML = `<div class="pulse-empty">${escapeHtml(emptyText)}</div>`;
   };
@@ -350,19 +494,36 @@ function setLang(l){
       return;
     }
 
-    container.innerHTML = entries.slice(0, 12).map(entry => `
-      <article class="pulse-entry">
-        <div class="entry-meta">
-          <span>${escapeHtml(formatDate(entry.fecha))}</span>
-          <span class="entry-agency">${escapeHtml(entry.dependencia || entry.fuente || 'DOF')}</span>
-        </div>
-        <div>
-          <h3 class="entry-title">${escapeHtml(entry.titulo)}</h3>
-          <p class="entry-reading">${escapeHtml(entry.lectura || entry.categoria || '')}</p>
-        </div>
-        <a class="entry-link" href="${escapeHtml(entry.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(linkText)}</a>
-      </article>
-    `).join('');
+    let renderedIndex = 0;
+    const groups = groupByDate(entries.slice(0, 12));
+    container.innerHTML = `<div class="pulse-timeline">${
+      groups.map(group => {
+        const date = formatDateParts(group.fecha);
+        return `
+          <section class="pulse-day">
+            <div class="pulse-date">${date.day ? `<strong>${escapeHtml(date.day)}</strong>` : ''}${escapeHtml(date.label)}</div>
+            <span class="pulse-dot" aria-hidden="true"></span>
+            ${group.items.map(entry => {
+              const isPrimary = renderedIndex === 0;
+              renderedIndex += 1;
+              return `
+                <article class="pulse-entry${isPrimary ? ' is-primary' : ''}">
+                  <div>
+                    <div class="entry-meta">${escapeHtml(sourceLine(entry))}</div>
+                    <h3 class="entry-title">${escapeHtml(entry.titulo)}</h3>
+                    <p class="entry-reading">${escapeHtml(entry.lectura || entry.categoria || '')}</p>
+                  </div>
+                  <div class="entry-side">
+                    <p class="entry-source"><strong>${escapeHtml(entry.dependencia || entry.fuente || 'DOF')}</strong>${escapeHtml(sideLabel(entry))}</p>
+                    <a class="entry-link" href="${escapeHtml(entry.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(linkText)}</a>
+                  </div>
+                </article>
+              `;
+            }).join('')}
+          </section>
+        `;
+      }).join('')
+    }</div>`;
   } catch (error) {
     renderEmpty();
   }
