@@ -5,7 +5,7 @@
     "fuente": "DOF",
     "categoria": "Comercio Exterior",
     "titulo": "Resolución preliminar del procedimiento administrativo de investigación antidumping sobre las importaciones de bicicletas para adulto originarias de la República Popular China, independientemente del país de procedencia",
-    "lectura": "El examen de vigencia abre la revisión de una cuota compensatoria aplicable a importaciones específicas; quienes operen la mercancía señalada deben revisar origen, fracción arancelaria y exposición comercial antes de cerrar operaciones.",
+    "lectura": "El procedimiento antidumping puede modificar cargas o condiciones aplicables a importaciones específicas; quienes operen la mercancía señalada deben revisar origen, fracción arancelaria y exposición comercial.",
     "url": "https://diariooficial.gob.mx/nota_detalle.php?codigo=5800940&fecha=12/10/2026"
   },
   {
@@ -18,6 +18,15 @@
     "url": "https://diariooficial.gob.mx/nota_detalle.php?codigo=5800920&fecha=09/10/2026"
   },
   {
+    "fecha": "2026-10-09",
+    "dependencia": "Tribunal Federal de Justicia Administrativa",
+    "fuente": "TFJA",
+    "categoria": "Defensa Fiscal",
+    "titulo": "SRG/03/2026: SUSPENSIÓN DE ACTIVIDADES JURISDICCIONALES DE LA SALA REGIONAL EN GUERRERO DEL TRIBUNAL FEDERAL DE JUSTICIA ADMINISTRATIVA, POR CAUSA DE FUERZA MAYOR",
+    "lectura": "La suspensión incide en el cómputo de plazos ante el TFJA; conviene revisar expedientes fiscales, aduaneros o de comercio exterior radicados en la sala correspondiente antes de presentar promociones o recursos.",
+    "url": "https://www.tfja.gob.mx/pdf/secretaria_general_de_acuerdos/acuerdos_sala_superior/2026/Acuerdo_SRG-03-2026_SuspensionlaboresSalaGuerrero_09-10-2026.pdf"
+  },
+  {
     "fecha": "2026-10-08",
     "dependencia": "SECRETARIA DE ECONOMIA",
     "fuente": "DOF",
@@ -25,6 +34,24 @@
     "titulo": "Declaratoria del inicio del procedimiento administrativo de examen de vigencia de la cuota compensatoria impuesta a las importaciones de ferrosilicomanganeso originarias de la República de la India, independientemente del país de procedencia",
     "lectura": "El examen de vigencia abre la revisión de una cuota compensatoria aplicable a importaciones específicas; quienes operen la mercancía señalada deben revisar origen, fracción arancelaria y exposición comercial antes de cerrar operaciones.",
     "url": "https://diariooficial.gob.mx/nota_detalle.php?codigo=5800733&fecha=08/10/2026"
+  },
+  {
+    "fecha": "2026-10-02",
+    "dependencia": "SNICE · Avisos y Permisos",
+    "fuente": "SNICE",
+    "categoria": "Aduanas",
+    "titulo": "Comunicado de prórroga en la aplicabilidad del permiso previo de importación de azúcar",
+    "lectura": "La publicación incide en permisos o requisitos operativos para importar o exportar mercancías; conviene revisar vigencia, documentación y operaciones pendientes antes del despacho.",
+    "url": "https://www.snice.gob.mx/~oracle/SNICE_DOCS/PRORROGA-AZUCAR-ACTUALIDAD_20261002-20261002.pdf"
+  },
+  {
+    "fecha": "2026-10-01",
+    "dependencia": "SNICE · Cupos",
+    "fuente": "SNICE",
+    "categoria": "Comercio Exterior",
+    "titulo": "Acta de la LPN No. 002/2027 para asignar el cupo de exportación de prendas de vestir de lana (TPL2) establecido en el acuerdo por el que se dan a conocer los cupos de exportación e importación de mercancías textiles y prendas de vestir no originarias, susceptibles de recibir el trato arancelario preferencial, conforme al tratado entre los Estados Unidos de América, los Estados Unidos Mexicanos y Canadá",
+    "lectura": "El aviso abre o documenta un procedimiento de cupos o asignaciones comerciales; las empresas interesadas deben revisar bases, elegibilidad, documentación y calendario antes de participar.",
+    "url": "https://www.snice.gob.mx/~oracle/SNICE_DOCS/ACTALICITACION002-2027-LICITACION-ACTUALIDAD_20261001-20261001.pdf"
   },
   {
     "fecha": "2026-10-01",
@@ -37,39 +64,57 @@
   },
   {
     "fecha": "2026-10-01",
-    "dependencia": "SECRETARIA DEL TRABAJO Y PREVISION SOCIAL",
-    "fuente": "DOF",
+    "dependencia": "Tribunal Federal de Justicia Administrativa",
+    "fuente": "TFJA",
+    "categoria": "Defensa Fiscal",
+    "titulo": "SRNL/1/2026: SUSPENSIÓN DE ACTIVIDADES JURISDICCIONALES EN LAS SALAS REGIONALES EN NUEVO LEÓN DEL TRIBUNAL FEDERAL DE JUSTICIA ADMINISTRATIVA POR CAUSA DE FUERZA MAYOR",
+    "lectura": "La suspensión incide en el cómputo de plazos ante el TFJA; conviene revisar expedientes fiscales, aduaneros o de comercio exterior radicados en la sala correspondiente antes de presentar promociones o recursos.",
+    "url": "https://www.tfja.gob.mx/pdf/secretaria_general_de_acuerdos/acuerdos_sala_superior/2026/ACUERDO_SRNL-1-2026_SUSPENSI%C3%93N_02_OCTUBRE%202026.pdf"
+  },
+  {
+    "fecha": "2026-09-30",
+    "dependencia": "SNICE · Cupos",
+    "fuente": "SNICE",
     "categoria": "Comercio Exterior",
-    "titulo": "Acuerdo que establece las mercancías cuya exportación está sujeta a regulación por parte de la Secretaría del Trabajo y Previsión Social a través del Certificado Laboral para la Agroexportación",
-    "lectura": "La publicación modifica condiciones aplicables a operaciones de importación o exportación; quienes operen mercancías alcanzadas deben revisar requisitos, fracciones arancelarias y documentación antes de ejecutar la operación.",
-    "url": "https://diariooficial.gob.mx/nota_detalle.php?codigo=5800055&fecha=01/10/2026"
+    "titulo": "Acta de la LPN No. 001/2027 para asignar el cupo de exportación de prendas de vestir de algodón o fibras artificiales o sintéticas (TPL1) establecido en el acuerdo por el que se dan a conocer los cupos de exportación e importación de mercancías textiles y prendas de vestir no originarias, susceptibles de recibir el trato arancelario preferencial, conforme al tratado entre los Estados Unidos de América, los Estados Unidos Mexicanos y Canadá",
+    "lectura": "El aviso abre o documenta un procedimiento de cupos o asignaciones comerciales; las empresas interesadas deben revisar bases, elegibilidad, documentación y calendario antes de participar.",
+    "url": "https://www.snice.gob.mx/~oracle/SNICE_DOCS/ACTALICITACION001-2027-LICITACION-ACTUALIDAD_20261001-20261001.pdf"
+  },
+  {
+    "fecha": "2026-09-29",
+    "dependencia": "SNICE · Cupos",
+    "fuente": "SNICE",
+    "categoria": "Comercio Exterior",
+    "titulo": "Acta de junta de aclaración de bases para participar en las LPN No. 003/2027, 004/2027 y 005/2027 para asignar los cupos de importación de leche condensada, leche evaporada y aceite de palma y aceite de almendra (hueso) de palma establecidos en el acuerdo por el que se dan a conocer los cupos de importación descritos en el apéndice A-1 \"contingentes arancelarios de México\" del anexo 2-D \"compromisos arancelarios\" del TIPAT",
+    "lectura": "El aviso abre o documenta un procedimiento de cupos o asignaciones comerciales; las empresas interesadas deben revisar bases, elegibilidad, documentación y calendario antes de participar.",
+    "url": "https://www.snice.gob.mx/~oracle/SNICE_DOCS/ACLARACION-003004005-2027-ETIQUETADO_20260929-20260929.pdf"
   },
   {
     "fecha": "2026-09-28",
-    "dependencia": "SECRETARIA DE ECONOMIA",
-    "fuente": "DOF",
+    "dependencia": "SNICE · Cupos",
+    "fuente": "SNICE",
     "categoria": "Comercio Exterior",
-    "titulo": "Acuerdo que modifica el diverso por el que la Secretaría de Economía emite reglas y criterios de carácter general en materia de comercio exterior",
-    "lectura": "La publicación modifica condiciones aplicables a operaciones de importación o exportación; quienes operen mercancías alcanzadas deben revisar requisitos, fracciones arancelarias y documentación antes de ejecutar la operación.",
-    "url": "https://diariooficial.gob.mx/nota_detalle.php?codigo=5799697&fecha=28/09/2026"
+    "titulo": "Aviso mediante el que se comunica el listado de carpetas encriptadas recibidas para participar en las LPN No. 001/2027 para asignar el cupo de exportación de prendas de vestir de algodón o fibras artificiales o sintéticas (TPL1) y 002/2027 para asignar el cupo de exportación de prendas de vestir de lana (TPL2), establecidos en el acuerdo por el que se dan a conocer los cupos de exportación e importación de mercancías textiles y prendas de vestir no originarias, susceptibles de recibir el trato arancelario preferencial, conforme al Tratado entre los Estados Unidos de América, los Estados Unidos Mexicanos y Canadá",
+    "lectura": "El aviso abre o documenta un procedimiento de cupos o asignaciones comerciales; las empresas interesadas deben revisar bases, elegibilidad, documentación y calendario antes de participar.",
+    "url": "https://www.snice.gob.mx/~oracle/SNICE_DOCS/AVISO-CARPETA-001Y002-2027-LICITACION-ACTUALIDAD_20260929-20260929.pdf"
   },
   {
     "fecha": "2026-09-28",
-    "dependencia": "SECRETARIA DE ECONOMIA",
-    "fuente": "DOF",
-    "categoria": "Comercio Exterior",
-    "titulo": "Declaratoria del inicio del procedimiento administrativo de examen de vigencia de la cuota compensatoria impuesta a las importaciones de artículos para cocinar de aluminio originarias de la República Popular China, independientemente del país de procedencia",
-    "lectura": "El examen de vigencia abre la revisión de una cuota compensatoria aplicable a importaciones específicas; quienes operen la mercancía señalada deben revisar origen, fracción arancelaria y exposición comercial antes de cerrar operaciones.",
-    "url": "https://diariooficial.gob.mx/nota_detalle.php?codigo=5799699&fecha=28/09/2026"
+    "dependencia": "Tribunal Federal de Justicia Administrativa",
+    "fuente": "TFJA",
+    "categoria": "Defensa Fiscal",
+    "titulo": "SRS/01/2026: SUSPENSIÓN DE ACTIVIDADES JURISDICCIONALES DE LA SALA REGIONAL EN SONORA DEL TRIBUNAL FEDERAL DE JUSTICIA ADMINISTRATIVA, POR CAUSA DE FUERZA MAYOR",
+    "lectura": "La suspensión incide en el cómputo de plazos ante el TFJA; conviene revisar expedientes fiscales, aduaneros o de comercio exterior radicados en la sala correspondiente antes de presentar promociones o recursos.",
+    "url": "https://www.tfja.gob.mx/pdf/secretaria_general_de_acuerdos/acuerdos_sala_superior/2026/Acuerdo_SRS-01-2026_Suspension_labores_Sala_Regional_Sonora.pdf"
   },
   {
-    "fecha": "2026-09-28",
-    "dependencia": "SECRETARIA DE ECONOMIA",
-    "fuente": "DOF",
+    "fecha": "2026-09-25",
+    "dependencia": "SNICE · Cupos",
+    "fuente": "SNICE",
     "categoria": "Comercio Exterior",
-    "titulo": "Resolución preliminar del procedimiento administrativo de investigación antidumping sobre las importaciones de recubrimientos cerámicos para piso y muro originarias de la República de la India, independientemente del país de procedencia",
-    "lectura": "El examen de vigencia abre la revisión de una cuota compensatoria aplicable a importaciones específicas; quienes operen la mercancía señalada deben revisar origen, fracción arancelaria y exposición comercial antes de cerrar operaciones.",
-    "url": "https://diariooficial.gob.mx/nota_detalle.php?codigo=5799698&fecha=28/09/2026"
+    "titulo": "Bases para participar en las LPN No. 003/2027, 004/2027 y 005/2027 para asignar los cupos de importación de leche condensada, leche evaporada y aceite de palma y aceite de almendra (hueso) de palma establecidos en el Acuerdo por el que se dan a conocer los cupos de importación descritos en el apéndice A-1 \"contingentes arancelarios de México\" del anexo 2-D \"compromisos arancelarios\" del TIPAT",
+    "lectura": "El aviso abre o documenta un procedimiento de cupos o asignaciones comerciales; las empresas interesadas deben revisar bases, elegibilidad, documentación y calendario antes de participar.",
+    "url": "https://www.snice.gob.mx/~oracle/SNICE_DOCS/FORMATOS-BASESLPN-030405-2027-LICITACION-ACTUALIDAD_20260926-20260926.pdf"
   },
   {
     "fecha": "2026-09-25",
@@ -81,13 +126,22 @@
     "url": "https://diariooficial.gob.mx/nota_detalle.php?codigo=5799677&fecha=25/09/2026"
   },
   {
-    "fecha": "2026-09-25",
-    "dependencia": "SECRETARIA DE ECONOMIA",
-    "fuente": "DOF",
+    "fecha": "2026-09-24",
+    "dependencia": "SNICE · Cupos",
+    "fuente": "SNICE",
     "categoria": "Comercio Exterior",
-    "titulo": "Resolución final del procedimiento administrativo de examen de vigencia de las cuotas compensatorias impuestas a las importaciones de lámina rolada en caliente originarias de la Federación de Rusia y Ucrania, independientemente del país de procedencia",
-    "lectura": "El examen de vigencia abre la revisión de una cuota compensatoria aplicable a importaciones específicas; quienes operen la mercancía señalada deben revisar origen, fracción arancelaria y exposición comercial antes de cerrar operaciones.",
-    "url": "https://diariooficial.gob.mx/nota_detalle.php?codigo=5799586&fecha=25/09/2026"
+    "titulo": "Aviso mediante el que se comunica el listado de las constancias de calificación emitidas por la UAJ para participar en las LPN No. 001/2027 para asignar el cupo de exportación de prendas de vestir de algodón o fibras artificiales o sintéticas (TPL1) y 002/2027 para asignar el cupo de exportación de prendas de vestir de lana (TPL2), establecidos en el acuerdo por el que se dan a conocer los cupos de exportación e importación de mercancías textiles y prendas de vestir no originarias, susceptibles de recibir el trato arancelario preferencial, conforme al Tratado entre los Estados Unidos de América, los Estados Unidos Mexicanos y Canadá",
+    "lectura": "El aviso abre o documenta un procedimiento de cupos o asignaciones comerciales; las empresas interesadas deben revisar bases, elegibilidad, documentación y calendario antes de participar.",
+    "url": "https://www.snice.gob.mx/~oracle/SNICE_DOCS/CONSTANCIAS001Y002-2027-LICITACION-ACTUALIDAD_20260924-20260924.pdf"
+  },
+  {
+    "fecha": "2026-09-23",
+    "dependencia": "Tribunal Federal de Justicia Administrativa",
+    "fuente": "TFJA",
+    "categoria": "Defensa Fiscal",
+    "titulo": "SRG/02/2026: SUSPENSIÓN DE ACTIVIDADES JURISDICCIONALES DEL TURNO VESPERTINO DE LA OFICIALÍA DE PARTES DE LA SALA REGIONAL EN GUERRERO DEL TRIBUNAL FEDERAL DE JUSTICIA ADMINISTRATIVA, POR CAUSA DE FUERZA MAYOR",
+    "lectura": "La suspensión incide en el cómputo de plazos ante el TFJA; conviene revisar expedientes fiscales, aduaneros o de comercio exterior radicados en la sala correspondiente antes de presentar promociones o recursos.",
+    "url": "https://www.tfja.gob.mx/pdf/secretaria_general_de_acuerdos/acuerdos_sala_superior/2026/Acuerdo_SRG-02-2026_SUSPENSION_ACTIVIDADES_Guerrero.pdf"
   },
   {
     "fecha": "2026-09-22",
@@ -160,50 +214,5 @@
     "titulo": "Resolución final del procedimiento administrativo de investigación antidumping sobre las importaciones de perfiles y barras de aluminio originarias de la República Popular China, independientemente del país de procedencia",
     "lectura": "El examen de vigencia abre la revisión de una cuota compensatoria aplicable a importaciones específicas; quienes operen la mercancía señalada deben revisar origen, fracción arancelaria y exposición comercial antes de cerrar operaciones.",
     "url": "https://diariooficial.gob.mx/nota_detalle.php?codigo=5797943&fecha=04/09/2026"
-  },
-  {
-    "fecha": "2026-09-03",
-    "dependencia": "SECRETARIA DE ECONOMIA",
-    "fuente": "DOF",
-    "categoria": "Comercio Exterior",
-    "titulo": "Resolución final del procedimiento administrativo de investigación antidumping sobre las importaciones de aceros laminados en caliente originarias de la República Popular China y la República Socialista de Vietnam, independientemente del país de procedencia",
-    "lectura": "El examen de vigencia abre la revisión de una cuota compensatoria aplicable a importaciones específicas; quienes operen la mercancía señalada deben revisar origen, fracción arancelaria y exposición comercial antes de cerrar operaciones.",
-    "url": "https://diariooficial.gob.mx/nota_detalle.php?codigo=5797809&fecha=03/09/2026"
-  },
-  {
-    "fecha": "2026-09-02",
-    "dependencia": "SECRETARIA DE ECONOMIA",
-    "fuente": "DOF",
-    "categoria": "Comercio Exterior",
-    "titulo": "acepta la solicitud de parte interesada y se declara el inicio del procedimiento administrativo de investigación antidumping sobre las importaciones de placa de acero en hoja originarias de Japón, independientemente del país de procedencia",
-    "lectura": "El examen de vigencia abre la revisión de una cuota compensatoria aplicable a importaciones específicas; quienes operen la mercancía señalada deben revisar origen, fracción arancelaria y exposición comercial antes de cerrar operaciones.",
-    "url": "https://diariooficial.gob.mx/nota_detalle.php?codigo=5797705&fecha=02/09/2026"
-  },
-  {
-    "fecha": "2026-09-01",
-    "dependencia": "SECRETARIA DE ECONOMIA",
-    "fuente": "DOF",
-    "categoria": "Comercio Exterior",
-    "titulo": "Declaratoria del inicio del procedimiento administrativo de examen de vigencia de la cuota compensatoria impuesta a las importaciones de ftalato de dioctilo originarias de la República de Corea y de los Estados Unidos de América, independientemente del país de procedencia",
-    "lectura": "El examen de vigencia abre la revisión de una cuota compensatoria aplicable a importaciones específicas; quienes operen la mercancía señalada deben revisar origen, fracción arancelaria y exposición comercial antes de cerrar operaciones.",
-    "url": "https://diariooficial.gob.mx/nota_detalle.php?codigo=5797563&fecha=01/09/2026"
-  },
-  {
-    "fecha": "2026-08-31",
-    "dependencia": "SECRETARIA DE ENERGIA",
-    "fuente": "DOF",
-    "categoria": "Comercio Exterior",
-    "titulo": "emiten los formatos de solicitud de permisos y bitácoras para la producción, importación, exportación, almacenamiento, transporte, comercialización, distribución y expendio al público de biocombustibles, autorizaciones y bitácoras para la producción de biocombustibles, así como de avisos de inicio de operaciones, modificaciones o suspensiones, cesiones y prórroga de dichos permisos y autorizaciones",
-    "lectura": "La publicación modifica condiciones aplicables a operaciones de importación o exportación; quienes operen mercancías alcanzadas deben revisar requisitos, fracciones arancelarias y documentación antes de ejecutar la operación.",
-    "url": "https://diariooficial.gob.mx/nota_detalle.php?codigo=5797477&fecha=31/08/2026"
-  },
-  {
-    "fecha": "2026-08-14",
-    "dependencia": "SECRETARIA DE ECONOMIA",
-    "fuente": "DOF",
-    "categoria": "Comercio Exterior",
-    "titulo": "Resolución Final del procedimiento administrativo de investigación antidumping sobre las importaciones de sulfato de amonio originarias de la República Popular China, independientemente del país de procedencia",
-    "lectura": "El examen de vigencia abre la revisión de una cuota compensatoria aplicable a importaciones específicas; quienes operen la mercancía señalada deben revisar origen, fracción arancelaria y exposición comercial antes de cerrar operaciones.",
-    "url": "https://diariooficial.gob.mx/nota_detalle.php?codigo=5796309&fecha=14/08/2026"
   }
 ]

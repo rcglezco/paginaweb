@@ -1,6 +1,8 @@
 import { readFile, writeFile } from 'node:fs/promises';
 
 const DOF_DATE_URL = 'https://diariooficial.gob.mx/index.php';
+const SNICE_ACTUALIDAD_URL = 'https://www.snice.gob.mx/cs/avi/snice/historicos.actualidad.html';
+const TFJA_ACUERDOS_URL = 'https://www.tfja.gob.mx/acuerdos/acuerdos_2026/';
 const OUTPUT_PATH = new URL('../data/pulso-legal.json', import.meta.url);
 const MAX_ITEMS = 24;
 const FEED_DAYS = 21;
@@ -10,7 +12,8 @@ const SHOULD_PRINT_ITEMS = process.env.PULSO_LEGAL_PRINT_ITEMS === '1';
 const AUTHORIZED_CATEGORIES = [
   'Migratorio',
   'Comercio Exterior',
-  'Aduanas'
+  'Aduanas',
+  'Defensa Fiscal'
 ];
 
 const categoryRules = [
@@ -68,13 +71,18 @@ const substantiveCategoryPatterns = {
   Aduanas: [
     /\bagencia nacional de aduanas\b|\banam\b|\brgce\b|\breglas generales de comercio exterior\b/,
     /\baduana(s)?\b|\baduanero\b|\baduanera\b|\bdespacho aduanero\b|\bpedimento(s)?\b|\brecinto(s)? fiscalizado(s)?\b|\bprevalidacion\b|\boea\b|\boperador economico autorizado\b|\bpama\b|\bvalor en aduana\b|\bpadron de importadores\b|\bpadron de exportadores\b|\bcertificacion(es)? aduanera(s)?\b|\bfacilitacion comercial\b|\bagente aduanal\b|\bagencia aduanal\b/
+  ],
+  'Defensa Fiscal': [
+    /\btribunal federal de justicia administrativa\b|\btfja\b|\bjuicio contencioso administrativo\b/,
+    /\bplazo(s)?\b|\btermino(s)?\b|\bdia(s)? inhabil(es)?\b|\bsuspension de actividades jurisdiccionales\b|\bsala regional\b|\bexpediente(s)?\b|\bpromocion(es)?\b|\boficialia de partes\b/
   ]
 };
 
 const strictDirectPracticeHookPatterns = [
   /\bcomercio exterior\b|\bimportacion(es)?\b|\bexportacion(es)?\b|\btigie\b|\bregla octava\b|\barancel(es|aria|arias)?\b|\bfraccion(es)? arancelaria(s)?\b|\bcuota(s)? compensatoria(s)?\b|\bantidumping\b|\bimmex\b|\bprosec\b|\bprogramas de fomento\b|\brrna\b|\bregulaciones y restricciones no arancelarias\b|\brestricciones no arancelarias\b|\bpermisos previos\b|\bavisos automaticos\b|\bcupos\b|\bmercancia(s)?\b/,
   /\bagencia nacional de aduanas\b|\banam\b|\brgce\b|\breglas generales de comercio exterior\b|\baduana(s)?\b|\baduanero\b|\baduanera\b|\bdespacho aduanero\b|\bpedimento(s)?\b|\brecinto(s)? fiscalizado(s)?\b|\bprevalidacion\b|\boea\b|\boperador economico autorizado\b|\bpama\b|\bvalor en aduana\b|\bpadron(es)? de importadores\b|\bpadron(es)? de exportadores\b|\bcertificacion(es)? aduanera(s)?\b|\bfacilitacion comercial\b|\bagente aduanal\b|\bagencia aduanal\b/,
-  /\binstituto nacional de migracion\b|\binm\b|\bmigracion\b|\bmigratorio\b|\bvisa(s)?\b|\bcondicion(es)? de estancia\b|\bresidencia\b|\bresidencia temporal\b|\bresidencia permanente\b|\bresidente\b|\brefugiado\b|\basilo\b|\bnaturalizacion\b|\bpermiso(s)? de trabajo\b|\bextranjero(s)?\b|\bestancia\b/
+  /\binstituto nacional de migracion\b|\binm\b|\bmigracion\b|\bmigratorio\b|\bvisa(s)?\b|\bcondicion(es)? de estancia\b|\bresidencia\b|\bresidencia temporal\b|\bresidencia permanente\b|\bresidente\b|\brefugiado\b|\basilo\b|\bnaturalizacion\b|\bpermiso(s)? de trabajo\b|\bextranjero(s)?\b|\bestancia\b/,
+  /\btribunal federal de justicia administrativa\b|\btfja\b|\bjuicio contencioso administrativo\b|\bsala regional\b|\bsuspension de actividades jurisdiccionales\b|\bplazo(s)?\b|\btermino(s)?\b|\bdia(s)? inhabil(es)?\b|\boficialia de partes\b/
 ];
 
 const publicHealthNoticePatterns = [
@@ -171,12 +179,38 @@ function parseDateFromUrl(url, fallbackDate = new Date().toISOString().slice(0, 
   return `${year}-${month}-${day}`;
 }
 
+function parseDottedDate(value = '') {
+  const match = value.match(/\b(\d{2})\.(\d{2})\.(\d{4})\b/);
+  if (!match) return '';
+  const [, day, month, year] = match;
+  return `${year}-${month}-${day}`;
+}
+
+function recentWindowStart(days = FEED_DAYS) {
+  const date = new Date();
+  date.setHours(0, 0, 0, 0);
+  date.setDate(date.getDate() - (days - 1));
+  return date.toISOString().slice(0, 10);
+}
+
+function isRecentIsoDate(value = '') {
+  return /^\d{4}-\d{2}-\d{2}$/.test(value) && value >= recentWindowStart();
+}
+
 function stripHtml(value = '') {
   return decodeEntities(value)
     .replace(/<!--[\s\S]*?-->/g, ' ')
     .replace(/<[^>]*>/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
+}
+
+function absoluteUrl(url = '', base) {
+  try {
+    return new URL(decodeEntities(url), base).toString();
+  } catch {
+    return '';
+  }
 }
 
 function formatDofDate(date) {
@@ -259,6 +293,172 @@ function parseDailyDofItems(html, feedDate) {
   }
 
   return items;
+}
+
+function parseSniceItems(html) {
+  const items = [];
+  const rowPattern = /<tr\b[\s\S]*?<\/tr>/gi;
+
+  for (const rowMatch of html.matchAll(rowPattern)) {
+    const row = rowMatch[0];
+    const cells = [...row.matchAll(/<td\b[\s\S]*?<\/td>/gi)].map(cell => cell[0]);
+    if (cells.length < 3) continue;
+
+    const date = parseDottedDate(stripHtml(cells[0]));
+    if (!isRecentIsoDate(date)) continue;
+
+    const linkMatch = cells[0].match(/href=["']([^"']+)["']/i);
+    const description = cleanSniceTitle(stripHtml(cells[1]));
+    const area = stripHtml(cells[2]);
+    const url = absoluteUrl(linkMatch?.[1] || SNICE_ACTUALIDAD_URL, SNICE_ACTUALIDAD_URL);
+
+    if (!description || !url) continue;
+
+    items.push({
+      fecha: date,
+      dependencia: area ? `SNICE · ${area}` : 'SNICE',
+      fuente: 'SNICE',
+      categoria: /permiso|aviso automatico|rrna|regulacion|restriccion/i.test(normalizeText(description))
+        ? 'Aduanas'
+        : 'Comercio Exterior',
+      titulo: description.replace(/\.$/, '').trim(),
+      lectura: sniceReading(description),
+      url
+    });
+  }
+
+  return items.filter(isRelevantSniceItem);
+}
+
+function cleanSniceTitle(value = '') {
+  return value
+    .replace(/\s+\d{2}\.\d{2}\.\d{3,4}\.?$/g, '')
+    .replace(/\bCanad$/i, 'Canadá')
+    .replace(/\bmercancís\b/gi, 'mercancías')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function sniceReading(description = '') {
+  const text = normalizeText(description).toLowerCase();
+
+  if (/cupo|tpl|licitacion|lpn/.test(text)) {
+    return 'El aviso abre o documenta un procedimiento de cupos o asignaciones comerciales; las empresas interesadas deben revisar bases, elegibilidad, documentación y calendario antes de participar.';
+  }
+
+  if (/permiso previo|aviso automatico|rrna|regulacion|restriccion/.test(text)) {
+    return 'La publicación incide en permisos o requisitos operativos para importar o exportar mercancías; conviene revisar vigencia, documentación y operaciones pendientes antes del despacho.';
+  }
+
+  return 'El aviso tiene impacto operativo en comercio exterior; quienes importen o exporten mercancías relacionadas deben revisar requisitos, fechas y documentación aplicable.';
+}
+
+function isRelevantSniceItem(item) {
+  const text = normalizeText(`${item.dependencia} ${item.titulo}`).toLowerCase();
+  return /\bcupo(s)?\b|\bpermiso(s)? previo(s)?\b|\baviso(s)? automatico(s)?\b|\blicitacion\b|\blpn\b|\btpl\b|\bimportacion(es)?\b|\bexportacion(es)?\b|\bregla(s)?\b|\btramite(s)?\b|\brrna\b|\bregulacion(es)?\b|\brestriccion(es)?\b|\barancel(es)?\b|\bcertificado(s)?\b/.test(text);
+}
+
+function parseSpanishLongDate(value = '') {
+  const months = {
+    enero: '01',
+    febrero: '02',
+    marzo: '03',
+    abril: '04',
+    mayo: '05',
+    junio: '06',
+    julio: '07',
+    agosto: '08',
+    septiembre: '09',
+    setiembre: '09',
+    octubre: '10',
+    noviembre: '11',
+    diciembre: '12'
+  };
+  const text = normalizeText(value).toLowerCase();
+  const match = text.match(/\b(\d{1,2}) de ([a-z]+) de (\d{4})\b/);
+  if (!match) return '';
+  const [, day, monthName, year] = match;
+  const month = months[monthName];
+  return month ? `${year}-${month}-${String(day).padStart(2, '0')}` : '';
+}
+
+function parseTfjaItems(html) {
+  const items = [];
+  const blockPattern = /<p>\s*<strong>([\s\S]*?)<\/strong>\s*<\/p>\s*<ul>([\s\S]*?)<\/ul>/gi;
+
+  for (const blockMatch of html.matchAll(blockPattern)) {
+    const fecha = parseSpanishLongDate(stripHtml(blockMatch[1]));
+    if (!isRecentIsoDate(fecha)) continue;
+
+    const listHtml = blockMatch[2];
+    for (const itemMatch of listHtml.matchAll(/<li\b[\s\S]*?<\/li>/gi)) {
+      const itemHtml = itemMatch[0];
+      const linkMatch = itemHtml.match(/href=["']([^"']+)["'][\s\S]*?>([\s\S]*?)<\/a>/i);
+      const code = stripHtml(linkMatch?.[2] || '');
+      const description = stripHtml(itemHtml)
+        .replace(new RegExp(`^${code.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*`, 'i'), '')
+        .trim();
+      const url = absoluteUrl(linkMatch?.[1] || '', TFJA_ACUERDOS_URL);
+
+      if (!description || !url) continue;
+
+      const item = {
+        fecha,
+        dependencia: 'Tribunal Federal de Justicia Administrativa',
+        fuente: 'TFJA',
+        categoria: 'Defensa Fiscal',
+        titulo: code ? `${code}: ${description.replace(/\.$/, '').trim()}` : description.replace(/\.$/, '').trim(),
+        lectura: 'La suspensión incide en el cómputo de plazos ante el TFJA; conviene revisar expedientes fiscales, aduaneros o de comercio exterior radicados en la sala correspondiente antes de presentar promociones o recursos.',
+        url
+      };
+
+      if (isRelevantTfjaItem(item)) {
+        items.push(item);
+      }
+    }
+  }
+
+  return items;
+}
+
+function isRelevantTfjaItem(item) {
+  const text = normalizeText(`${item.titulo} ${item.lectura}`).toLowerCase();
+  return /suspension de actividades jurisdiccionales|suspension de plazos|no corrieron terminos|dia inhabil|oficialia de partes|sala regional/.test(text);
+}
+
+async function fetchText(url, encoding = 'utf8') {
+  const response = await fetch(url, {
+    headers: {
+      'user-agent': 'Insight & Forward Pulso Legal / GitHub Pages updater'
+    }
+  });
+
+  if (!response.ok) {
+    throw new Error(`No se pudo consultar ${url}: ${response.status}`);
+  }
+
+  const buffer = await response.arrayBuffer();
+  return new TextDecoder(encoding).decode(buffer);
+}
+
+async function collectSniceItems() {
+  try {
+    const html = await fetchText(SNICE_ACTUALIDAD_URL, 'utf8');
+    return parseSniceItems(html);
+  } catch (error) {
+    console.warn(`Pulso Legal: SNICE no se pudo consultar (${error.message}).`);
+    return [];
+  }
+}
+
+async function collectTfjaItems() {
+  try {
+    const html = await fetchText(TFJA_ACUERDOS_URL, 'utf8');
+    return parseTfjaItems(html);
+  } catch (error) {
+    console.warn(`Pulso Legal: TFJA no se pudo consultar (${error.message}).`);
+    return [];
+  }
 }
 
 function classify(entry) {
@@ -419,8 +619,12 @@ function editorialTitle(description) {
 function editorialReading(entry, category) {
   const text = normalizeText(`${entry.title} ${entry.description}`).toLowerCase();
 
-  if (category === 'Comercio Exterior' && /cuota compensatoria|examen de vigencia|antidumping/.test(text)) {
+  if (category === 'Comercio Exterior' && /cuota compensatoria|examen de vigencia/.test(text)) {
     return 'El examen de vigencia abre la revisión de una cuota compensatoria aplicable a importaciones específicas; quienes operen la mercancía señalada deben revisar origen, fracción arancelaria y exposición comercial antes de cerrar operaciones.';
+  }
+
+  if (category === 'Comercio Exterior' && /antidumping/.test(text)) {
+    return 'El procedimiento antidumping puede modificar cargas o condiciones aplicables a importaciones específicas; quienes operen la mercancía señalada deben revisar origen, fracción arancelaria y exposición comercial.';
   }
 
   if (category === 'Comercio Exterior') {
@@ -480,23 +684,13 @@ async function main() {
   const feedItems = [];
 
   for (const feedDate of getRecentDofDates()) {
-    const response = await fetch(dofUrlForDate(feedDate), {
-      headers: {
-        'user-agent': 'Insight & Forward Pulso Legal / GitHub Pages updater'
-      }
-    });
-
-    if (!response.ok) {
-      throw new Error(`No se pudo consultar el DOF para ${feedDate.dof}: ${response.status}`);
-    }
-
-    const html = new TextDecoder('iso-8859-1').decode(await response.arrayBuffer());
+    const html = await fetchText(dofUrlForDate(feedDate), 'iso-8859-1');
     feedItems.push(...parseDailyDofItems(html, feedDate));
   }
 
   const relevantFeedItems = feedItems.filter(isRelevant);
 
-  const newItems = relevantFeedItems
+  const dofItems = relevantFeedItems
     .map(item => {
       const categoria = classify(item);
       const dependencia = cleanAgency(item.title);
@@ -513,6 +707,14 @@ async function main() {
       };
     })
     .filter(Boolean);
+
+  const sniceItems = await collectSniceItems();
+  const tfjaItems = await collectTfjaItems();
+  const newItems = [
+    ...dofItems,
+    ...sniceItems,
+    ...tfjaItems
+  ];
 
   const storedItems = await readStoredItems();
   const byUrl = new Map();
@@ -531,7 +733,8 @@ async function main() {
   if (SHOULD_WRITE_OUTPUT) {
     await writeFile(OUTPUT_PATH, `${JSON.stringify(merged, null, 2)}\n`, 'utf8');
   }
-  console.log(`Pulso Legal: total recibido ${feedItems.length}, total conservado ${newItems.length}, total descartado ${feedItems.length - newItems.length}.`);
+  console.log(`Pulso Legal: DOF recibido ${feedItems.length}, DOF conservado ${dofItems.length}, DOF descartado ${feedItems.length - dofItems.length}.`);
+  console.log(`Pulso Legal: SNICE conservado ${sniceItems.length}, TFJA conservado ${tfjaItems.length}.`);
   console.log(`Pulso Legal actualizado: ${newItems.length} nuevas o vigentes, ${merged.length} totales.`);
   if (SHOULD_PRINT_ITEMS) {
     newItems.forEach(item => {
