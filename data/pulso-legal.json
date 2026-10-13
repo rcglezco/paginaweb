@@ -1,5 +1,23 @@
 [
   {
+    "fecha": "2026-10-13",
+    "dependencia": "PRESIDENCIA DE LA REPUBLICA",
+    "fuente": "DOF",
+    "categoria": "Aduanas",
+    "titulo": "establecen las condiciones aplicables al tránsito internacional de mercancías que se efectúe desde las aduanas ubicadas en los Puertos de Coatzacoalcos, Veracruz y de Salina Cruz, Oaxaca",
+    "lectura": "La publicación incide en operaciones de tránsito aduanero o internacional; quienes muevan mercancías bajo esta figura deben revisar ruta autorizada, condiciones de traslado, garantías y consecuencias por incumplimiento.",
+    "url": "https://diariooficial.gob.mx/nota_detalle.php?codigo=5800978&fecha=13/10/2026"
+  },
+  {
+    "fecha": "2026-10-13",
+    "dependencia": "PRESIDENCIA DE LA REPUBLICA",
+    "fuente": "DOF",
+    "categoria": "Comercio Exterior",
+    "titulo": "modifica la Tarifa de la Ley de los Impuestos Generales de Importación y de Exportación",
+    "lectura": "La publicación modifica tratamiento arancelario o condiciones de clasificación aplicables a mercancías específicas; las empresas alcanzadas deben revisar fracción arancelaria, requisitos y alcance operativo antes de importar.",
+    "url": "https://diariooficial.gob.mx/nota_detalle.php?codigo=5800977&fecha=13/10/2026"
+  },
+  {
     "fecha": "2026-10-12",
     "dependencia": "SECRETARIA DE ECONOMIA",
     "fuente": "DOF",
@@ -34,15 +52,6 @@
     "titulo": "Declaratoria del inicio del procedimiento administrativo de examen de vigencia de la cuota compensatoria impuesta a las importaciones de ferrosilicomanganeso originarias de la República de la India, independientemente del país de procedencia",
     "lectura": "El examen de vigencia abre la revisión de una cuota compensatoria aplicable a importaciones específicas; quienes operen la mercancía señalada deben revisar origen, fracción arancelaria y exposición comercial antes de cerrar operaciones.",
     "url": "https://diariooficial.gob.mx/nota_detalle.php?codigo=5800733&fecha=08/10/2026"
-  },
-  {
-    "fecha": "2026-10-02",
-    "dependencia": "SNICE · Avisos y Permisos",
-    "fuente": "SNICE",
-    "categoria": "Aduanas",
-    "titulo": "Comunicado de prórroga en la aplicabilidad del permiso previo de importación de azúcar",
-    "lectura": "La publicación incide en permisos o requisitos operativos para importar o exportar mercancías; conviene revisar vigencia, documentación y operaciones pendientes antes del despacho.",
-    "url": "https://www.snice.gob.mx/~oracle/SNICE_DOCS/PRORROGA-AZUCAR-ACTUALIDAD_20261002-20261002.pdf"
   },
   {
     "fecha": "2026-10-01",
@@ -205,14 +214,5 @@
     "titulo": "Resolución final del procedimiento administrativo de investigación antidumping sobre las importaciones de perfiles huecos de aluminio originarias de los Estados Unidos de América y la República Popular China, independientemente del país de procedencia",
     "lectura": "El examen de vigencia abre la revisión de una cuota compensatoria aplicable a importaciones específicas; quienes operen la mercancía señalada deben revisar origen, fracción arancelaria y exposición comercial antes de cerrar operaciones.",
     "url": "https://diariooficial.gob.mx/nota_detalle.php?codigo=5798041&fecha=04/09/2026"
-  },
-  {
-    "fecha": "2026-09-04",
-    "dependencia": "SECRETARIA DE ECONOMIA",
-    "fuente": "DOF",
-    "categoria": "Comercio Exterior",
-    "titulo": "Resolución final del procedimiento administrativo de investigación antidumping sobre las importaciones de perfiles y barras de aluminio originarias de la República Popular China, independientemente del país de procedencia",
-    "lectura": "El examen de vigencia abre la revisión de una cuota compensatoria aplicable a importaciones específicas; quienes operen la mercancía señalada deben revisar origen, fracción arancelaria y exposición comercial antes de cerrar operaciones.",
-    "url": "https://diariooficial.gob.mx/nota_detalle.php?codigo=5797943&fecha=04/09/2026"
   }
 ]

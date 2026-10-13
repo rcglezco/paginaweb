@@ -2,8 +2,13 @@ name: Update Pulso Legal
 
 on:
   schedule:
-    - cron: '35 13 * * 1-5'
-    - cron: '35 22 * * 1-5'
+    # Ventana matutina de prueba: 06:30 a 09:30, hora de México.
+    - cron: '30 12 * * 1-5'
+    - cron: '0,30 13-15 * * 1-5'
+    # Ventana vespertina de prueba: 16:30 a 20:30, hora de México.
+    - cron: '30 22 * * 1-5'
+    - cron: '0,30 23 * * 1-5'
+    - cron: '0,30 0-2 * * 2-6'
   workflow_dispatch:
 
 permissions:
@@ -24,6 +29,8 @@ jobs:
 
       - name: Update Pulso Legal data
         run: node scripts/update-pulso-legal.mjs
+        env:
+          PULSO_LEGAL_PRINT_ITEMS: '1'
 
       - name: Commit changes
         run: |

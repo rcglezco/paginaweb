@@ -5,9 +5,67 @@ const SNICE_ACTUALIDAD_URL = 'https://www.snice.gob.mx/cs/avi/snice/historicos.a
 const TFJA_ACUERDOS_URL = 'https://www.tfja.gob.mx/acuerdos/acuerdos_2026/';
 const OUTPUT_PATH = new URL('../data/pulso-legal.json', import.meta.url);
 const MAX_ITEMS = 24;
-const FEED_DAYS = 21;
+const MEXICO_TIME_ZONE = 'America/Mexico_City';
 const SHOULD_WRITE_OUTPUT = process.env.PULSO_LEGAL_DRY_RUN !== '1';
 const SHOULD_PRINT_ITEMS = process.env.PULSO_LEGAL_PRINT_ITEMS === '1';
+const SHOULD_PRINT_AUDIT = process.env.PULSO_LEGAL_AUDIT !== '0';
+
+const customsOfficeNames = [
+  'acapulco',
+  'agua prieta',
+  'aeropuerto internacional de la ciudad de mexico',
+  'aeropuerto internacional felipe angeles',
+  'aguascalientes',
+  'altamira',
+  'cancun',
+  'chihuahua',
+  'ciudad acuña',
+  'ciudad acuna',
+  'ciudad camargo',
+  'ciudad del carmen',
+  'ciudad hidalgo',
+  'ciudad juarez',
+  'ciudad miguel aleman',
+  'ciudad reynosa',
+  'coatzacoalcos',
+  'colombia',
+  'dos bocas',
+  'ensenada',
+  'guadalajara',
+  'guanajuato',
+  'guaymas',
+  'la paz',
+  'lazaro cardenas',
+  'manzanillo',
+  'matamoros',
+  'mazatlan',
+  'mexicali',
+  'monterrey',
+  'naco',
+  'nogales',
+  'nuevo laredo',
+  'ojinaga',
+  'piedras negras',
+  'progreso',
+  'puebla',
+  'puerto palomas',
+  'queretaro',
+  'salina cruz',
+  'san luis rio colorado',
+  'sonoyta',
+  'subteniente lopez',
+  'tampico',
+  'tecate',
+  'tijuana',
+  'toluca',
+  'torreon',
+  'tuxpan',
+  'tuxpam',
+  'veracruz'
+];
+
+const customsOfficesAlternation = customsOfficeNames.join('|');
+const customsOfficePattern = new RegExp(`\\baduana(?:s)?\\s+(?:de|del|en|ubicadas?\\s+en(?:\\s+los)?(?:\\s+puertos?\\s+de)?)\\s+(?:mexico|${customsOfficesAlternation})\\b|\\bpuertos?\\s+de\\s+(?:${customsOfficesAlternation})\\b`, 'i');
 
 const AUTHORIZED_CATEGORIES = [
   'Migratorio',
@@ -28,19 +86,22 @@ const categoryRules = [
     category: 'Aduanas',
     patterns: [
       { rx: /\bagencia nacional de aduanas\b|\banam\b|\brgce\b|\breglas generales de comercio exterior\b/, weight: 5 },
+      { rx: /\bley aduanera\b|\breglamento de la ley aduanera\b|\btransito aduanero\b|\btransito internacional\b|\btransito interno\b|\bmercancia(s)? en transito\b|\bdeposito fiscal\b|\bgarantia en cuenta aduanera\b|\bcuenta aduanera\b|\bcorredor interoceanico\b|\bistmo de tehuantepec\b/, weight: 5 },
+      { rx: customsOfficePattern, weight: 4 },
       { rx: /\baduana(s)?\b|\baduanero\b|\baduanera\b|\bdespacho aduanero\b|\bpedimento(s)?\b|\brecinto(s)? fiscalizado(s)?\b|\bprevalidacion\b|\boea\b|\boperador economico autorizado\b|\bpama\b|\bvalor en aduana\b|\bpadron de importadores\b|\bpadron de exportadores\b|\bcertificacion(es)? aduanera(s)?\b|\bfacilitacion comercial\b|\bagente aduanal\b|\bagencia aduanal\b/, weight: 4 }
     ]
   },
   {
     category: 'Comercio Exterior',
     patterns: [
-      { rx: /\bcomercio exterior\b|\bimportacion(es)?\b|\bexportacion(es)?\b|\btigie\b|\bregla octava\b|\barancel(es|aria|arias)?\b|\bcuota(s)? compensatoria(s)?\b|\bantidumping\b|\bimmex\b|\bprosec\b|\bprogramas de fomento\b|\brrna\b|\bregulaciones y restricciones no arancelarias\b|\brestricciones no arancelarias\b|\bpermisos previos\b|\bavisos automaticos\b|\bcupos\b|\bfraccion(es)? arancelaria(s)?\b/, weight: 3 }
+      { rx: /\bley de los impuestos generales de importacion y de exportacion\b|\bligie\b|\btigie\b|\btarifa de la ley de los impuestos generales de importacion y de exportacion\b|\bley de comercio exterior\b|\breglamento de la ley de comercio exterior\b/, weight: 5 },
+      { rx: /\bcomercio exterior\b|\bimportacion(es)?\b|\bexportacion(es)?\b|\bregla octava\b|\barancel(es|aria|arias)?\b|\bcuota(s)? compensatoria(s)?\b|\bantidumping\b|\bimmex\b|\bprosec\b|\bdrawback\b|\bprogramas de fomento\b|\brrna\b|\bregulaciones y restricciones no arancelarias\b|\brestricciones no arancelarias\b|\bpermisos previos\b|\bavisos automaticos\b|\bcupos\b|\bfraccion(es)? arancelaria(s)?\b/, weight: 3 }
     ]
   }
 ];
 
 const legalChangePatterns = [
-  /\breforma\b|\bmodifica\b|\badiciona\b|\bderoga\b|\bexpide\b|\bemite\b|\bestablece\b|\bactualiza\b|\bda a conocer\b|\bpublica\b|\bresuelve\b|\bdeclara\b/,
+  /\breforma\b|\bmodifica\b|\badiciona\b|\bderoga\b|\bexpide\b|\bemite\b|\bestablece\b|\bestablecen\b|\bactualiza\b|\bda a conocer\b|\bpublica\b|\bresuelve\b|\bdeclara\b|\botorga\b|\botorgan\b|\bexenta\b|\bexentan\b|\bsuspende\b|\bsuspenden\b/,
   /\binicio del procedimiento\b|\binicia el procedimiento\b|\bexamen de vigencia\b|\bcuota compensatoria\b|\bcriterio\b|\bjurisprudencia\b|\btesis\b/,
   /\breglas generales\b|\brequisito(s)?\b|\btramite(s)?\b|\bautorizacion(es)?\b|\brestriccion(es)?\b|\bobligacion(es)?\b|\bderecho(s)?\b|\bprocedimiento(s)?\b/
 ];
@@ -65,11 +126,14 @@ const substantiveCategoryPatterns = {
     /\bmigracion\b|\bmigratorio\b|\bvisa(s)?\b|\bcondicion(es)? de estancia\b|\bresidencia\b|\bresidencia temporal\b|\bresidencia permanente\b|\bresidente\b|\brefugiado\b|\basilo\b|\bnaturalizacion\b|\bpermiso(s)? de trabajo\b|\bextranjero(s)?\b|\bestancia\b/
   ],
   'Comercio Exterior': [
-    /\bcomercio exterior\b|\bimportacion(es)?\b|\bexportacion(es)?\b|\btigie\b|\bregla octava\b|\barancel(es|aria|arias)?\b|\bfraccion(es)? arancelaria(s)?\b/,
-    /\bcuota(s)? compensatoria(s)?\b|\bantidumping\b|\bimmex\b|\bprosec\b|\bprogramas de fomento\b|\brrna\b|\bregulaciones y restricciones no arancelarias\b|\brestricciones no arancelarias\b|\bpermisos previos\b|\bavisos automaticos\b|\bcupos\b|\bmercancia(s)?\b/
+    /\bley de los impuestos generales de importacion y de exportacion\b|\bligie\b|\btigie\b|\btarifa de la ley de los impuestos generales de importacion y de exportacion\b|\bley de comercio exterior\b|\breglamento de la ley de comercio exterior\b/,
+    /\bcomercio exterior\b|\bimportacion(es)?\b|\bexportacion(es)?\b|\bregla octava\b|\barancel(es|aria|arias)?\b|\bfraccion(es)? arancelaria(s)?\b/,
+    /\bcuota(s)? compensatoria(s)?\b|\bantidumping\b|\bimmex\b|\bprosec\b|\bdrawback\b|\bprogramas de fomento\b|\brrna\b|\bregulaciones y restricciones no arancelarias\b|\brestricciones no arancelarias\b|\bpermisos previos\b|\bavisos automaticos\b|\bcupos\b|\bmercancia(s)?\b/
   ],
   Aduanas: [
     /\bagencia nacional de aduanas\b|\banam\b|\brgce\b|\breglas generales de comercio exterior\b/,
+    /\bley aduanera\b|\breglamento de la ley aduanera\b|\btransito aduanero\b|\btransito internacional\b|\btransito interno\b|\bmercancia(s)? en transito\b|\bdeposito fiscal\b|\bgarantia en cuenta aduanera\b|\bcuenta aduanera\b|\bcorredor interoceanico\b|\bistmo de tehuantepec\b/,
+    customsOfficePattern,
     /\baduana(s)?\b|\baduanero\b|\baduanera\b|\bdespacho aduanero\b|\bpedimento(s)?\b|\brecinto(s)? fiscalizado(s)?\b|\bprevalidacion\b|\boea\b|\boperador economico autorizado\b|\bpama\b|\bvalor en aduana\b|\bpadron de importadores\b|\bpadron de exportadores\b|\bcertificacion(es)? aduanera(s)?\b|\bfacilitacion comercial\b|\bagente aduanal\b|\bagencia aduanal\b/
   ],
   'Defensa Fiscal': [
@@ -79,7 +143,9 @@ const substantiveCategoryPatterns = {
 };
 
 const strictDirectPracticeHookPatterns = [
-  /\bcomercio exterior\b|\bimportacion(es)?\b|\bexportacion(es)?\b|\btigie\b|\bregla octava\b|\barancel(es|aria|arias)?\b|\bfraccion(es)? arancelaria(s)?\b|\bcuota(s)? compensatoria(s)?\b|\bantidumping\b|\bimmex\b|\bprosec\b|\bprogramas de fomento\b|\brrna\b|\bregulaciones y restricciones no arancelarias\b|\brestricciones no arancelarias\b|\bpermisos previos\b|\bavisos automaticos\b|\bcupos\b|\bmercancia(s)?\b/,
+  /\bley de los impuestos generales de importacion y de exportacion\b|\bligie\b|\btigie\b|\btarifa de la ley de los impuestos generales de importacion y de exportacion\b|\bley de comercio exterior\b|\breglamento de la ley de comercio exterior\b|\bcomercio exterior\b|\bimportacion(es)?\b|\bexportacion(es)?\b|\bregla octava\b|\barancel(es|aria|arias)?\b|\bfraccion(es)? arancelaria(s)?\b|\bcuota(s)? compensatoria(s)?\b|\bantidumping\b|\bimmex\b|\bprosec\b|\bdrawback\b|\bprogramas de fomento\b|\brrna\b|\bregulaciones y restricciones no arancelarias\b|\brestricciones no arancelarias\b|\bpermisos previos\b|\bavisos automaticos\b|\bcupos\b|\bmercancia(s)?\b/,
+  /\bley aduanera\b|\breglamento de la ley aduanera\b|\btransito aduanero\b|\btransito internacional\b|\btransito interno\b|\bmercancia(s)? en transito\b|\bdeposito fiscal\b|\bgarantia en cuenta aduanera\b|\bcuenta aduanera\b|\bcorredor interoceanico\b|\bistmo de tehuantepec\b/,
+  customsOfficePattern,
   /\bagencia nacional de aduanas\b|\banam\b|\brgce\b|\breglas generales de comercio exterior\b|\baduana(s)?\b|\baduanero\b|\baduanera\b|\bdespacho aduanero\b|\bpedimento(s)?\b|\brecinto(s)? fiscalizado(s)?\b|\bprevalidacion\b|\boea\b|\boperador economico autorizado\b|\bpama\b|\bvalor en aduana\b|\bpadron(es)? de importadores\b|\bpadron(es)? de exportadores\b|\bcertificacion(es)? aduanera(s)?\b|\bfacilitacion comercial\b|\bagente aduanal\b|\bagencia aduanal\b/,
   /\binstituto nacional de migracion\b|\binm\b|\bmigracion\b|\bmigratorio\b|\bvisa(s)?\b|\bcondicion(es)? de estancia\b|\bresidencia\b|\bresidencia temporal\b|\bresidencia permanente\b|\bresidente\b|\brefugiado\b|\basilo\b|\bnaturalizacion\b|\bpermiso(s)? de trabajo\b|\bextranjero(s)?\b|\bestancia\b/,
   /\btribunal federal de justicia administrativa\b|\btfja\b|\bjuicio contencioso administrativo\b|\bsala regional\b|\bsuspension de actividades jurisdiccionales\b|\bplazo(s)?\b|\btermino(s)?\b|\bdia(s)? inhabil(es)?\b|\boficialia de partes\b/
@@ -186,15 +252,46 @@ function parseDottedDate(value = '') {
   return `${year}-${month}-${day}`;
 }
 
-function recentWindowStart(days = FEED_DAYS) {
-  const date = new Date();
-  date.setHours(0, 0, 0, 0);
-  date.setDate(date.getDate() - (days - 1));
-  return date.toISOString().slice(0, 10);
+function datePartsFromIso(value = '') {
+  const match = value.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!match) return null;
+  const [, year, month, day] = match;
+  return {
+    day,
+    month,
+    year,
+    iso: value,
+    dof: `${day}/${month}/${year}`
+  };
 }
 
-function isRecentIsoDate(value = '') {
-  return /^\d{4}-\d{2}-\d{2}$/.test(value) && value >= recentWindowStart();
+function getMexicoToday() {
+  if (process.env.PULSO_LEGAL_DATE) {
+    const override = datePartsFromIso(process.env.PULSO_LEGAL_DATE);
+    if (override) return override;
+  }
+
+  const parts = new Intl.DateTimeFormat('en-CA', {
+    timeZone: MEXICO_TIME_ZONE,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit'
+  }).formatToParts(new Date()).reduce((acc, part) => {
+    acc[part.type] = part.value;
+    return acc;
+  }, {});
+
+  return {
+    day: parts.day,
+    month: parts.month,
+    year: parts.year,
+    iso: `${parts.year}-${parts.month}-${parts.day}`,
+    dof: `${parts.day}/${parts.month}/${parts.year}`
+  };
+}
+
+function isTodayMexicoIsoDate(value = '') {
+  return value === getMexicoToday().iso;
 }
 
 function stripHtml(value = '') {
@@ -226,13 +323,8 @@ function formatDofDate(date) {
   };
 }
 
-function getRecentDofDates(days = FEED_DAYS) {
-  return Array.from({ length: days }, (_, index) => {
-    const date = new Date();
-    date.setHours(12, 0, 0, 0);
-    date.setDate(date.getDate() - index);
-    return formatDofDate(date);
-  });
+function getDofDatesForCurrentRun() {
+  return [getMexicoToday()];
 }
 
 function dofUrlForDate(date) {
@@ -305,7 +397,7 @@ function parseSniceItems(html) {
     if (cells.length < 3) continue;
 
     const date = parseDottedDate(stripHtml(cells[0]));
-    if (!isRecentIsoDate(date)) continue;
+    if (!isTodayMexicoIsoDate(date)) continue;
 
     const linkMatch = cells[0].match(/href=["']([^"']+)["']/i);
     const description = cleanSniceTitle(stripHtml(cells[1]));
@@ -388,7 +480,7 @@ function parseTfjaItems(html) {
 
   for (const blockMatch of html.matchAll(blockPattern)) {
     const fecha = parseSpanishLongDate(stripHtml(blockMatch[1]));
-    if (!isRecentIsoDate(fecha)) continue;
+    if (!isTodayMexicoIsoDate(fecha)) continue;
 
     const listHtml = blockMatch[2];
     for (const itemMatch of listHtml.matchAll(/<li\b[\s\S]*?<\/li>/gi)) {
@@ -599,6 +691,57 @@ function isRelevant(entry) {
   return Boolean(category && isDirectLegalChange(entry) && isIntrinsicToCategory(entry, category));
 }
 
+function rejectionReasons(entry) {
+  const category = classify(entry);
+  const text = normalizeText(`${entry.title} ${entry.description}`).toLowerCase();
+  const reasons = [];
+
+  if (!category) {
+    reasons.push('sin categoría sustantiva');
+  } else if (!AUTHORIZED_CATEGORIES.includes(category)) {
+    reasons.push(`categoría no autorizada: ${category}`);
+  }
+
+  if (!isDirectLegalChange(entry)) {
+    reasons.push('sin verbo normativo relevante');
+  }
+
+  if (category && !hasStrictDirectPracticeHook(text)) {
+    reasons.push('sin vínculo operativo directo');
+  }
+
+  if (category && !hasCategorySubstance(text, category)) {
+    reasons.push(`sin sustancia suficiente para ${category}`);
+  }
+
+  if (isAdministrativeOnlyNotice(text)) {
+    reasons.push('administrativo interno');
+  }
+
+  if (isPublicHealthNoticeWithoutDirectPracticeHook(text)) {
+    reasons.push('salud pública sin vínculo directo');
+  }
+
+  return reasons.length ? reasons.join('; ') : 'no relevante por regla compuesta';
+}
+
+function printDofAudit(feedItems, dofItems) {
+  if (!SHOULD_PRINT_AUDIT) return;
+
+  const keptUrls = new Set(dofItems.map(item => item.url));
+  console.log('Pulso Legal auditoría DOF conservados:');
+  dofItems.forEach(item => {
+    console.log(`CONSERVADO | ${item.fecha} | ${item.dependencia} | ${item.categoria} | ${item.titulo}`);
+  });
+
+  console.log('Pulso Legal auditoría DOF descartados:');
+  feedItems
+    .filter(item => !keptUrls.has(item.link))
+    .forEach(item => {
+      console.log(`DESCARTADO | ${item.feedDate} | ${cleanAgency(item.title)} | ${editorialTitle(item.description)} | razón: ${rejectionReasons(item)}`);
+    });
+}
+
 function editorialTitle(description) {
   const firstSentence = description
     .split(/(?<=\.)\s+/)
@@ -619,8 +762,16 @@ function editorialTitle(description) {
 function editorialReading(entry, category) {
   const text = normalizeText(`${entry.title} ${entry.description}`).toLowerCase();
 
+  if (category === 'Aduanas' && /transito aduanero|transito internacional|mercancias en transito|corredor interoceanico/.test(text)) {
+    return 'La publicación incide en operaciones de tránsito aduanero o internacional; quienes muevan mercancías bajo esta figura deben revisar ruta autorizada, condiciones de traslado, garantías y consecuencias por incumplimiento.';
+  }
+
   if (category === 'Comercio Exterior' && /cuota compensatoria|examen de vigencia/.test(text)) {
     return 'El examen de vigencia abre la revisión de una cuota compensatoria aplicable a importaciones específicas; quienes operen la mercancía señalada deben revisar origen, fracción arancelaria y exposición comercial antes de cerrar operaciones.';
+  }
+
+  if (category === 'Comercio Exterior' && /ligie|tigie|tarifa de la ley de los impuestos generales de importacion y de exportacion|impuesto general de importacion|arancel/.test(text)) {
+    return 'La publicación modifica tratamiento arancelario o condiciones de clasificación aplicables a mercancías específicas; las empresas alcanzadas deben revisar fracción arancelaria, requisitos y alcance operativo antes de importar.';
   }
 
   if (category === 'Comercio Exterior' && /antidumping/.test(text)) {
@@ -682,8 +833,10 @@ async function readStoredItems() {
 
 async function main() {
   const feedItems = [];
+  const runDate = getMexicoToday();
+  console.log(`Pulso Legal: fecha de revisión México ${runDate.iso}.`);
 
-  for (const feedDate of getRecentDofDates()) {
+  for (const feedDate of getDofDatesForCurrentRun()) {
     const html = await fetchText(dofUrlForDate(feedDate), 'iso-8859-1');
     feedItems.push(...parseDailyDofItems(html, feedDate));
   }
@@ -736,6 +889,7 @@ async function main() {
   console.log(`Pulso Legal: DOF recibido ${feedItems.length}, DOF conservado ${dofItems.length}, DOF descartado ${feedItems.length - dofItems.length}.`);
   console.log(`Pulso Legal: SNICE conservado ${sniceItems.length}, TFJA conservado ${tfjaItems.length}.`);
   console.log(`Pulso Legal actualizado: ${newItems.length} nuevas o vigentes, ${merged.length} totales.`);
+  printDofAudit(feedItems, dofItems);
   if (SHOULD_PRINT_ITEMS) {
     newItems.forEach(item => {
       console.log([item.fecha, item.dependencia, item.categoria, item.titulo].join(' | '));
