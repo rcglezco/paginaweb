@@ -748,13 +748,6 @@ function editorialTitle(description) {
     .find(Boolean) || description;
 
   return firstSentence
-    .replace(/^Acuerdo por el que se\s+/i, '')
-    .replace(/^Resolución por la que se\s+/i, '')
-    .replace(/^declara\s+/i, 'Declaratoria de ')
-    .replace(/^Declaratoria de el\s+/i, 'Declaratoria del ')
-    .replace(/^Decreto por el que se\s+/i, '')
-    .replace(/^Aviso por el que se\s+/i, '')
-    .replace(/^Circular por la que se\s+/i, '')
     .replace(/\.$/, '')
     .trim();
 }
