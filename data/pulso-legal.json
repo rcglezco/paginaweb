@@ -1,5 +1,14 @@
 [
   {
+    "fecha": "2026-10-21",
+    "dependencia": "PRESIDENCIA DE LA REPUBLICA",
+    "fuente": "DOF",
+    "categoria": "Aduanas",
+    "titulo": "Decreto por el que se expropia por causa de utilidad pública la superficie de 9,885.80 m² (nueve mil ochocientos ochenta y cinco punto ochenta metros cuadrados), a favor de la Federación, por conducto de Ferrocarril del Istmo de Tehuantepec, S.A",
+    "lectura": "La publicación incide en operaciones de tránsito aduanero o internacional; quienes muevan mercancías bajo esta figura deben revisar ruta autorizada, condiciones de traslado, garantías y consecuencias por incumplimiento.",
+    "url": "https://diariooficial.gob.mx/nota_detalle.php?codigo=5801837&fecha=21/10/2026"
+  },
+  {
     "fecha": "2026-10-19",
     "dependencia": "SECRETARIA DE MARINA",
     "fuente": "DOF",
@@ -205,14 +214,5 @@
     "titulo": "Resolución preliminar del procedimiento administrativo de investigación antidumping sobre las importaciones de lonas de policloruro de vinilo con refuerzo textil originarias de la República Popular China, independientemente del país de procedencia",
     "lectura": "El examen de vigencia abre la revisión de una cuota compensatoria aplicable a importaciones específicas; quienes operen la mercancía señalada deben revisar origen, fracción arancelaria y exposición comercial antes de cerrar operaciones.",
     "url": "https://diariooficial.gob.mx/nota_detalle.php?codigo=5798067&fecha=07/09/2026"
-  },
-  {
-    "fecha": "2026-09-04",
-    "dependencia": "SECRETARIA DE HACIENDA Y CREDITO PUBLICO",
-    "fuente": "DOF",
-    "categoria": "Aduanas",
-    "titulo": "Acuerdo que modifica el diverso por el que se determina la circunscripción territorial de las aduanas y las secciones aduaneras de las aduanas",
-    "lectura": "La publicación modifica reglas o procedimientos aduaneros; las operaciones vinculadas deben revisar despacho, documentación, autorizaciones y controles antes de ejecutar movimientos.",
-    "url": "https://diariooficial.gob.mx/nota_detalle.php?codigo=5797941&fecha=04/09/2026"
   }
 ]
