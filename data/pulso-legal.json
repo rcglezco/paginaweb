@@ -1,5 +1,14 @@
 [
   {
+    "fecha": "2026-10-28",
+    "dependencia": "SECRETARIA DE ECONOMIA",
+    "fuente": "DOF",
+    "categoria": "Comercio Exterior",
+    "titulo": "Resolución final del procedimiento administrativo de investigación antidumping sobre las importaciones de homopolímero de monómero de cloruro de vinilo en suspensión originarias de los Estados Unidos de América, independientemente del país de procedencia",
+    "lectura": "El procedimiento antidumping puede modificar cargas o condiciones aplicables a importaciones específicas; quienes operen la mercancía señalada deben revisar origen, fracción arancelaria y exposición comercial.",
+    "url": "https://diariooficial.gob.mx/nota_detalle.php?codigo=5802364&fecha=28/10/2026"
+  },
+  {
     "fecha": "2026-10-23",
     "dependencia": "SECRETARIA DE ECONOMIA",
     "fuente": "DOF",
@@ -205,14 +214,5 @@
     "titulo": "Segunda Resolución de Modificaciones a las Reglas Generales de Comercio Exterior para 2026 y anexos 1, 2 y 22",
     "lectura": "La actualización exige revisar procedimientos internos de despacho, padrones, certificaciones o autorizaciones aduaneras vinculadas con la regla modificada.",
     "url": "https://diariooficial.gob.mx/nota_detalle.php?codigo=5799243&fecha=22/09/2026"
-  },
-  {
-    "fecha": "2026-09-09",
-    "dependencia": "SECRETARIA DE ECONOMIA",
-    "fuente": "DOF",
-    "categoria": "Comercio Exterior",
-    "titulo": "Resolución preliminar del procedimiento administrativo de investigación antidumping sobre las importaciones de vidrio flotado de color originarias de la República Popular China, independientemente del país de procedencia",
-    "lectura": "El examen de vigencia abre la revisión de una cuota compensatoria aplicable a importaciones específicas; quienes operen la mercancía señalada deben revisar origen, fracción arancelaria y exposición comercial antes de cerrar operaciones.",
-    "url": "https://diariooficial.gob.mx/nota_detalle.php?codigo=5798263&fecha=09/09/2026"
   }
 ]
