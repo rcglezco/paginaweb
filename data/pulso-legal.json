@@ -1,5 +1,14 @@
 [
   {
+    "fecha": "2026-10-30",
+    "dependencia": "SECRETARIA DE ECONOMIA",
+    "fuente": "DOF",
+    "categoria": "Comercio Exterior",
+    "titulo": "Acuerdo que modifica el diverso por el que la Secretaría de Economía emite reglas y criterios de carácter general en materia de comercio exterior",
+    "lectura": "La publicación modifica condiciones aplicables a operaciones de importación o exportación; quienes operen mercancías alcanzadas deben revisar requisitos, fracciones arancelarias y documentación antes de ejecutar la operación.",
+    "url": "https://diariooficial.gob.mx/nota_detalle.php?codigo=5802604&fecha=30/10/2026"
+  },
+  {
     "fecha": "2026-10-29",
     "dependencia": "SECRETARIA DE ECONOMIA",
     "fuente": "DOF",
@@ -205,14 +214,5 @@
     "titulo": "SRG/02/2026: SUSPENSIÓN DE ACTIVIDADES JURISDICCIONALES DEL TURNO VESPERTINO DE LA OFICIALÍA DE PARTES DE LA SALA REGIONAL EN GUERRERO DEL TRIBUNAL FEDERAL DE JUSTICIA ADMINISTRATIVA, POR CAUSA DE FUERZA MAYOR",
     "lectura": "La suspensión incide en el cómputo de plazos ante el TFJA; conviene revisar expedientes fiscales, aduaneros o de comercio exterior radicados en la sala correspondiente antes de presentar promociones o recursos.",
     "url": "https://www.tfja.gob.mx/pdf/secretaria_general_de_acuerdos/acuerdos_sala_superior/2026/Acuerdo_SRG-02-2026_SUSPENSION_ACTIVIDADES_Guerrero.pdf"
-  },
-  {
-    "fecha": "2026-09-22",
-    "dependencia": "SECRETARIA DE ECONOMIA",
-    "fuente": "DOF",
-    "categoria": "Comercio Exterior",
-    "titulo": "da a conocer el cupo para importar ganado bovino en pie bajo el arancel-cupo que se indica",
-    "lectura": "La publicación modifica condiciones aplicables a operaciones de importación o exportación; quienes operen mercancías alcanzadas deben revisar requisitos, fracciones arancelarias y documentación antes de ejecutar la operación.",
-    "url": "https://diariooficial.gob.mx/nota_detalle.php?codigo=5799245&fecha=22/09/2026"
   }
 ]
