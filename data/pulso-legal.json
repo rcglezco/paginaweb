@@ -1,5 +1,14 @@
 [
   {
+    "fecha": "2026-11-06",
+    "dependencia": "SECRETARIA DE HACIENDA Y CREDITO PUBLICO",
+    "fuente": "DOF",
+    "categoria": "Aduanas",
+    "titulo": "Acuerdo por el cual se expiden los Lineamientos para la aplicación del examen psicotécnico, para obtener la patente de agente aduanal y autorización de mandatarios",
+    "lectura": "La publicación modifica reglas o procedimientos aduaneros; las operaciones vinculadas deben revisar despacho, documentación, autorizaciones y controles antes de ejecutar movimientos.",
+    "url": "https://diariooficial.gob.mx/nota_detalle.php?codigo=5803164&fecha=06/11/2026"
+  },
+  {
     "fecha": "2026-10-30",
     "dependencia": "SECRETARIA DE ECONOMIA",
     "fuente": "DOF",
@@ -205,14 +214,5 @@
     "titulo": "Aviso mediante el que se comunica el listado de las constancias de calificación emitidas por la UAJ para participar en las LPN No. 001/2027 para asignar el cupo de exportación de prendas de vestir de algodón o fibras artificiales o sintéticas (TPL1) y 002/2027 para asignar el cupo de exportación de prendas de vestir de lana (TPL2), establecidos en el acuerdo por el que se dan a conocer los cupos de exportación e importación de mercancías textiles y prendas de vestir no originarias, susceptibles de recibir el trato arancelario preferencial, conforme al Tratado entre los Estados Unidos de América, los Estados Unidos Mexicanos y Canadá",
     "lectura": "El aviso abre o documenta un procedimiento de cupos o asignaciones comerciales; las empresas interesadas deben revisar bases, elegibilidad, documentación y calendario antes de participar.",
     "url": "https://www.snice.gob.mx/~oracle/SNICE_DOCS/CONSTANCIAS001Y002-2027-LICITACION-ACTUALIDAD_20260924-20260924.pdf"
-  },
-  {
-    "fecha": "2026-09-23",
-    "dependencia": "Tribunal Federal de Justicia Administrativa",
-    "fuente": "TFJA",
-    "categoria": "Defensa Fiscal",
-    "titulo": "SRG/02/2026: SUSPENSIÓN DE ACTIVIDADES JURISDICCIONALES DEL TURNO VESPERTINO DE LA OFICIALÍA DE PARTES DE LA SALA REGIONAL EN GUERRERO DEL TRIBUNAL FEDERAL DE JUSTICIA ADMINISTRATIVA, POR CAUSA DE FUERZA MAYOR",
-    "lectura": "La suspensión incide en el cómputo de plazos ante el TFJA; conviene revisar expedientes fiscales, aduaneros o de comercio exterior radicados en la sala correspondiente antes de presentar promociones o recursos.",
-    "url": "https://www.tfja.gob.mx/pdf/secretaria_general_de_acuerdos/acuerdos_sala_superior/2026/Acuerdo_SRG-02-2026_SUSPENSION_ACTIVIDADES_Guerrero.pdf"
   }
 ]
