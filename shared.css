@@ -609,7 +609,7 @@ footer.site-footer {
 .site-footer .ft-logo {
   color: rgba(245, 228, 196, 0.9) !important;
   display: block;
-  font-size: 18px;
+  font-size: 15px;
   line-height: 1.25;
   max-width: 620px;
 }
@@ -1544,7 +1544,7 @@ a[x-apple-data-detectors] {
 
   .site-footer .ft-primary { padding-right: 0; }
 
-  .site-footer .ft-logo { font-size: 18px; justify-content: flex-start !important; text-align: left; }
+  .site-footer .ft-logo { font-size: 15px; justify-content: flex-start !important; text-align: left; }
   .site-footer .ft-utility { flex-wrap: wrap; gap: 12px 20px; margin-right: 0; padding-top: 0; }
   .site-footer .ft-notice,
   .site-footer .ft-right { max-width: none; text-align: left !important; white-space: normal; }

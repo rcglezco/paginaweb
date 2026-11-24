@@ -507,6 +507,19 @@ const emailButton = document.querySelector('.btn-email');
 
 if ((contactSection || pageFooter) && whatsappButton) {
   const updateWhatsappPosition = () => {
+    if (pageFooter) {
+      const footerRect = pageFooter.getBoundingClientRect();
+
+      if (footerRect.top < window.innerHeight && footerRect.bottom > 0) {
+        const footerClearance = window.innerHeight - footerRect.top + 24;
+        whatsappButton.style.bottom = `${Math.round(footerClearance)}px`;
+        whatsappButton.classList.remove('contact-safe');
+        return;
+      }
+
+      whatsappButton.style.bottom = '';
+    }
+
     if (emailButton) {
       const emailRect = emailButton.getBoundingClientRect();
       const waRect = whatsappButton.getBoundingClientRect();
