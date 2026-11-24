@@ -1,5 +1,14 @@
 [
   {
+    "fecha": "2026-11-24",
+    "dependencia": "SECRETARIA DE ECONOMIA",
+    "fuente": "DOF",
+    "categoria": "Comercio Exterior",
+    "titulo": "Acuerdo que modifica el diverso por el que la Secretaría de Economía emite reglas y criterios de carácter general en materia de comercio exterior",
+    "lectura": "La publicación modifica condiciones aplicables a operaciones de importación o exportación; quienes operen mercancías alcanzadas deben revisar requisitos, fracciones arancelarias y documentación antes de ejecutar la operación.",
+    "url": "https://diariooficial.gob.mx/nota_detalle.php?codigo=5804790&fecha=24/11/2026"
+  },
+  {
     "fecha": "2026-11-23",
     "dependencia": "SECRETARIA DE HACIENDA Y CREDITO PUBLICO",
     "fuente": "DOF",
@@ -205,14 +214,5 @@
     "titulo": "Bases para participar en las LPN No. 003/2027, 004/2027 y 005/2027 para asignar los cupos de importación de leche condensada, leche evaporada y aceite de palma y aceite de almendra (hueso) de palma establecidos en el Acuerdo por el que se dan a conocer los cupos de importación descritos en el apéndice A-1 \"contingentes arancelarios de México\" del anexo 2-D \"compromisos arancelarios\" del TIPAT",
     "lectura": "El aviso abre o documenta un procedimiento de cupos o asignaciones comerciales; las empresas interesadas deben revisar bases, elegibilidad, documentación y calendario antes de participar.",
     "url": "https://www.snice.gob.mx/~oracle/SNICE_DOCS/FORMATOS-BASESLPN-030405-2027-LICITACION-ACTUALIDAD_20260926-20260926.pdf"
-  },
-  {
-    "fecha": "2026-09-25",
-    "dependencia": "PRESIDENCIA DE LA REPUBLICA",
-    "fuente": "DOF",
-    "categoria": "Comercio Exterior",
-    "titulo": "modifica el diverso por el que se establece el impuesto general de importación para la región fronteriza y la franja fronteriza norte",
-    "lectura": "La publicación modifica condiciones aplicables a operaciones de importación o exportación; quienes operen mercancías alcanzadas deben revisar requisitos, fracciones arancelarias y documentación antes de ejecutar la operación.",
-    "url": "https://diariooficial.gob.mx/nota_detalle.php?codigo=5799677&fecha=25/09/2026"
   }
 ]
