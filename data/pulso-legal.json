@@ -1,5 +1,14 @@
 [
   {
+    "fecha": "2026-11-23",
+    "dependencia": "SECRETARIA DE HACIENDA Y CREDITO PUBLICO",
+    "fuente": "DOF",
+    "categoria": "Aduanas",
+    "titulo": "Tercera Resolución de Modificaciones a las Reglas Generales de Comercio Exterior para 2026 y anexos 1, 18, 21, 22 y 29",
+    "lectura": "La actualización exige revisar procedimientos internos de despacho, padrones, certificaciones o autorizaciones aduaneras vinculadas con la regla modificada.",
+    "url": "https://diariooficial.gob.mx/nota_detalle.php?codigo=5804604&fecha=23/11/2026"
+  },
+  {
     "fecha": "2026-11-06",
     "dependencia": "SECRETARIA DE HACIENDA Y CREDITO PUBLICO",
     "fuente": "DOF",
@@ -205,14 +214,5 @@
     "titulo": "modifica el diverso por el que se establece el impuesto general de importación para la región fronteriza y la franja fronteriza norte",
     "lectura": "La publicación modifica condiciones aplicables a operaciones de importación o exportación; quienes operen mercancías alcanzadas deben revisar requisitos, fracciones arancelarias y documentación antes de ejecutar la operación.",
     "url": "https://diariooficial.gob.mx/nota_detalle.php?codigo=5799677&fecha=25/09/2026"
-  },
-  {
-    "fecha": "2026-09-24",
-    "dependencia": "SNICE · Cupos",
-    "fuente": "SNICE",
-    "categoria": "Comercio Exterior",
-    "titulo": "Aviso mediante el que se comunica el listado de las constancias de calificación emitidas por la UAJ para participar en las LPN No. 001/2027 para asignar el cupo de exportación de prendas de vestir de algodón o fibras artificiales o sintéticas (TPL1) y 002/2027 para asignar el cupo de exportación de prendas de vestir de lana (TPL2), establecidos en el acuerdo por el que se dan a conocer los cupos de exportación e importación de mercancías textiles y prendas de vestir no originarias, susceptibles de recibir el trato arancelario preferencial, conforme al Tratado entre los Estados Unidos de América, los Estados Unidos Mexicanos y Canadá",
-    "lectura": "El aviso abre o documenta un procedimiento de cupos o asignaciones comerciales; las empresas interesadas deben revisar bases, elegibilidad, documentación y calendario antes de participar.",
-    "url": "https://www.snice.gob.mx/~oracle/SNICE_DOCS/CONSTANCIAS001Y002-2027-LICITACION-ACTUALIDAD_20260924-20260924.pdf"
   }
 ]
