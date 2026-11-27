@@ -1,5 +1,14 @@
 [
   {
+    "fecha": "2026-11-27",
+    "dependencia": "PRESIDENCIA DE LA REPUBLICA",
+    "fuente": "DOF",
+    "categoria": "Comercio Exterior",
+    "titulo": "Decreto por el que se modifica el diverso por el que se regula la importación definitiva de vehículos usados",
+    "lectura": "La publicación modifica condiciones aplicables a operaciones de importación o exportación; quienes operen mercancías alcanzadas deben revisar requisitos, fracciones arancelarias y documentación antes de ejecutar la operación.",
+    "url": "https://diariooficial.gob.mx/nota_detalle.php?codigo=5805519&fecha=27/11/2026"
+  },
+  {
     "fecha": "2026-11-24",
     "dependencia": "SECRETARIA DE ECONOMIA",
     "fuente": "DOF",
@@ -205,14 +214,5 @@
     "titulo": "SRS/01/2026: SUSPENSIÓN DE ACTIVIDADES JURISDICCIONALES DE LA SALA REGIONAL EN SONORA DEL TRIBUNAL FEDERAL DE JUSTICIA ADMINISTRATIVA, POR CAUSA DE FUERZA MAYOR",
     "lectura": "La suspensión incide en el cómputo de plazos ante el TFJA; conviene revisar expedientes fiscales, aduaneros o de comercio exterior radicados en la sala correspondiente antes de presentar promociones o recursos.",
     "url": "https://www.tfja.gob.mx/pdf/secretaria_general_de_acuerdos/acuerdos_sala_superior/2026/Acuerdo_SRS-01-2026_Suspension_labores_Sala_Regional_Sonora.pdf"
-  },
-  {
-    "fecha": "2026-09-25",
-    "dependencia": "SNICE · Cupos",
-    "fuente": "SNICE",
-    "categoria": "Comercio Exterior",
-    "titulo": "Bases para participar en las LPN No. 003/2027, 004/2027 y 005/2027 para asignar los cupos de importación de leche condensada, leche evaporada y aceite de palma y aceite de almendra (hueso) de palma establecidos en el Acuerdo por el que se dan a conocer los cupos de importación descritos en el apéndice A-1 \"contingentes arancelarios de México\" del anexo 2-D \"compromisos arancelarios\" del TIPAT",
-    "lectura": "El aviso abre o documenta un procedimiento de cupos o asignaciones comerciales; las empresas interesadas deben revisar bases, elegibilidad, documentación y calendario antes de participar.",
-    "url": "https://www.snice.gob.mx/~oracle/SNICE_DOCS/FORMATOS-BASESLPN-030405-2027-LICITACION-ACTUALIDAD_20260926-20260926.pdf"
   }
 ]
