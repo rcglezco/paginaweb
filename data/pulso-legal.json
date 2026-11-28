@@ -9,6 +9,15 @@
     "url": "https://diariooficial.gob.mx/nota_detalle.php?codigo=5805519&fecha=27/11/2026"
   },
   {
+    "fecha": "2026-11-27",
+    "dependencia": "SECRETARIA DE ECONOMIA",
+    "fuente": "DOF",
+    "categoria": "Comercio Exterior",
+    "titulo": "Resolución final del procedimiento administrativo de revisión de las cuotas compensatorias impuestas a las importaciones de aceros planos recubiertos originarias de la República Socialista de Vietnam, independientemente del país de procedencia",
+    "lectura": "La publicación modifica condiciones aplicables a operaciones de importación o exportación; quienes operen mercancías alcanzadas deben revisar requisitos, fracciones arancelarias y documentación antes de ejecutar la operación.",
+    "url": "https://diariooficial.gob.mx/nota_detalle.php?codigo=5805815&fecha=27/11/2026"
+  },
+  {
     "fecha": "2026-11-24",
     "dependencia": "SECRETARIA DE ECONOMIA",
     "fuente": "DOF",
@@ -205,14 +214,5 @@
     "titulo": "Aviso mediante el que se comunica el listado de carpetas encriptadas recibidas para participar en las LPN No. 001/2027 para asignar el cupo de exportación de prendas de vestir de algodón o fibras artificiales o sintéticas (TPL1) y 002/2027 para asignar el cupo de exportación de prendas de vestir de lana (TPL2), establecidos en el acuerdo por el que se dan a conocer los cupos de exportación e importación de mercancías textiles y prendas de vestir no originarias, susceptibles de recibir el trato arancelario preferencial, conforme al Tratado entre los Estados Unidos de América, los Estados Unidos Mexicanos y Canadá",
     "lectura": "El aviso abre o documenta un procedimiento de cupos o asignaciones comerciales; las empresas interesadas deben revisar bases, elegibilidad, documentación y calendario antes de participar.",
     "url": "https://www.snice.gob.mx/~oracle/SNICE_DOCS/AVISO-CARPETA-001Y002-2027-LICITACION-ACTUALIDAD_20260929-20260929.pdf"
-  },
-  {
-    "fecha": "2026-09-28",
-    "dependencia": "Tribunal Federal de Justicia Administrativa",
-    "fuente": "TFJA",
-    "categoria": "Defensa Fiscal",
-    "titulo": "SRS/01/2026: SUSPENSIÓN DE ACTIVIDADES JURISDICCIONALES DE LA SALA REGIONAL EN SONORA DEL TRIBUNAL FEDERAL DE JUSTICIA ADMINISTRATIVA, POR CAUSA DE FUERZA MAYOR",
-    "lectura": "La suspensión incide en el cómputo de plazos ante el TFJA; conviene revisar expedientes fiscales, aduaneros o de comercio exterior radicados en la sala correspondiente antes de presentar promociones o recursos.",
-    "url": "https://www.tfja.gob.mx/pdf/secretaria_general_de_acuerdos/acuerdos_sala_superior/2026/Acuerdo_SRS-01-2026_Suspension_labores_Sala_Regional_Sonora.pdf"
   }
 ]
